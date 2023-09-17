@@ -12,6 +12,7 @@ body {
         /* flex-direction: row; */
 
         /* height: 10px; */
+        width: 800px;
         margin: 10px;
         padding: 5px;
 }
@@ -73,7 +74,7 @@ body {
 .insideBox3 {
         background-color: rgb(202, 67, 67);
         height: 10px;
-        width: 90px;
+        width: 170px;
         /* margin-right: 5px; */
         /* margin: 5px; */
 
@@ -83,7 +84,7 @@ body {
 .insideBox2 {
         background-color: rgb(202, 67, 67);
         height: 10px;
-        width: 300px;
+        width: 400px;
         margin-inline: 10px;
         /* margin: 5px; */
         /* padding: 5px; */
@@ -91,7 +92,7 @@ body {
 
 .insideBox4 {
         background-color: gold;
-        width: 500px;
+        width: 800px;
 }
 
 .column1 {
@@ -167,6 +168,18 @@ body {
 
 /* @media (max-width: 600px) { */
 @media screen and (max-width: 768px) {
+        .container1,
+        .container2,
+        .container3 {
+                /* background-color: black; */
+                /* flex-direction: row; */
+
+                /* height: 10px; */
+                width: 500px;
+                /* margin: 10px;
+                padding: 5px; */
+}
+
 
         .container2 {
                 background-color: yellow;
@@ -183,7 +196,7 @@ body {
                 display: flex;
                 flex-direction: column;
                 /* height: 10px; */
-                width: 93%;
+                width: 92%;
                 /* height: px; */
                 /* padding: 10px; */
                 /* margin: 10px; */
@@ -193,7 +206,7 @@ body {
                 background-color: rgb(202, 67, 67);
                 display: flex;
                 flex-direction: column;
-                width: 93%;
+                width: 92%;
         }
 
         .row1,
@@ -217,4 +230,44 @@ body {
         .insideColumn2B {
                 height: 15px;
         }
+}
+
+
+/* @media (max-width: 600px) { */
+        @media screen and (max-width: 479px) {
+                .container1,
+                .container2,
+                .container3 {
+                        width: 190px;
+                }
+ 
+
+
+                .column1, .column2 {
+                        width: 150px;
+                }
+
+
+                /* Cambia la dirección de flexión a columna para insideBox1, insideBox2 y insideBox3 */
+                .insideBox1,
+                .insideBox2,
+                .insideBox3 {
+                        /* margin: 5px; */
+                        display: flex;
+                        flex-direction: column; /* Agrega esta propiedad para mostrarlos en columna */
+                        height: 10px; /* Puedes ajustar la altura según sea necesario */
+                        width: 150px;
+                        
+                }
+
+                .insideBox1, .insideBox2, .insideBox3 {
+                        /* margin: 5px; */
+                        height: 10px;
+
+                        width: 150px;
+ 
+                }
+                .insideColumn1A, .insideColumn1B, .insideColumn1C, .insideColumn1D {
+                        width: 150px;
+                }
 }
