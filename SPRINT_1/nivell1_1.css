@@ -27,7 +27,7 @@ body {
         flex-direction: row;
         height: 10px;
         /* width: px; */
-        padding: 10px;
+        padding: 15px;
         margin: 10px;
 }
 
@@ -37,9 +37,10 @@ body {
         flex-direction: row;
         height: 10px;
         /* width: px; */
-        padding: 10px;
+        padding: 15px;
         margin: 10px;
 }
+
 /* 
 .column1{
         background-color: dimgrey;
@@ -61,7 +62,7 @@ body {
         margin: 10px;
 } */
 
-.yellowLine{
+.yellowLine {
         background-color: darkgoldenrod;
         height: 10px;
         margin: 10px;
@@ -69,7 +70,7 @@ body {
 }
 
 .insideBox1,
-.insideBox3{
+.insideBox3 {
         background-color: rgb(202, 67, 67);
         height: 10px;
         width: 90px;
@@ -79,7 +80,7 @@ body {
         /* padding: 5px; */
 }
 
-.insideBox2{
+.insideBox2 {
         background-color: rgb(202, 67, 67);
         height: 10px;
         width: 300px;
@@ -88,12 +89,12 @@ body {
         /* padding: 5px; */
 }
 
-.insideBox4{
+.insideBox4 {
         background-color: gold;
         width: 500px;
 }
 
-.column1{
+.column1 {
         background-color: dimgrey;
         display: flex;
         flex-direction: column;
@@ -103,7 +104,7 @@ body {
         margin: 10px;
 }
 
-.column2{
+.column2 {
         background-color: rgb(202, 67, 67);
         display: flex;
         flex-direction: column;
@@ -111,11 +112,12 @@ body {
         width: 100px;
         padding: 10px;
         margin: 10px;
-        flex-grow: 1; /* Añade esta propiedad para que la columna se extienda horizontalmente */
+        flex-grow: 1;
+        /* Añade esta propiedad para que la columna se extienda horizontalmente */
         /* align-self: stretch; Agrega esta propiedad para que la columna se extienda horizontalmente */
 }
 
-.greyColumn{
+.greyColumn {
 
         display: flex;
         flex-direction: row;
@@ -132,11 +134,12 @@ body {
 .insideColumn1A,
 .insideColumn1B,
 .insideColumn1C,
-.insideColumn1D{
+.insideColumn1D {
 
         background-color: cornflowerblue;
         height: 10px;
-        width: calc(50% - 10px); /* Ajusta el ancho de las franjas para dividir en dos columnas con un espacio de 10px entre ellas */
+        width: calc(50% - 10px);
+        /* Ajusta el ancho de las franjas para dividir en dos columnas con un espacio de 10px entre ellas */
         margin: 5px;
 
         /* background-color: cornflowerblue; */
@@ -145,14 +148,14 @@ body {
         /* margin: 5px; */
 }
 
-.lastInsideColumn1{
+.lastInsideColumn1 {
         background-color: rgb(93, 202, 238);
         height: 10px;
         margin: 5px;
 }
 
 .insideColumn2A,
-.insideColumn2B{
+.insideColumn2B {
         background-color: darkkhaki;
         height: 10px;
         margin: 6px;
@@ -160,5 +163,58 @@ body {
         /* height: 10px;
         padding: 10px;
         margin: 10px; */
+}
 
+/* @media (max-width: 600px) { */
+@media screen and (max-width: 768px) {
+
+        .container2 {
+                background-color: yellow;
+                display: flex;
+                flex-direction: column;
+                /* margin: 10px; */
+                /* padding: 5px; */
+
+        }
+
+        .column1 {
+                background-color: dimgrey;
+                /* background-color:blue; */
+                display: flex;
+                flex-direction: column;
+                /* height: 10px; */
+                width: 93%;
+                /* height: px; */
+                /* padding: 10px; */
+                /* margin: 10px; */
+        }
+
+        .column2 {
+                background-color: rgb(202, 67, 67);
+                display: flex;
+                flex-direction: column;
+                width: 93%;
+        }
+
+        .row1,
+        .row2 {
+                height: 15px;
+        }
+
+        .yellowLine {
+                height: 15px;
+        }
+
+        .insideBox1,
+        .insideBox2,
+        .insideBox3,
+        .insideColumn1A,
+        .insideColumn1B,
+        .insideColumn1C,
+        .insideColumn1D,
+        .lastInsideColumn1,
+        .insideColumn2A,
+        .insideColumn2B {
+                height: 15px;
+        }
 }
