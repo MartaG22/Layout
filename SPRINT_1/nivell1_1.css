@@ -242,31 +242,51 @@ body {
                 }
  
 
-
-                .column1, .column2 {
-                        width: 150px;
-                }
-
-
-                /* Cambia la dirección de flexión a columna para insideBox1, insideBox2 y insideBox3 */
-                .insideBox1,
-                .insideBox2,
-                .insideBox3 {
-                        /* margin: 5px; */
+                .row1 {
+                        /* background-color: rgb(47, 121, 232); */
                         display: flex;
-                        flex-direction: column; /* Agrega esta propiedad para mostrarlos en columna */
-                        height: 10px; /* Puedes ajustar la altura según sea necesario */
+                        flex-direction: column;
+                        height: auto;
+                        /* padding: 8px;
+                        margin: 5px; */
+
+                        /* width: 92%; */
+                }
+                
+                .column1, .column2 {
                         width: 150px;
                         
                 }
 
-                .insideBox1, .insideBox2, .insideBox3 {
-                        /* margin: 5px; */
-                        height: 10px;
 
-                        width: 150px;
- 
+                /* Cambia la dirección de flexión a columna para insideBox1, insideBox2 y insideBox3 */
+                /* .insideBox1,
+                .insideBox2,
+                .insideBox3 { */
+                                                /* height: 10px; */
+
+                        /* margin: 0px;
+                        width: 135px;
+                        margin: 4px;
+                        
+
+                } */
+
+                .insideBox1, .insideBox2, .insideBox3 { 
+                         /* margin: 5px;  */
+                         
+                        height: px; 
+                        /* margin: 7px 0px; */
+                        
+                        width: 140px; 
+                        
                 }
+                
+                .insideBox2 {
+                        margin: 15px 0px;
+
+                }
+
                 .insideColumn1A, .insideColumn1B, .insideColumn1C, .insideColumn1D {
                         width: 150px;
                 }
