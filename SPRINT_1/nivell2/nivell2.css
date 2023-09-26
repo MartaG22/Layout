@@ -21,14 +21,22 @@ header {
         position: absolute;
         top: -10px;
         left: 0; */
+}
 
+.main {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around; 
 }
 
 nav {
         display: flex;
-        justify-content: space-evenly;
+        flex-direction: row;
+        /* justify-content: space-evenly; */
+        /* justify-content: center; */
         margin: 0 10px;
-        align-items: center;  /* Alineación del texto del menú respecto al LOGO */
+        align-items: center;  /* Alineación CENTRADA del texto del menú respecto al LOGO */
 }
 
 #logo img {
@@ -36,11 +44,6 @@ nav {
         height: auto; /* Esto mantiene la proporción de aspecto original de la imagen */
 }
 
-menu {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-}
 
 .header-title {
         height: 8rem;
@@ -53,12 +56,16 @@ menu {
 }
 
 h1{
-        color: rgb(255, 127, 80);
+        color: rgba(255, 127, 80, 80%);
         text-align: center;
 }
 
 ul {
         display: flex;
-        list-style-type: none;          /* Quita el punto de los elementos de la lista */
+        list-style-type: none;          /* Quita el punto de los elementos de una lista "ul" */
         /* justify-content: space-around; */
+}
+
+li a {
+        color: rgb(105, 105, 105);
 }
