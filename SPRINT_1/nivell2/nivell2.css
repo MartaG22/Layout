@@ -45,6 +45,8 @@ nav {
         width: 5rem;
         height: auto;
         /* Esto mantiene la proporción de aspecto original de la imagen */
+        margin-right: 35px
+
 }
 
 
@@ -67,6 +69,9 @@ h1 {
 ul {
         display: flex;
         list-style-type: none;
+        /* margin-left: 0px; */
+        padding-left: 0px;
+
         /* Quita el punto de los elementos de una lista "ul" */
         /* justify-content: space-around; */
 }
@@ -77,11 +82,15 @@ li {
 }
 
 li a {
-        color: rgb(125, 125, 125);
+        color: rgb(120, 120, 120);
         margin: 1rem;
         text-decoration: none;
         /* Quitar el subrayado de los links del menú */
         text-align: center;
+        /* transition: color 1.5s; */
+        /* transition: cubic-bezier(0.075, 0.82, 0.165, 1); */
+        transition: border-color 0.75s;    
+
 }
 
 nav a i {
@@ -89,8 +98,16 @@ nav a i {
         /* Agrega espacio a la derecha del icono */
 }
 
+#redes li{
+        margin-left: 0px;
+        margin-right: 0px;
 
+}
 
+/* .main i {
+        color: #00ff00;  */
+        /* Cambia este color al que desees */
+/* } */
 
 
 
@@ -126,9 +143,12 @@ nav a i {
 
 
 
-/* li a:hover {
-        text-decoration: underline;
-        Puedes cambiar el estilo cuando el cursor pasa por encima 
+li a:hover {
+        /* text-decoration: underline; */
+        /* Puedes cambiar el estilo cuando el cursor pasa por encima  */
         color: #000; 
-        Cambiar el color de texto al pasar el cursor por encima
-    }  */
+        /* Cambiar el color de texto al pasar el cursor por encima */
+
+        /* bottom: var(--BottomOffset); */
+        opacity: 1;
+    } 
