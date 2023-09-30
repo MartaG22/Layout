@@ -220,50 +220,50 @@ body {
 }
 
 
-        @media screen and (max-width: 479px) {
-                .container1,
-                .container2,
-                .container3 {
-                        width: 190px;
-                }
- 
-                .column1 {
-                        background-color: rgb(35, 63, 83);
-                }
-                
-                .row1 {
-                        display: flex;
-                        flex-direction: column;
-                        height: auto;
-                }
-                
-                .column1, .column2 {
-                        width: 150px;                     
-                }
+@media screen and (max-width: 479px) {
+        .container1,
+        .container2,
+        .container3 {
+                width: 190px;
+        }
+
+        .column1 {
+                background-color: rgb(35, 63, 83);
+        }
+        
+        .row1 {
+                display: flex;
+                flex-direction: column;
+                height: auto;
+        }
+        
+        .column1, .column2 {
+                width: 150px;                     
+        }
 
 
-                .insideBox1, .insideBox2, .insideBox3 { 
-                        width: 140px; 
-                }
-                
-                .insideColumn1A, .insideColumn1B, .insideColumn1C, .insideColumn1D {
-                        background-color: rgb(84, 147, 156);
-                }
+        .insideBox1, .insideBox2, .insideBox3 { 
+                width: 140px; 
+        }
+        
+        .insideColumn1A, .insideColumn1B, .insideColumn1C, .insideColumn1D {
+                background-color: rgb(84, 147, 156);
+        }
 
-                .insideColumn1B, .insideColumn1D {
-                        margin: 10px 5px;
-                        width: 140px;
-                }
-                
-                .insideBox2 {
-                        margin: 15px 0px;
-                }
-                
-                .insideColumn1A, .insideColumn1B, .insideColumn1C, .insideColumn1D {
-                        width: 150px;
-                }
-                
-                .lastInsideColumn1 {
-                        background-color: aquamarine; 
-                }
+        .insideColumn1B, .insideColumn1D {
+                margin: 10px 5px;
+                width: 140px;
+        }
+        
+        .insideBox2 {
+                margin: 15px 0px;
+        }
+        
+        .insideColumn1A, .insideColumn1B, .insideColumn1C, .insideColumn1D {
+                width: 150px;
+        }
+        
+        .lastInsideColumn1 {
+                background-color: aquamarine; 
+        }
 }

@@ -23,7 +23,7 @@ header {
         left: 0; */
 }
 
-.main {
+.menu {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -101,13 +101,94 @@ nav a i {
 #redes li{
         margin-left: 0px;
         margin-right: 0px;
-
+        
 }
 
 /* .main i {
         color: #00ff00;  */
         /* Cambia este color al que desees */
-/* } */
+        /* } */
+        
+
+li a:hover {
+        /* text-decoration: underline; */
+        /* Se cambia el estilo cuando el cursor pasa por encima  */
+        color: #000; 
+        /* Cambia el color de texto al pasar el cursor por encima */
+
+        /* bottom: var(--BottomOffset); */
+        opacity: 1;
+} 
+
+
+
+
+section {
+        display: flex;
+        flex-direction: row;
+        /* background-color: rgb(171, 74, 74); */
+        /* height: 50px; */
+        /* padding: 0.6rem; */
+        margin-top: 0.6rem;
+}
+
+main {
+
+
+        display: flex;
+        flex-wrap: wrap; /* Permite que las cajas se envuelvan a la siguiente línea */
+        justify-content: space-between; /* Espacio uniformemente distribuido entre las cajas */
+        flex-direction: row;
+        background-color: rgb(190, 190, 190);
+        width: 75%;
+        /* height: 40px; */
+        /* margin: 1rem; */
+
+        /* display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        flex-direction: row;
+        background-color: rgb(190, 190, 190);
+        width: 75%;
+        margin: 0 auto; Centra el contenido horizontalmente */
+        
+
+
+}
+
+aside {
+        background-color: rgb(190, 190, 190);
+        width: 25%;
+        /* padding-left: 0.6rem; */
+        margin-left: 1rem;
+        /* margin: 1rem; */
+}
+
+
+article {
+        background-color: rgb(230, 230, 230);
+        /* height: 40px; */
+        width: calc(50% - 1.2rem);      /* Resta el margen para que quepan dos elementos por fila */
+        margin: 0.6rem;
+        box-sizing: border-box;         /* Asegura que los márgenes no afecten el ancho real */
+}
+
+
+article img {
+        width: calc(100% - 1.2rem); /* Ajusta la imagen al ancho del artículo */
+        height: auto; /* Mantiene la proporción de aspecto original de la imagen */
+        display: block; /* Evita el espacio en blanco debajo de la imagen */
+        /* margin-bottom: 10px; Agrega un margen inferior opcional entre la imagen y el contenido del artículo */
+        margin: 0.6rem;
+}
+
+.titleBox {
+        width: calc(100% - 1.2rem); /* Ajusta la imagen al ancho del artículo */
+        margin: 0.6rem;
+        margin-bottom: 0.3rem;
+        background-color: coral;
+        height: 2rem;
+}
 
 
 
@@ -116,11 +197,13 @@ nav a i {
 
 
 
+/** -------------------------MEDIA QUERIES----------------------- */
 
-
-
-
-
+/* @media (max-width: 600px) { */
+        @media screen and (max-width: 768px) {
+                
+        }
+        
 
 /*! "nav li" para centrar el texto con el icono */
 /*! Para poner el texto debajo del icono */
@@ -128,8 +211,8 @@ nav a i {
 /* nav li {
         text-align: center; 
         Centra el texto horizontalmente
-    }
- nav a {
+        }
+        nav a {
         text-decoration: none;
         display: flex;
         flex-direction: column; 
@@ -138,17 +221,10 @@ nav a i {
         Centra horizontalmente 
         gap: 5px;
         Agrega espacio vertical entre el ícono y el texto 
-    }  */
+        }  */
 
 
 
+@media screen and (max-width: 479px) {
 
-li a:hover {
-        /* text-decoration: underline; */
-        /* Puedes cambiar el estilo cuando el cursor pasa por encima  */
-        color: #000; 
-        /* Cambiar el color de texto al pasar el cursor por encima */
-
-        /* bottom: var(--BottomOffset); */
-        opacity: 1;
-    } 
+}
