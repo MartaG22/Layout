@@ -179,18 +179,34 @@ article img {
         height: auto; /* Mantiene la proporción de aspecto original de la imagen */
         display: block; /* Evita el espacio en blanco debajo de la imagen */
         /* margin-bottom: 10px; Agrega un margen inferior opcional entre la imagen y el contenido del artículo */
-        margin: 0.6rem;
+        margin: 0.6rem 0.6rem 0.3rem 0.6rem;
+        /* margin-bottom: 0.3rem; */
 }
 
 .titleBox {
-        width: calc(100% - 1.2rem); /* Ajusta la imagen al ancho del artículo */
-        margin: 0.6rem;
-        margin-bottom: 0.3rem;
-        background-color: coral;
-        height: 2rem;
+        display: flex;
+        width: calc(100% - 1.8rem); /* Ajusta la imagen al ancho del artículo */
+        /* margin: 0.5rem; */
+        margin: 0.3rem 0.6rem;
+        background-color:rgb(233, 122, 122);
+        height: 1.8rem;
+        color: white;
+        /* justify-content: center; */
+        align-items: flex-end;
+        padding: 0.3rem;
 }
 
+.txtBlock {
+        /* color: white; */
+        column-count: 2;
+        margin: 0.8rem;
+}
 
+.something{
+        display: flex;
+        /* justify-content: center; */
+        margin: 0.8rem;
+}
 
 
 
