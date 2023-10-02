@@ -165,12 +165,22 @@ aside {
 }
 
 
+.contenedor-foto {
+        position: relative;
+        display: inline-block; /* Para que el contenedor se ajuste al tamaño de la imagen */
+}
+
+
 article {
         background-color: rgb(230, 230, 230);
         /* height: 40px; */
         width: calc(50% - 1.2rem);      /* Resta el margen para que quepan dos elementos por fila */
         margin: 0.6rem;
         box-sizing: border-box;         /* Asegura que los márgenes no afecten el ancho real */
+
+        /* position: relative;
+        display: inline-block;
+        text-align: center; */
 }
 
 
@@ -200,15 +210,29 @@ article img {
         /* color: white; */
         column-count: 2;
         margin: 0.8rem;
+        /* text-align: center; */
+                /* vertical-align: center; */
+
 }
 
-.something{
+.something, h2{
         display: flex;
-        /* justify-content: center; */
+        justify-content: center;
         margin: 0.8rem;
+        text-align: center;
+        /* vertical-align: center; */
 }
 
-
+.txt-foto{
+        position: absolute;
+        top: 80%; /* Coloca el texto en la mitad superior del contenedor */
+        left: 30%; /* Coloca el texto en el centro horizontal del contenedor */
+        transform: translate(-50%, -50%); /* Centra el texto tanto vertical como horizontalmente */
+        /* background-color: rgba(0, 0, 0, 0.7); Fondo semi-transparente para que el texto sea legible */
+        color: rgb(249, 202, 86); /* Color del texto */
+        padding: 10px;  /* Espacio alrededor del texto */
+        white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    }
 
 
 
