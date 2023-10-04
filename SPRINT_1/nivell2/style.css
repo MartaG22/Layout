@@ -1,3 +1,10 @@
+body {
+        background-color: white;
+        margin: 0;
+}
+
+
+/* ------------------  HEADER  -------------------- */
 header {
         display: flex;
         flex-direction: column;
@@ -9,18 +16,6 @@ header {
         height: 22rem;
         background-position: center 52.5%;
         padding-top: 1rem;
-
-        /* height: 60rem; */
-        /* justify-content: center; Centra verticalmente */
-        /* justify-content: flex-end;  Coloca .header-title en la parte inferior verticalmente */
-        /* vertical-align:super; */
-        /* align-items: center;  */
-        /* Centra horizontalmente */
-
-        /* overflow: hidden;
-        position: absolute;
-        top: -10px;
-        left: 0; */
 }
 
 .menu {
@@ -40,23 +35,19 @@ nav {
         /* Alineación CENTRADA del texto del menú respecto al LOGO */
 }
 
-
 #logo img {
         width: 5rem;
         height: auto;
         /* Esto mantiene la proporción de aspecto original de la imagen */
         margin-right: 35px
-
 }
-
 
 .header-title {
         height: 8rem;
         width: 90%;
         background-color: rgba(105, 105, 105, 15%);
         display: flex;
-        align-items: center;
-        /* Alineación vertical centrada */
+        align-items: center;    /* Alineación vertical centrada */
         justify-content: center;
         align-self: center;
 }
@@ -68,11 +59,9 @@ h1 {
 
 ul {
         display: flex;
-        list-style-type: none;
-        /* margin-left: 0px; */
+        list-style-type: none;        /* Quita el punto de los elementos de una lista "ul" */
         padding-left: 0px;
 
-        /* Quita el punto de los elementos de una lista "ul" */
         /* justify-content: space-around; */
 }
 
@@ -84,13 +73,11 @@ li {
 li a {
         color: rgb(120, 120, 120);
         margin: 1rem;
-        text-decoration: none;
-        /* Quitar el subrayado de los links del menú */
+        text-decoration: none;  /* Quitar el subrayado de los links del menú */
         text-align: center;
         /* transition: color 1.5s; */
         /* transition: cubic-bezier(0.075, 0.82, 0.165, 1); */
         transition: border-color 0.75s;    
-
 }
 
 nav a i {
@@ -101,15 +88,10 @@ nav a i {
 #redes li{
         margin-left: 0px;
         margin-right: 0px;
-        
 }
 
-/* .main i {
-        color: #00ff00;  */
-        /* Cambia este color al que desees */
-        /* } */
-        
 
+/* EFECTE ROLLOVER */ 
 li a:hover {
         /* text-decoration: underline; */
         /* Se cambia el estilo cuando el cursor pasa por encima  */
@@ -122,6 +104,7 @@ li a:hover {
 
 
 
+/* ------------------  CONTINGUT  -------------------- */
 
 section {
         display: flex;
@@ -133,8 +116,6 @@ section {
 }
 
 main {
-
-
         display: flex;
         flex-wrap: wrap; /* Permite que las cajas se envuelvan a la siguiente línea */
         justify-content: space-between; /* Espacio uniformemente distribuido entre las cajas */
@@ -151,10 +132,8 @@ main {
         background-color: rgb(190, 190, 190);
         width: 75%;
         margin: 0 auto; Centra el contenido horizontalmente */
-        
-
-
 }
+
 
 aside {
         background-color: rgb(190, 190, 190);
@@ -180,136 +159,65 @@ footer {
         border-right: 0.5rem solid rgb(200, 200, 200);
 }
 
-.contenedor-foto {
-        position: relative;
-        /* display: inline-block; Para que el contenedor se ajuste al tamaño de la imagen */
-}
-
-
 article {
         background-color: rgb(230, 230, 230);
         /* height: 40px; */
         width: calc(50% - 1.2rem);      /* Resta el margen para que quepan dos elementos por fila */
+        /* El valor 50% indica ocupará la mitad de su contenedor principal */
+        /* Aquí se indica que el ancho de los elementos de este contnedor sea del 50% del total */
         margin: 0.6rem;
-        box-sizing: border-box;         /* Asegura que los márgenes no afecten el ancho real */
+        padding: 0.6rem;
+        box-sizing: border-box;         /* Asegura que los márgenes no afecten el ancho real, están incluidos el MARGIN yel PADDING */
 
         /* position: relative;
         display: inline-block;
         text-align: center; */
 }
 
-
 article img {
-        width: calc(100% - 1.2rem); /* Ajusta la imagen al ancho del artículo */
-        height: auto; /* Mantiene la proporción de aspecto original de la imagen */
-        display: block; /* Evita el espacio en blanco debajo de la imagen */
+        /* width: calc(100% - 1.2rem); Ajusta la imagen al ancho del artículo */
+        /* height: auto; Mantiene la proporción de aspecto original de la imagen */
+        /* display: block; Evita el espacio en blanco debajo de la imagen */
         /* margin-bottom: 10px; Agrega un margen inferior opcional entre la imagen y el contenido del artículo */
-        margin: 0.6rem 0.6rem 0rem 0.6rem;
+        /* margin: 0.6rem 0.6rem 0rem 0.6rem; */
         /* margin-bottom: 0.3rem; */
+
+        width:100%;
+        height: 200px;
+        object-fit: cover;
 }
+
+
+.contenedor-foto {
+        position: relative;
+        /* display: inline-block; /* Para que el contenedor se ajuste al tamaño de la imagen */
+ }  
 
 .titleBox {
         display: flex;
-        width: calc(100% - 1.8rem); /* Ajusta la imagen al ancho del artículo */
+        /* width: calc(100% - 1.8rem); Ajusta la imagen al ancho del artículo */
         /* margin: 0.5rem; */
-        margin: 0.3rem 0.6rem;
+        /* margin: 0.3rem 0.6rem; */
         background-color:rgb(233, 122, 122);
         height: 1.8rem;
         color: white;
         /* justify-content: center; */
         align-items: flex-end;
+        margin-top: 0.4rem;
         padding: 0.3rem;
 }
 
 .txtBlock {
         /* color: white; */
         column-count: 2;
-        margin: 0.8rem;
+        /* margin: 0.8rem; */
         /* text-align: center; */
-                /* vertical-align: center; */
-
-}
-
-.something, h2 {
-        display: flex;
-        margin: 0.8rem;
-        justify-content: center;
-        text-align: center;
         /* vertical-align: center; */
 }
 
 .fecha {
-        /* position: absolute;
-        top: 80%; /* Coloca el texto en la mitad superior del contenedor */
-        /* left: 30%; Coloca el texto en el centro horizontal del contenedor */
-        /* transform: translate(-50%, -50%); Centra el texto tanto vertical como horizontalmente */
-        /* background-color: rgba(0, 0, 0, 0.7); Fondo semi-transparente para que el texto sea legible */
-        /* color: rgb(249, 202, 86); Color del texto */
-        /* padding: 10px;          Espacio alrededor del texto */
-        /* white-space: nowrap;         Evita que el texto se divida en varias líneas  */
-
-
-/* 
-        color: #ebd790;
-        margin-top: -2rem;
-        margin-left: 1rem; */
-
-
-        /* position: absolute;
-        bottom: 0.2rem;
-        left: 0.2rem;
-        color: rgb(229, 229, 132); */
-
-
-        color: #F2E67E;
-        position: absolute;
-        bottom: 0.4rem;
-        margin: 0 0.2rem;
-        letter-spacing: -0.060625rem;
-        
-    }
-
-    
-.txtFoot {
-        display: flex;
-        justify-content: center;
-        margin: 0.55rem;
-        text-align: center;
-
-} 
-
-
-
-
-
-/** -------------------------MEDIA QUERIES----------------------- */
-
-/* @media (max-width: 600px) { */
-        @media screen and (max-width: 768px) {
-                
-        }
-        
-
-/*! "nav li" para centrar el texto con el icono */
-/*! Para poner el texto debajo del icono */
-
-/* nav li {
-        text-align: center; 
-        Centra el texto horizontalmente
-        }
-        nav a {
-        text-decoration: none;
-        display: flex;
-        flex-direction: column; 
-        Coloca el ícono y el texto en una columna 
-        align-items: center; 
-        Centra horizontalmente 
-        gap: 5px;
-        Agrega espacio vertical entre el ícono y el texto 
-        }  */
-
-
-
-@media screen and (max-width: 479px) {
-
+        margin: 0;
+        margin-top: -1.6rem;
+        margin-left: 0.3rem;
+        color: rgb(240, 232, 118);;
 }
