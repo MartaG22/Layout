@@ -1,98 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
 
+        
         <script src="https://kit.fontawesome.com/af2867a417.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="./style.css">
         <title> Turismo Japón </title>
 </head>
 
 <body>
-        <header>
+        <div class="container">
 
-                <div class="menu">
-                        <div>
-                                <a href="#" id="logo"><img src="./images/logo.png"></a>
+                <header>
+
+                        <div class="menu">
+                                <div>
+                                        <a href="#" id="logo"><img src="./images/logo.png"></a>
+                                </div>
+                                <nav>
+                                        <ul>
+                                                <li><a href="#"><i class="fas fa-house"></i>Inicio</a></li>
+                                                <li><a href="#"><i class="fas fa-map-location-dot"></i>Rutas</a></li>
+                                                <li><a href="#"><i class="fas fa-square-h"></i>Hoteles</a></li>
+                                                <li><a href="#"><i class="fas fa-plane"></i>Vuelos</a></li>
+                                                <li><a href="#"><i class="fas fa-envelope-open-text"></i>Contactos</a>
+                                                </li>
+                                        </ul>
+                                </nav>
+                                <div id="redes">
+                                        <ul>
+                                                <li><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
+                                                <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                                        </ul>
+                                </div>
                         </div>
-                        <nav>
-                                <ul>
-                                        <li><a href="#"><i class="fas fa-house"></i>Inicio</a></li>
-                                        <li><a href="#"><i class="fas fa-map-location-dot"></i>Rutas</a></li>
-                                        <li><a href="#"><i class="fas fa-square-h"></i>Hoteles</a></li>
-                                        <li><a href="#"><i class="fas fa-plane"></i>Vuelos</a></li>
-                                        <li><a href="#"><i class="fas fa-envelope-open-text"></i>Contactos</a></li>
-                                </ul>
-                        </nav>
-                        <div id="redes">
-                                <ul>
-                                        <li><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                                </ul>
+                        <div class=header-title>
+                                <h1> "Disfruta de la experiencia de otros viajeros" </h1>
                         </div>
-                </div>
-                <div class=header-title>
-                        <h1> "Disfruta de la experiencia de otros viajeros" </h1>
-                </div>
-        </header>
+                </header>
 
-        <section>
-                <main>
-                        <article>
-                                <div class="contenedor-foto"><img src="./images/sakura.jpg" alt="Cultura">
-                                        <p class="fecha">3 de Mayo 2021</p>
-                                </div>
-        
-                                <div class="titleBox">CULTURA</div>
-                                <p class="txtBlock"> Lorem ipsum dolor sit amet consectetur adipisicing elit.   Non exercitationem recusandae accusamus? Officiis facere molestiae labore doloribus mollitia, omnis hic harum voluptas magnam incidunt laborum ut? Praesentium, eveniet eaque? Eligendi consequuntur aperiam minus amet nam, provident eveniet soluta architecto illo non quis temporibus ipsam sit molestiae atque commodi et nostrum.</p>
-                                <div class="leer-mas"><a href="#">Leer más...</a></div>
-                        </article>
-                        <article>
-                                <div class="contenedor-foto"><img src="./images/comida.jpg" alt="Gastronomía">
-                                        <p class="fecha">1 de Mayo 2021</p>
-                                </div>
-                                
-                                <div class="titleBox">GASTRONOMÍA</div>
-                                <p class="txtBlock"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum
-                                        ipsum doloribus excepturi nesciunt sequi perferendis labore, quasi officia est
-                                        dicta odio, velit quaerat neque eaque autem incidunt esse facere voluptate
-                                        beatae a, ad accusamus voluptatibus repellendus? Eligendi sequi, tempore amet
-                                        officia exercitationem, rerum eum quod voluptate eos minus facere obcaecati.</p>
-                                <div class="leer-mas"><a href="#">Leer más...</a></div>
-                        </article>
-                        <article>
-                                <div class="contenedor-foto"><img src="./images/fuji.jpg" alt="Turismo">
-                                        <p class="fecha">3 de Mayo 2021</p>
-                                </div>
-                                
-                                <div class="titleBox">TURISMO</div>
-                                <p class="txtBlock"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
-                                        minima quas rem corporis sunt est, provident cum voluptas amet voluptatum
-                                        expedita dolores quam quasi accusantium sequi asperiores minus, fuga tempora
-                                        aperiam unde! Delectus quia magni eius repellat aliquam iure amet tempora
-                                        ratione ab quisquam, numquam dolorem repellendus culpa deserunt quam.</p>
-                                <div class="leer-mas"><a href="#">Leer más...</a></div>
-                        </article>
-                        <article>
-                                <div class="contenedor-foto"><img src="./images/noche.jpg" alt="Vida Nocturna">
-                                        <p class="fecha">3 de Mayo 2021</p>
-                                </div>
-        
-                                <div class="titleBox">VIDA NOCTURNA</div>
-                                <p class="txtBlock"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore hic
-                                        magni libero quibusdam, quod non rerum quidem repudiandae atque doloremque earum
-                                        ducimus labore ad in reprehenderit animi voluptas, tenetur, modi architecto
-                                        praesentium! Aliquam animi placeat, temporibus sequi pariatur, optio quos saepe
-                                        inventore accusamus enim quam reiciendis eum modi doloribus porro.</p>
-                                <div class="leer-mas"><a href="#">Leer más...</a></div>
-                        </article>
-                </main>
+                <section>
+                        <main>
+                                <article class="article-izq">
+                                        <div class="contenedor-foto"><img src="./images/sakura.jpg" alt="Cultura">
+                                                <p class="fecha">3 de Mayo 2021</p>
+                                        </div>
 
-        </section>
+                                        <div class="titleBox">CULTURA</div>
+                                        <p class="txtBlock"> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                Non exercitationem recusandae accusamus? Officiis facere molestiae
+                                                labore doloribus mollitia, omnis hic harum voluptas magnam incidunt
+                                                laborum ut? Praesentium, eveniet eaque? Eligendi consequuntur aperiam
+                                                minus amet nam, provident eveniet soluta architecto illo non quis
+                                                temporibus ipsam sit molestiae atque commodi et nostrum.</p>
+                                        
+                                        <p class="leer-mas"><a href="#">Leer más...</a></p>
+                                </article>
+                                <article class="article-der">
+                                        <div class="contenedor-foto"><img src="./images/comida.jpg" alt="Gastronomía">
+                                                <p class="fecha">1 de Mayo 2021</p>
+                                        </div>
+
+                                        <div class="titleBox">GASTRONOMÍA</div>
+                                        <p class="txtBlock"> Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                                Laborum
+                                                ipsum doloribus excepturi nesciunt sequi perferendis labore, quasi
+                                                officia est
+                                                dicta odio, velit quaerat neque eaque autem incidunt esse facere
+                                                voluptate
+                                                beatae a, ad accusamus voluptatibus repellendus? Eligendi sequi, tempore
+                                                amet
+                                                officia exercitationem, rerum eum quod voluptate eos minus facere
+                                                obcaecati.</p>
+                                        <p class="leer-mas"><a href="#">Leer más...</a></p>
+                                </article>
+                                <article class="article-izq">
+                                        <div class="contenedor-foto"><img src="./images/fuji.jpg" alt="Turismo">
+                                                <p class="fecha">3 de Mayo 2021</p>
+                                        </div>
+
+                                        <div class="titleBox">TURISMO</div>
+                                        <p class="txtBlock"> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                Vitae
+                                                minima quas rem corporis sunt est, provident cum voluptas amet
+                                                voluptatum
+                                                expedita dolores quam quasi accusantium sequi asperiores minus, fuga
+                                                tempora
+                                                aperiam unde! Delectus quia magni eius repellat aliquam iure amet
+                                                tempora
+                                                ratione ab quisquam, numquam dolorem repellendus culpa deserunt quam.
+                                        </p>
+                                        <p class="leer-mas"><a href="#">Leer más...</a></p>
+                                </article>
+                                <article class="article-der">
+                                        <div class="contenedor-foto"><img src="./images/noche.jpg" alt="Vida Nocturna">
+                                                <p class="fecha">3 de Mayo 2021</p>
+                                        </div>
+
+                                        <div class="titleBox">VIDA NOCTURNA</div>
+                                        <p class="txtBlock"> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                Tempore hic
+                                                magni libero quibusdam, quod non rerum quidem repudiandae atque
+                                                doloremque earum
+                                                ducimus labore ad in reprehenderit animi voluptas, tenetur, modi
+                                                architecto
+                                                praesentium! Aliquam animi placeat, temporibus sequi pariatur, optio
+                                                quos saepe
+                                                inventore accusamus enim quam reiciendis eum modi doloribus porro.</p>
+                                        <p class="leer-mas"><a href="#">Leer más...</a></p>
+                                </article>
+                                <p class="txtFoot">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
+                                        harum soluta repellat repellendus ab quia voluptas exercitationem temporibus ex?
+                                        Accusantium!
+                                </p>
+
+                        </main>
+                        <aside>
+                                <h2>Something</h2>
+                                <p class="something">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo
+                                        velillum dolores nostrum, assumenda doloremque deleniti officiis animi, commodi
+                                        corrupti accusantium quaerat! Sunt officia itaque aliquid excepturi voluptatem?
+                                        Asperiores, officia.</p>
+                        </aside>
+                </section>
+                <footer>
+                        &copy 2021 Japan Tourism
+                </footer>
+        </div>
 
 
 
 </body>
+
 </html>

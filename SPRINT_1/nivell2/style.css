@@ -1,7 +1,33 @@
+@font-face {
+
+
+        font-family: 'Roboto Condensed', sans-serif;
+
+        SRC: url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+}
+/* <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> */
+
+/* <style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+</style> */
+
+
+
 body {
         background-color: white;
-        margin: 0;
+        font-family: 'Barlow', sans-serif;
+        /* margin: 0; */
 }
+
+.container {
+        max-width: 1600px;
+        margin: 0;
+        /* margin-left: auto; */
+        /* margin-right: auto; */
+
+}
+
 
 
 /* ------------------  HEADER  -------------------- */
@@ -54,6 +80,8 @@ nav {
 
 h1 {
         color: rgba(255, 127, 80, 60%);
+        font-family:'Times New Roman', Times, serif;
+        font-size: 2.3rem;
         text-align: center;
 }
 
@@ -162,16 +190,24 @@ footer {
 article {
         background-color: rgb(230, 230, 230);
         /* height: 40px; */
-        width: calc(50% - 1.2rem);      /* Resta el margen para que quepan dos elementos por fila */
+        width: calc(50% - 1rem);      /* Resta el margen para que quepan dos elementos por fila */
         /* El valor 50% indica ocupará la mitad de su contenedor principal */
         /* Aquí se indica que el ancho de los elementos de este contnedor sea del 50% del total */
-        margin: 0.6rem;
-        padding: 0.6rem;
+        margin: 0.5rem;
+        padding: 0.5rem;
         box-sizing: border-box;         /* Asegura que los márgenes no afecten el ancho real, están incluidos el MARGIN yel PADDING */
 
         /* position: relative;
         display: inline-block;
         text-align: center; */
+}
+
+aside {
+        background-color: rgb(190, 190, 190);
+        width: 25%;
+        /* padding-left: 0.6rem; */
+        margin-left: 0.5rem;
+        /* margin: 1rem; */
 }
 
 article img {
@@ -187,6 +223,15 @@ article img {
         object-fit: cover;
 }
 
+/* .article.izq {
+        margin-right: 0.3rem;
+
+}
+
+.article.der {
+        margin-left: 0.3rem;
+
+} */
 
 .contenedor-foto {
         position: relative;
@@ -200,6 +245,12 @@ article img {
         /* margin: 0.3rem 0.6rem; */
         background-color:rgb(233, 122, 122);
         height: 1.8rem;
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 1.1rem;
+        font-weight: bold;
+        letter-spacing: 0.1em;
+
+        /* font-weight: 600; */
         color: white;
         /* justify-content: center; */
         align-items: flex-end;
@@ -210,6 +261,8 @@ article img {
 .txtBlock {
         /* color: white; */
         column-count: 2;
+        font-family: 'Roboto Condensed', sans-serif;
+        color:rgb(70, 70, 70);
         /* margin: 0.8rem; */
         /* text-align: center; */
         /* vertical-align: center; */
@@ -219,5 +272,30 @@ article img {
         margin: 0;
         margin-top: -1.6rem;
         margin-left: 0.3rem;
-        color: rgb(240, 232, 118);;
+        color: rgb(240, 232, 118);
 }
+
+.leer-mas {
+        margin-bottom: 0.3rem;
+        
+}
+.leer-mas a{
+        color: rgb(105, 105, 105);
+        text-decoration: none;
+}
+
+.something, h2 {
+        display: flex;
+        margin: 0.8rem;
+        justify-content: center;
+        text-align: center;
+        /* vertical-align: center; */
+}
+
+.txtFoot {
+        display: flex;
+        justify-content: center;
+        margin: 0.55rem;
+        text-align: center;
+
+} 
