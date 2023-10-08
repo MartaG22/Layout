@@ -277,8 +277,8 @@ article img {
 
 .leer-mas {
         margin-bottom: 0.3rem;
-        
 }
+
 .leer-mas a{
         color: rgb(105, 105, 105);
         text-decoration: none;
@@ -297,5 +297,59 @@ article img {
         justify-content: center;
         margin: 0.55rem;
         text-align: center;
-
 } 
+
+/** -------------------------MEDIA QUERIES----------------------- */
+
+/* @media (max-width: 600px) { */
+
+/* -----------TABLET----------- */
+/* @media screen and (max-width: 768px) { */
+@media screen and (max-width: 992px) {
+        nav li {
+                text-align: center;
+        }
+
+        
+        li a{
+                display: flex;
+                flex-direction: column; 
+                align-items: center; 
+                gap: 5px;
+                
+        }
+
+        li i {
+                margin-left: 0.5rem;
+                font-size: 1.3rem;
+                display: inline-block;
+                vertical-align: middle;
+        }
+
+        section {
+                flex-direction: column;
+        }
+
+        main {
+                width: 100%;
+        }
+
+        aside {
+                width: 100%;
+                margin: 1rem 0;
+        }
+
+        footer {
+                margin: 0;
+        }
+
+}
+
+
+
+
+@media screen and (max-width: 479px) {
+        nav {
+                flex-direction: column;
+        }
+}

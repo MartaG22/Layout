@@ -293,20 +293,20 @@ article img {
 /*! "nav li" para centrar el texto con el icono */
 /*! Para poner el texto debajo del icono */
 
-/* nav li {
+nav li {
         text-align: center; 
-        Centra el texto horizontalmente
+        /* Centra el texto horizontalmente */
         }
         nav a {
         text-decoration: none;
         display: flex;
         flex-direction: column; 
-        Coloca el ícono y el texto en una columna 
+        /* Coloca el ícono y el texto en una columna  */
         align-items: center; 
-        Centra horizontalmente 
+        /* Centra horizontalmente  */
         gap: 5px;
-        Agrega espacio vertical entre el ícono y el texto 
-        }  */
+        /* Agrega espacio vertical entre el ícono y el texto  */
+        }  
 
 
 
