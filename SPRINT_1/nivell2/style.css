@@ -349,7 +349,27 @@ article img {
 
 
 @media screen and (max-width: 479px) {
-        nav {
+        ul {
                 flex-direction: column;
+        }
+
+        li a{
+                display: flex;
+                flex-direction: row; 
+                align-items: center; 
+                gap: 5px;
+        }
+
+        /* section {
+                flex-direction: column;
+        } */
+
+        main {
+                flex-direction: column;
+                width: 100%;
+        }
+
+        article {
+                width: calc(100% - 1rem);      /* Resta el margen para que quepan dos elementos por fila */
         }
 }
