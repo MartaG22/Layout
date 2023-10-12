@@ -309,19 +309,21 @@ article img {
         nav li {
                 text-align: center;
         }
-
+        
+        li {
+                margin-right: 15px
+        }
         
         li a{
                 display: flex;
                 flex-direction: column; 
                 align-items: center; 
                 gap: 5px;
-                
         }
 
         li i {
                 margin-left: 0.5rem;
-                font-size: 1.3rem;
+                font-size: 1.2rem;
                 display: inline-block;
                 vertical-align: middle;
         }
@@ -342,13 +344,23 @@ article img {
         footer {
                 margin: 0;
         }
-
 }
 
 
 
 
-@media screen and (max-width: 479px) {
+/* @media screen and (max-width: 479px) { */
+@media (max-width: 575.98px) {
+
+        header {
+                padding-top: 10rem; /* Aumenta el espacio superior para darle espacio al menú */
+                /* background-position: center 0; Centra la imagen de fondo verticalmente en la parte superior */
+            }
+
+        .menu {
+                margin-top: -10rem; /* Añade un margen superior al menú para que esté en el espacio del padding de la imagen */
+        }
+
         ul {
                 flex-direction: column;
         }
@@ -370,6 +382,39 @@ article img {
         }
 
         article {
-                width: calc(100% - 1rem);      /* Resta el margen para que quepan dos elementos por fila */
+                width: calc(100% - 1rem);      /* Se ajusta cada elemento al 100%, restando el margen, para que ocupe cada elemento el ancho de fila */
         }
+/* 
+        .menu {
+                flex-direction: row;
+        } */
+
+        .fas {
+                width: 24px; /* Establece un ancho fijo para todos los iconos */
+        }
+
+        li {
+                text-align: justify;
+                margin: 0; /* Elimina los márgenes para evitar espaciado innecesario */
+                padding: 0; /* Elimina el relleno para evitar espaciado innecesario */
+        }
+
+        a {
+                text-align: left; /* Alinea el texto a la izquierda para evitar justificación completa */
+        } 
+
+        li a {
+                margin: 0.4rem;
+                text-align: left; /* Alinea el texto a la izquierda para evitar justificación completa */
+        }
+
 }
+
+
+/* 
+
+como conseguir que diferentes iconos ocupen el mismo espacio en css
+Lo que me pasa es que algun icono es más ancho y se ve desalineado, porque cada icono va seguido de texto y con la diferencia de anchura no se ve bien. 
+Necesito que cada icono tenga un espacio reservado que sea igual para todos */
+
+/* necesito que en la media querie "@media (max-width: 575.98px) " se vea la imagen del background del header más abajo y separado del menu */
