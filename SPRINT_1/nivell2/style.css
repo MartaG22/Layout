@@ -1,31 +1,16 @@
 @font-face {
-
-
         font-family: 'Roboto Condensed', sans-serif;
-
         SRC: url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
 }
-/* <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> */
-
-/* <style>
-  @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
-</style> */
-
-
 
 body {
         background-color: white;
         font-family: 'Barlow', sans-serif;
-        /* margin: 0; */
 }
 
 .container {
         max-width: 1600px;
         margin: 0;
-        /* margin-left: auto; */
-        /* margin-right: auto; */
-
 }
 
 
@@ -89,8 +74,6 @@ ul {
         display: flex;
         list-style-type: none;        /* Quita el punto de los elementos de una lista "ul" */
         padding-left: 0px;
-
-        /* justify-content: space-around; */
 }
 
 li {
@@ -103,8 +86,6 @@ li a {
         margin: 1rem;
         text-decoration: none;  /* Quitar el subrayado de los links del menú */
         text-align: center;
-        /* transition: color 1.5s; */
-        /* transition: cubic-bezier(0.075, 0.82, 0.165, 1); */
         transition: border-color 0.75s;    
 }
 
@@ -137,9 +118,6 @@ li a:hover {
 section {
         display: flex;
         flex-direction: row;
-        /* background-color: rgb(171, 74, 74); */
-        /* height: 50px; */
-        /* padding: 0.6rem; */
         margin-top: 0.6rem;
 }
 
@@ -150,38 +128,23 @@ main {
         flex-direction: row;
         background-color: rgb(190, 190, 190);
         width: 75%;
-        /* height: 40px; */
-        /* margin: 1rem; */
-
-        /* display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        flex-direction: row;
-        background-color: rgb(190, 190, 190);
-        width: 75%;
-        margin: 0 auto; Centra el contenido horizontalmente */
 }
 
 
 aside {
         background-color: rgb(190, 190, 190);
         width: 25%;
-        /* padding-left: 0.6rem; */
         margin-left: 1rem;
-        /* margin: 1rem; */
 }
 
 footer {
         display: flex;
         background-color: rgb(230, 230, 230);
-        /* width: 25%; */
         height: 2rem;
-        /* padding-left: 0.6rem; */
         margin-top: 0.8rem;
         text-align: center;
         justify-content: center;
         flex-direction: column;
-        /* border-left: 1rem; */
 
         border-left: 0.5rem solid rgb(200, 200, 200);
         border-right: 0.5rem solid rgb(200, 200, 200);
@@ -189,60 +152,34 @@ footer {
 
 article {
         background-color: rgb(230, 230, 230);
-        /* height: 40px; */
         width: calc(50% - 1rem);      /* Resta el margen para que quepan dos elementos por fila */
         /* El valor 50% indica ocupará la mitad de su contenedor principal */
         /* Aquí se indica que el ancho de los elementos de este contnedor sea del 50% del total */
         margin: 0.5rem;
         padding: 0.5rem;
         box-sizing: border-box;         /* Asegura que los márgenes no afecten el ancho real, están incluidos el MARGIN yel PADDING */
-
-        /* position: relative;
-        display: inline-block;
-        text-align: center; */
 }
 
 aside {
         background-color: rgb(190, 190, 190);
         width: 25%;
-        /* padding-left: 0.6rem; */
         margin-left: 0.5rem;
-        /* margin: 1rem; */
 }
 
 article img {
-        /* width: calc(100% - 1.2rem); Ajusta la imagen al ancho del artículo */
-        /* height: auto; Mantiene la proporción de aspecto original de la imagen */
-        /* display: block; Evita el espacio en blanco debajo de la imagen */
-        /* margin-bottom: 10px; Agrega un margen inferior opcional entre la imagen y el contenido del artículo */
-        /* margin: 0.6rem 0.6rem 0rem 0.6rem; */
-        /* margin-bottom: 0.3rem; */
 
         width:100%;
         height: 200px;
         object-fit: cover;
 }
 
-/* .article.izq {
-        margin-right: 0.3rem;
-
-}
-
-.article.der {
-        margin-left: 0.3rem;
-
-} */
 
 .contenedor-foto {
         position: relative;
-        /* display: inline-block; /* Para que el contenedor se ajuste al tamaño de la imagen */
  }  
 
 .titleBox {
         display: flex;
-        /* width: calc(100% - 1.8rem); Ajusta la imagen al ancho del artículo */
-        /* margin: 0.5rem; */
-        /* margin: 0.3rem 0.6rem; */
         background-color:rgb(233, 122, 122);
         height: 1.8rem;
         font-family: 'Roboto Condensed', sans-serif;
@@ -250,22 +187,16 @@ article img {
         font-weight: bold;
         letter-spacing: 0.1em;
 
-        /* font-weight: 600; */
         color: white;
-        /* justify-content: center; */
         align-items: flex-end;
         margin-top: 0.4rem;
         padding: 0.3rem;
 }
 
 .txtBlock {
-        /* color: white; */
         column-count: 2;
         font-family: 'Roboto Condensed', sans-serif;
         color:rgb(70, 70, 70);
-        /* margin: 0.8rem; */
-        /* text-align: center; */
-        /* vertical-align: center; */
 }
 
 .fecha {
@@ -289,7 +220,6 @@ article img {
         margin: 0.8rem;
         justify-content: center;
         text-align: center;
-        /* vertical-align: center; */
 }
 
 .txtFoot {
@@ -301,7 +231,6 @@ article img {
 
 /** -------------------------MEDIA QUERIES----------------------- */
 
-/* @media (max-width: 600px) { */
 
 /* -----------TABLET----------- */
 /* @media screen and (max-width: 768px) { */
@@ -353,12 +282,11 @@ article img {
 @media (max-width: 575.98px) {
 
         header {
-                padding-top: 10rem; /* Aumenta el espacio superior para darle espacio al menú */
-                /* background-position: center 0; Centra la imagen de fondo verticalmente en la parte superior */
-            }
+                padding-top: 10rem;      /* Aumenta el espacio superior para darle espacio al menú */
+        }
 
         .menu {
-                margin-top: -10rem; /* Añade un margen superior al menú para que esté en el espacio del padding de la imagen */
+                margin-top: -10rem;     /* Añade un margen superior al menú para que esté en el espacio del padding de la imagen */
         }
 
         ul {
@@ -372,10 +300,6 @@ article img {
                 gap: 5px;
         }
 
-        /* section {
-                flex-direction: column;
-        } */
-
         main {
                 flex-direction: column;
                 width: 100%;
@@ -384,37 +308,23 @@ article img {
         article {
                 width: calc(100% - 1rem);      /* Se ajusta cada elemento al 100%, restando el margen, para que ocupe cada elemento el ancho de fila */
         }
-/* 
-        .menu {
-                flex-direction: row;
-        } */
 
         .fas {
-                width: 24px; /* Establece un ancho fijo para todos los iconos */
+                width: 24px;    /* Establece un ancho fijo para todos los iconos */
         }
 
         li {
                 text-align: justify;
-                margin: 0; /* Elimina los márgenes para evitar espaciado innecesario */
-                padding: 0; /* Elimina el relleno para evitar espaciado innecesario */
+                margin: 0;      /* Elimina los márgenes para evitar espaciado innecesario */
+                padding: 0;     /* Elimina el relleno para evitar espaciado innecesario */
         }
 
         a {
-                text-align: left; /* Alinea el texto a la izquierda para evitar justificación completa */
+                text-align: left;       /* Alinea el texto a la izquierda para evitar justificación completa */
         } 
 
         li a {
                 margin: 0.4rem;
-                text-align: left; /* Alinea el texto a la izquierda para evitar justificación completa */
+                text-align: left;       /* Alinea el texto a la izquierda para evitar justificación completa */
         }
-
 }
-
-
-/* 
-
-como conseguir que diferentes iconos ocupen el mismo espacio en css
-Lo que me pasa es que algun icono es más ancho y se ve desalineado, porque cada icono va seguido de texto y con la diferencia de anchura no se ve bien. 
-Necesito que cada icono tenga un espacio reservado que sea igual para todos */
-
-/* necesito que en la media querie "@media (max-width: 575.98px) " se vea la imagen del background del header más abajo y separado del menu */
