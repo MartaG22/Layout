@@ -34,6 +34,8 @@ header {
         flex-direction: row;
         align-items: center;
         justify-content: space-around;
+        animation: appearMenu 2s;
+
 }
 
 nav {
@@ -61,6 +63,7 @@ nav {
         align-items: center;    /* Alineación vertical centrada */
         justify-content: center;
         align-self: center;
+        animation: appearTitle 3s;
 }
 
 h1 {
@@ -84,7 +87,7 @@ li {
 li a {
         color: rgb(120, 120, 120);
         margin: 1rem;
-        text-decoration: none;  /* Quitar el subrayado de los links del menú */
+        text-decoration: none;  /* Quitar el subrayado predeterminado de los links del menú */
         text-align: center;
         transition: border-color 0.75s;    
 }
@@ -326,5 +329,25 @@ article img {
         li a {
                 margin: 0.4rem;
                 text-align: left;       /* Alinea el texto a la izquierda para evitar justificación completa */
+        }
+}
+
+@keyframes appearMenu{
+        from{       
+                opacity: 0;
+        }
+
+        to{
+                opacity: 1;
+        }
+}
+
+@keyframes appearTitle{
+        0%{
+                opacity: 0;
+        }
+        
+        100%{
+                opacity: 1;
         }
 }
