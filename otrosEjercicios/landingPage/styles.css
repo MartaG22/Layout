@@ -47,6 +47,7 @@ img {
         height: 450px;
         object-fit: cover;  
         width: auto;
+        animation: arriba 1s ease-in;
 }
 
 .textos {
@@ -55,11 +56,13 @@ img {
 }
 
 .textos h1 {
-        font-size: 80px
+        font-size: 80px;
+        animation: moverDerecha 1s ease-in;
 }
 
 .textos h2 {
         font-size: 30px;
+        animation: moverIzquierda 1s ease-in;
 }
 
 
@@ -75,6 +78,7 @@ img {
         border-radius: 3px;
         text-align: center;
         padding: 10px 0;
+        animation: arriba 1s ease-in;
 }
 
 .wave {
@@ -90,6 +94,30 @@ img {
         0%{
                 opacity: 0;
                 transform: translateX(-100px);
+        }
+       
+        100%{
+                opacity: 1;
+                transform: translate(0);
+        }
+}
+
+@keyframes moverDerecha {
+        0%{
+                opacity: 0;
+                transform: translateX(100px);
+        }
+       
+        100%{
+                opacity: 1;
+                transform: translate(0);
+        }
+}
+
+@keyframes arriba {
+        0%{
+                opacity: 0;
+                transform: translateY(100px);
         }
        
         100%{
