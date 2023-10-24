@@ -81,11 +81,21 @@ body {
         /* padding: 5px; */
 }
 
+.insideBox1{
+        margin-right: 10px;
+}
+
+.insideBox3{
+        /* margin-right: 10px; */
+        margin-left: 10px;
+}
+
 .insideBox2 {
         background-color: rgb(202, 67, 67);
         height: 10px;
         width: 400px;
-        margin-inline: 10px;
+        /* margin-inline: 10px; */
+
         /* margin: 5px; */
         /* padding: 5px; */
 }
@@ -165,6 +175,26 @@ body {
         padding: 10px;
         margin: 10px; */
 }
+
+.insideBox1:hover {
+        background-color: deeppink;
+        animation: zoomLogo 0.6s forwards;
+        /* z-index: 1; */
+}
+
+
+
+@keyframes zoomLogo{
+        100% {
+                margin-top: -7.5px;
+                margin-left: -15px;
+                margin-right: 0;
+                width: 210px;
+                height: 30px;
+        }
+}
+
+
 
 /* @media (max-width: 600px) { */
 @media screen and (max-width: 768px) {
