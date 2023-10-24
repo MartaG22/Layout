@@ -183,16 +183,16 @@ body {
 }
 
 
-
 @keyframes zoomLogo{
         100% {
-                margin-top: -7.5px;
+                margin-top: -4.5px;
                 margin-left: -15px;
                 margin-right: 0;
-                width: 210px;
-                height: 30px;
+                width: 195px;
+                height: 20px;
         }
 }
+
 
 
 
@@ -247,6 +247,16 @@ body {
         .insideColumn2B {
                 height: 15px;
         }
+
+        @keyframes zoomLogo{
+                100% {
+                        margin-top: -7.5px;
+                        margin-left: -15px;
+                        margin-right: 0;
+                        width: 214px;
+                        height: 30px;
+                }
+        }
 }
 
 
@@ -274,6 +284,7 @@ body {
 
         .insideBox1, .insideBox2, .insideBox3 { 
                 width: 140px; 
+                margin: 0;
         }
         
         .insideColumn1A, .insideColumn1B, .insideColumn1C, .insideColumn1D {
@@ -295,5 +306,17 @@ body {
         
         .lastInsideColumn1 {
                 background-color: aquamarine; 
+        }
+
+
+        @keyframes zoomLogo{
+                100% {
+                        margin-top: -7.5px;
+                        margin-bottom: -7.5px;
+                        margin-left: -15px;
+                        margin-right: 0;
+                        width: 170px;
+                        height: 30px;
+                }
         }
 }
