@@ -32,16 +32,25 @@ body {
 
 .buttons {
         display: flex;
-        flex-wrap: wrap;
+        /* flex-direction: column; */
+        /* flex-wrap: wrap; */
         margin-left: 3rem;
 }
 
 .numberButtons, .signsButtons{
         display: flex;
-        /* flex-direction: row-reverse; */
+        flex-direction: row;
         width: 20rem;
         flex-wrap: wrap;
-        
+
+}
+
+.numberButtons {
+        width: 15rem;
+}
+
+.signsButtons{
+        width: 5rem;
 }
 
 .numbers, .signs {
@@ -56,4 +65,9 @@ body {
         color: white;
         align-items: center; /* Centrar verticalmente */
         justify-content: center; /* Centrar horizontalmente */
+}
+
+#number0 {
+        width: 8rem;
+
 }
