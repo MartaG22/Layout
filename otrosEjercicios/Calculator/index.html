@@ -5,47 +5,63 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./css/style.css">
         <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
-
+        <script src="./js/numbers.js"></script>
         <title>CALCULATOR</title>
 </head>
 <body>
+        
         <div class="calculatorBox">
                 <div class="screen">
-                        <span id="result">result</span>
+                        <span id="result">0</span>
                 </div>
                 <div class="buttons">
                         <div class="memoryButtons">
-                                <div class="memory" id="resetMemory">MC</div>
-                                <div class="memory" id="rescueMemory">MR</div>
-                                <div class="memory" id="addMemory">M+</div>
-                                <div class="memory" id="substractMemory">M-</div>
+                                <button value="MC" class="memory" id="resetMemory">MC</button>
+                                <button value="MR" class="memory" id="rescueMemory">MR</button>
+                                <button value="M+" class="memory" id="addMemory">M+</button>
+                                <button value="M-" class="memory" id="substractMemory">M-</button>
+                                <button value="ON" class="on" id="on">ON</button>
                         </div>
                         <div class="operationsButtons">
                                 <div class="numberButtons">
-                                        <div class="numbers" id="number1">1</div>
-                                        <div class="numbers" id="number2">2</div>
-                                        <div class="numbers" id="number3">3</div>
-                                        <div class="numbers" id="number4">4</div>
-                                        <div class="numbers" id="number5">5</div>
-                                        <div class="numbers" id="number6">6</div>
-                                        <div class="numbers" id="number7">7</div>
-                                        <div class="numbers" id="number8">8</div>
-                                        <div class="numbers" id="number9">9</div>
-                                        <div class="numbers" id="point">.</div>
-                                        <div class="numbers" id="number0">0</div>
+                                        <button class="numbers" id="number7" onclick=number1()>7</button>
+                                        <button class="numbers" id="number8" onclick=number1()>8</button>
+                                        <button class="numbers" id="number9" onclick=number1()>9</button>
+                                        
+                                        <button class="numbers" id="number4" onclick=number1()>4</button>
+                                        <button class="numbers" id="number5" onclick=number1()>5</button>
+                                        <button class="numbers" id="number6" onclick=number1()>6</button>
+                                        
+                                        <button class="numbers" id="number1" onclick=number1()>1</button>
+                                        <button class="numbers" id="number2" onclick=number1()>2</button>
+                                        <button class="numbers" id="number3" onclick=number1()>3</button>
+                                        <button class="numbers" id="number0" onclick=number1()>0</button>
+                                        <button class="numbers" id="point" onclick=number1()>.</button>
                                 </div>
                                 <div class="signsButtons">
-                                        <div class="signs" id="divide">&#247</div>
-                                        <div class="signs" id="multiply">x</div>
-                                        <div class="signs" id="add">+</div>
-                                        <div class="signs" id="substract">-</div>
+                                        <button class="signs" id="divide">&#247</button>
+                                        <button class="signs" id="multiply">*</button>
+                                        <button class="signs" id="add">+</button>
+                                        <button class="signs" id="substract">-</button>
+                                </div>
+                                <div class="variablesButton">
+                                        <button class="variables" id="pi">pi</button>
+                                        <button class="variables" id="numberE">e</button>
+                                        <button class="variables" id="squareRoot">raiz</button>
+                                        <button class="variables" id="exponential">x&#170</button>
                                         
                                 </div>
-                                <div class="signs" id="equal">=</div>
-                                <div class="on" id="on">ON</div>
+                                
+                        </div>
+                        <div class="otherButtons">
+                                <button class="signs" id="equal">=</button>
+                                <button id="borrar" class="signs">&#x2190</button>
+                                <button class="variables" id="percentage">%</button>
+                                <button class="variables" id="changeSign">&#2</button>
                         </div>
                 </div>
         </div>
+
 
 </body>
 </html>
