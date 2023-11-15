@@ -5,14 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./css/style.css">
         <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
-        <script src="./js/numbers.js"></script>
+        <!-- <script src="./app/app.js"></script> -->
         <title>CALCULATOR</title>
 </head>
 <body>
         
         <div class="calculatorBox">
                 <div class="screen">
-                        <span id="result">0</span>
+                        <div id="operands">0</div>
+                        <div id="result">0</div>
                 </div>
                 <div class="buttons">
                         <div class="memoryButtons">
@@ -45,9 +46,9 @@
                                         <button class="signs" id="substract">-</button>
                                 </div>
                                 <div class="variablesButton">
-                                        <button class="variables" id="pi">pi</button>
+                                        <button class="variables" id="pi">&#960</button>
                                         <button class="variables" id="numberE">e</button>
-                                        <button class="variables" id="squareRoot">raiz</button>
+                                        <button class="variables" id="squareRoot">&#178&#8730</button>
                                         <button class="variables" id="exponential">x&#170</button>
                                         
                                 </div>
@@ -55,9 +56,9 @@
                         </div>
                         <div class="otherButtons">
                                 <button class="signs" id="equal">=</button>
+                                <button class="variables" id="changeSign">+/-</button>
                                 <button id="borrar" class="signs">&#x2190</button>
                                 <button class="variables" id="percentage">%</button>
-                                <button class="variables" id="changeSign">&#2</button>
                         </div>
                 </div>
         </div>
