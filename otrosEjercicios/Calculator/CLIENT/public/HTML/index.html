@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+        <title>CALCULATOR</title>
+</head>
+<body>
+        
+        <div class="calculatorBox">
+                <div class="screen">
+                        <div data-screen-operand id="operands">20</div>
+                        <div data-screen-result id="result">5</div>
+                </div>
+                <div class="buttons">
+                        <div class="memoryButtons">
+                                <button value="MC" class="memory" id="resetMemory">MC</button>
+                                <button value="MR" class="memory" id="rescueMemory">MR</button>
+                                <button value="M+" class="memory" id="addMemory">M+</button>
+                                <button value="M-" class="memory" id="substractMemory">M-</button>
+                                <button value="C" data-clear class="memory" id="clear">C</button>
+                        </div>
+                        <div class="operationsButtons">
+                                <div class="numberButtons">
+                                        <button data-number class="numbers" id="number7" >7</button>
+                                        <button data-number class="numbers" id="number8" >8</button>
+                                        <button data-number class="numbers" id="number9" >9</button>
+                                        
+                                        <button data-number class="numbers" id="number4" >4</button>
+                                        <button data-number class="numbers" id="number5" >5</button>
+                                        <button data-number class="numbers" id="number6" >6</button>
+                                        
+                                        <button data-number class="numbers" id="number1" >1</button>
+                                        <button data-number class="numbers" id="number2" >2</button>
+                                        <button data-number class="numbers" id="number3" >3</button>
+                                        <button data-number class="numbers" id="number0" >0</button>
+                                        <button data-number class="numbers" id="point" >.</button>
+                                </div>
+                                <div class="signsButtons">
+                                        <button class="signs" id="divide">&#247</button>
+                                        <button class="signs" id="multiply">*</button>
+                                        <button class="signs" id="add">+</button>
+                                        <button class="signs" id="substract">-</button>
+                                </div>
+                                <div class="variablesButton">
+                                        <button class="variables" id="pi">&#960</button>
+                                        <button class="variables" id="numberE">e</button>
+                                        <button class="variables" id="squareRoot">&#178&#8730</button>
+                                        <button class="variables" id="exponential">x&#170</button>
+                                        
+                                </div>
+                                
+                        </div>
+                        <div class="otherButtons">
+                                <button class="signs" id="equal">=</button>
+                                <button class="variables" id="changeSign">+/-</button>
+                                <button id="erase" class="signs" >&#x2190</button>
+                                <button class="variables" id="percentage">%</button>
+                                <button class="variables" id="initialParenthesis">(</button>
+                                <button class="variables" id="endParenthesis">)</button>
+                                <button value="ON" class="on" id="on">ON</button>
+                                <!-- onclick=eraseNumber() -->
+                        </div>
+                </div>
+        </div>
+
+        <!-- <script src="../js/numbers.js"></script> -->
+        <script src="../js/calculator.js"></script>
+
+</body>
+</html>
