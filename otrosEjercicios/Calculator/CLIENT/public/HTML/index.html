@@ -11,8 +11,8 @@
         
         <div class="calculatorBox">
                 <div class="screen">
-                        <div data-screen-operand id="operands">20</div>
-                        <div data-screen-result id="result">5</div>
+                        <div data-screen-operand id="operands">0</div>
+                        <div data-screen-result id="result">0</div>
                 </div>
                 <div class="buttons">
                         <div class="memoryButtons">
@@ -39,10 +39,11 @@
                                         <button data-number class="numbers" id="point" >.</button>
                                 </div>
                                 <div class="signsButtons">
-                                        <button class="signs" id="divide">&#247</button>
-                                        <button class="signs" id="multiply">*</button>
-                                        <button class="signs" id="add">+</button>
-                                        <button class="signs" id="substract">-</button>
+                                        <!-- <button class="signs" id="divide" data-operation>/</button> -->
+                                        <button class="signs" id="divide" data-operation >&#247</button>
+                                        <button class="signs" id="multiply"  data-operation >*</button>
+                                        <button class="signs" id="add" data-operation >+</button>
+                                        <button class="signs" id="substract" data-operation >-</button>
                                 </div>
                                 <div class="variablesButton">
                                         <button class="variables" id="pi">&#960</button>
@@ -67,7 +68,10 @@
         </div>
 
         <!-- <script src="../js/numbers.js"></script> -->
-        <script src="../js/calculator.js"></script>
+        <!-- <script src="../js/calculator.js"></script> -->
+        <!-- <script src="../js/main.js"></script> -->
+        <script type="module" src="../js/main.js"></script>
+
 
 </body>
 </html>

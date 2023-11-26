@@ -1,4 +1,4 @@
-class Calculator {
+class Caltulator {
         constructor(operand1Element, operand2Element) {
                 this.operand1Element = operand1Element;
                 this.operand2Element = operand2Element;
@@ -98,67 +98,55 @@ class Calculator {
 
 
 };
+const operand1Element = document.querySelector("[data-screen-operand]");
+const operand2Element = document.querySelector("[data-screen-result]");
+const clearButton = document.querySelector("[data-clear]");
+const numberButtons = document.querySelectorAll("[data-number]");
+const eraseNumber = document.getElementById("erase");
+const operationButtons = document.querySelectorAll("[data-operation]");
+const percentageButton = document.getElementById("percentage");
+// const addOperation = document.getElementById("add");
+// const substractOperation = document.getElementById("substract");
+// const multiplyOperation = document.getElementById("multiply");
+// const divideOperation = document.getElementById("divide");
+const equalButton = document.getElementById("equal");
+
+const calculator = new Caltulator(operand1Element, operand2Element);
 
 
-export default Calculator;
+clearButton.addEventListener("click", () => {
+        calculator.clear();
+});
+
+numberButtons.forEach(button => {
+        button.addEventListener("click", () => {
+                console.log("Button:", button);
+                calculator.appendNumber(button.innerHTML);
+        });
+});
+
+eraseNumber.addEventListener("click", () => {
+        console.log("eraseNumber.addEvent");
+        calculator.eraseNumber();
+});
 
 
-// const operand1Element = document.querySelector("[data-screen-operand]");
-// const operand2Element = document.querySelector("[data-screen-result]");
-// const clearButton = document.querySelector("[data-clear]");
-// const numberButtons = document.querySelectorAll("[data-number]");
-// const eraseNumber = document.getElementById("erase");
-// const operationButtons = document.querySelectorAll("[data-operation]");
-// const percentageButton = document.getElementById("percentage");
-// // const addOperation = document.getElementById("add");
-// // const substractOperation = document.getElementById("substract");
-// // const multiplyOperation = document.getElementById("multiply");
-// // const divideOperation = document.getElementById("divide");
-// const equalButton = document.getElementById("equal");
+operationButtons.forEach(button => {
+        button.addEventListener("click", () => {
+                calculator.operation(button.innerHTML);
+        });
+});
 
-// const calculator = new Caltulator(operand1Element, operand2Element);
+equalButton.addEventListener("click", () => {
+        calculator.calculate();
+})
 
-
-// clearButton.addEventListener("click", () => {
-//         calculator.clear();
-// });
-
-// numberButtons.forEach(button => {
-//         button.addEventListener("click", () => {
-//                 console.log("Button:", button);
-//                 calculator.appendNumber(button.innerHTML);
-//         });
-// });
-
-// eraseNumber.addEventListener("click", () => {
-//         console.log("eraseNumber.addEvent");
-//         calculator.eraseNumber();
-// });
+percentageButton.addEventListener("click", () => {
+        calculator.percentage();
+})
 
 
-// operationButtons.forEach(button => {
-//         button.addEventListener("click", () => {
-//                 calculator.operation(button.innerHTML);
-//         });
-// });
-
-// equalButton.addEventListener("click", () => {
-//         calculator.calculate();
-// })
-
-// percentageButton.addEventListener("click", () => {
-//         calculator.percentage();
-// })
-
-
-
-
-
-
-
-
-
-
+// export default Calculator;
 
 // document.querySelector('.logout-button').addEventListener('click', () => {
 //         const leaveRoom = confirm("Vols desconnectar?");
