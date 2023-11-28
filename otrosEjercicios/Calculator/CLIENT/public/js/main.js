@@ -13,7 +13,7 @@
 //                 this.currentOperation = "";
 //                 this.updateScreen();
 //         };
-        
+
 //         updateScreen() {
 //                 this.operand1Element.innerHTML = this.operand1 + this.operator;
 //                 // this.operand1Element.innerHTML = this.currentOperation;
@@ -22,7 +22,7 @@
 //         };
 
 //         appendNumber(number) {
-                
+
 //                 // this.operand2 = this.operand2;
 //                 if (number === "." && this.operand2.includes(".")) return;
 //                 if (number === "." && this.operand2 === 0) this.operand2 = this.operand2 + number;
@@ -52,15 +52,15 @@
 //                         console.log("UNO")
 //                         this.currentOperation = `${this.operand1} ${operator}`;
 //                         console.log("aquiii", this.currentOperation)
-                        
+
 //                 } else {
 //                         console.log(typeof(this.currentOperation))
 //                         console.log(this.operand1, this.operand2)
 //                         this.currentOperation = this.currentOperation + this.operator;
 //                         console.log("aquiii abajo", this.currentOperation)
-                        
+
 //                 }
-                
+
 //                 this.operand2 = 0;
 //                 this.updateScreen();
 //         };
@@ -89,7 +89,7 @@
 
 //         percentage() {
 //                 console.log(this.operand1, this.operand2)
-                
+
 //                 this.operand1 = parseFloat(this.operand2) * 100;
 //                 console.log(this.operand1, this.operand2)
 //                 // console.log(this.operand1)
@@ -110,11 +110,9 @@ const numberButtons = document.querySelectorAll("[data-number]");
 const eraseNumber = document.getElementById("erase");
 const operationButtons = document.querySelectorAll("[data-operation]");
 const percentageButton = document.getElementById("percentage");
-// const addOperation = document.getElementById("add");
-// const substractOperation = document.getElementById("substract");
-// const multiplyOperation = document.getElementById("multiply");
-// const divideOperation = document.getElementById("divide");
 const equalButton = document.getElementById("equal");
+const apiUrl = 'http://localhost:3030';
+
 
 const calculator = new Calculator(operand1Element, operand2Element);
 
@@ -143,7 +141,12 @@ operationButtons.forEach(button => {
 });
 
 equalButton.addEventListener("click", () => {
-        calculator.calculate();
+        // let expresion = calculator.calculate();
+        // console.log("EXPRESION:", expresion)
+        let expresion = 2 + 2;
+        console.log(apiUrl); // Añade este console.log para verificar la URL
+        // realizarSolicitud(expresion, apiUrl)
+        realizarSolicitud(expresion, "http://localhost:3030/calculate");
 })
 
 percentageButton.addEventListener("click", () => {
@@ -154,22 +157,32 @@ percentageButton.addEventListener("click", () => {
 
 
 // Función para realizar una solicitud fetch al backend
-function realizarSolicitud(expresion, url, callback) {
-        fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ expresion }),
+// function realizarSolicitud(expresion, apiUrl, callback) {
+function realizarSolicitud(expresion, apiUrl) {
+        console.log("Llamada a realizarSolicitud con expresion:", expresion, "y apiUrl:", apiUrl);
+        fetch(apiUrl, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ expresion }),
         })
-            .then((respuesta) => respuesta.json())
-            .then((datos) => {
-                // Llama al callback con los datos recibidos
-                callback(datos);
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
+                //     .then((respuesta) => respuesta.json())
+                .then((respuesta) => {
+                        console.log("respuesta", respuesta)
+                        if (!respuesta.ok) {
+                                throw new Error(`Error en la solicitud: ${respuesta.status}`);
+                        }
+                        return respuesta.json();
+                })
+                .then((datos) => {
+                        console.log("dentro del fetch")
+                        console.log(datos);
+                        // Llama al callback con los datos recibidos
+                        // callback(datos);
+                        // elementoResultado.textContent = datos.resultado;
+                })
+                .catch((error) => {
+                        console.error("Error:", error);
+                });
 };
 
 
@@ -177,5 +190,4 @@ function realizarSolicitud(expresion, url, callback) {
 
 
 
-// export default Calculator;
 

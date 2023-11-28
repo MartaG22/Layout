@@ -65,36 +65,39 @@ class Calculator {
                 this.updateScreen();
         };
 
-        calculate() {
-                switch(this.operator) {
-                        case "+":
-                                // console.log(this.operand1, this.operand2)
-                                this.operand1 = parseFloat(this.operand1) + parseFloat(this.operand2);
-                                break;
-                        case "-":
-                                this.operand1 = parseFloat(this.operand1) - parseFloat(this.operand2);
-                                break;
-                        case "*":
-                                this.operand1 = parseFloat(this.operand1) * parseFloat(this.operand2);
-                                break;
-                        case '\u00F7':
-                        // case "÷":
-                                this.operand1 = parseFloat(this.operand1) / parseFloat(this.operand2);
-                        break;
-                };
-                this.operator = "";
-                this.operand2 = 0;
-                this.updateScreen();
-        };
 
-        percentage() {
-                console.log(this.operand1, this.operand2)
+        //! A PARTIR DE AQUÍ DEBERÍA DE ESTAR EN EL BACK!!!
+        
+        // calculate() {
+        //         switch(this.operator) {
+        //                 case "+":
+        //                         // console.log(this.operand1, this.operand2)
+        //                         this.operand1 = parseFloat(this.operand1) + parseFloat(this.operand2);
+        //                         break;
+        //                 case "-":
+        //                         this.operand1 = parseFloat(this.operand1) - parseFloat(this.operand2);
+        //                         break;
+        //                 case "*":
+        //                         this.operand1 = parseFloat(this.operand1) * parseFloat(this.operand2);
+        //                         break;
+        //                 case '\u00F7':
+        //                 // case "÷":
+        //                         this.operand1 = parseFloat(this.operand1) / parseFloat(this.operand2);
+        //                 break;
+        //         };
+        //         this.operator = "";
+        //         this.operand2 = 0;
+        //         this.updateScreen();
+        // };
+
+        // percentage() {
+        //         console.log(this.operand1, this.operand2)
                 
-                this.operand1 = parseFloat(this.operand2) * 100;
-                console.log(this.operand1, this.operand2)
-                // console.log(this.operand1)
+        //         this.operand1 = parseFloat(this.operand2) * 100;
+        //         console.log(this.operand1, this.operand2)
+        //         // console.log(this.operand1)
 
-        }
+        // }
 
 
 };

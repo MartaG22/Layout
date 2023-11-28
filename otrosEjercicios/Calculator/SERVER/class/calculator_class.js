@@ -10,8 +10,8 @@ class Calculator {
         this.operand2 = 0;
         this.operator = "";
 
-        this.operands.innerHTML = this.operands;
-        this.result.innerHTML = this.result;
+        // this.operands.innerHTML = this.operands;
+        // this.result.innerHTML = this.result;
     };
 
     add(num1, num2) {
@@ -26,6 +26,7 @@ class Calculator {
     multiply (num1, num2 ) {
         return num1 * num2;
     };
+    
     divide(num1, num2) {
         console.log("typeof de num1 en CLASS", typeof num1);
         console.log("typeof de num2 en CLASS", typeof num2);
@@ -37,8 +38,6 @@ class Calculator {
         return num1 % num2;
     };
 
-
-
-}
+};
 
 module.exports = Calculator;
