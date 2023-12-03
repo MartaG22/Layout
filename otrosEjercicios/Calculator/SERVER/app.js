@@ -18,12 +18,13 @@ app.use(bodyParser.json());
 
 
 app.post("/calculate", (req, res) => {
-        const expression = req.body.expression;
+        console.log("recibido en app back", req.body)
+        const expression = req.body;
         let result;
     
         try {
             result = eval(expression);
-            console.log(result)
+            console.log("resusltat", result)
             res.json({ result });
         } catch (error) {
             console.error("Error al evaluar la expresión:", error);
@@ -31,13 +32,7 @@ app.post("/calculate", (req, res) => {
         }
 });
 
-// app.post("/calculate", (req, res) => {
-//         const expression = req.body.expression;
 
-//         const result = eval(expression);
-//         res.json(result);
-
-// });
 
 app.listen(port, () => {
         console.log(`Servidor escuchando en http://localhost:${port}`)

@@ -146,7 +146,8 @@ equalButton.addEventListener("click", () => {
         let expresion = 2 + 2;
         console.log(apiUrl); // Añade este console.log para verificar la URL
         // realizarSolicitud(expresion, apiUrl)
-        realizarSolicitud(expresion, "http://localhost:3030/calculate");
+        // realizarSolicitud(expresion, "http://localhost:3030/calculate");
+        realizarSolicitud(expresion, `${apiUrl}/calculate`);
 })
 
 percentageButton.addEventListener("click", () => {

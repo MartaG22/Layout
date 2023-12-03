@@ -11,7 +11,7 @@ class Calculator {
                 this.operand2 = 0;
                 this.operator = "";
                 this.currentOperation = "";
-                // console.log("CLEAR  operand1:", this.operand1,"operand2:", this.operand2, "currentOP:", this.currentOperation)
+                console.log("CLEAR  operand1:", this.operand1,"operand2:", this.operand2, "currentOP:", this.currentOperation)
                 this.updateScreen();
         };
 
@@ -21,75 +21,85 @@ class Calculator {
                 //         this.operand2Element.innerHTML = this.operand2;
                         
                 // };
-                // console.log("UPDATESCREEN  operand1:", this.operand1,"operand2:", this.operand2, "currentOP:", this.currentOperation);
+                console.log("UPDATESCREEN  operand1:", this.operand1,"operand2:", this.operand2, "currentOP:", this.currentOperation);
                 if (this.currentOperation == "") {
                         this.operand2Element.innerHTML = this.operand2;
-                        this.operand2 = 0;
+   
                 } else {
                         // this.operand2Element.innerHTML = this.operand2;
                         this.operand2Element.innerHTML = this.currentOperation;
-                        // this.operand2 = 0;
                 };
                 // this.operand2 = 0;
         };
 
         appendNumber(number) {
+                console.log(typeof(this.operand2));
+                console.log(number);
 
-                console.log("typeof operand2:", typeof(this.operand2));
-                console.log("number:", number);
+                if (number === "." && this.operand2 === 0) this.operand2 = this.operand2 + number;
+                console.log(this.operand2);
+                if (number === "." && this.operand2.includes(".")) return;
                 
-                if (number === "." && this.operand2.toString().includes(".")) return;
-                
-                if (number === "." && this.operand2 == "0") {
-                        // this.operand2 = this.operand2 + number;
-                        this.operand2 += number;
-                        this.currentOperation += this.operand2;
-                        // console.log("DENTRO DEL IFFFFFFFFFFFFFFFF")
-
-                        console.log("number", number);
-                        console.log("this.operand2 EN EL IF", this.operand2);
-                        console.log("this.currentOperation",  this.currentOperation);
-                        
-                // } else if (number == "." && this.operand2 !== "0") {
-                } else if (number === "." && this.operand2 !== "0" && !this.operand2.toString().includes(".")) {
-                        // this.operand2 = this.operand2 + number;
-                        console.log("EN EL PRIMER ELSE IF, NUMBER . Y NO O", this.operand2)
-                        console.log("this.currentOperation",  this.currentOperation);
-                        // this.currentOperation += number;
-                        // console.log("this.currentOperation DESPUES DE IGUALAR CURRE...",  this.currentOperation);
-                        return;
-
-                } else if (number !== "." && this.operand2 !== "0") {
+                this.operand2 = (number !== "." && this.operand2 == "0") ? number: this.operand2 + number;
+               
+                if (this.currentOperation !== "" && number !== ".") {
+                        // Si hay una operación pendiente, reiniciar operand2
+                        console.log("DENTRO DEL IF")
+                        console.log("this.currentOperation:", this.currentOperation, "number", number, "this.operand2", this.operand2)
                         this.operand2 = number;
-                        this.currentOperation += this.operand2;   
-                        console.log("number", number);
-                        console.log("this.operand2 EN EL ELSE", this.operand2);
-                        console.log("this.currentOperation",  this.currentOperation);
-                };
+                } else {
+                        // Agregar el número al final de operand2
+                        this.operand2 = (number === "." || isNaN(this.operand2)) ? this.operand2 + number : number;
+                }
 
-                this.updateScreen();      
+
+                // console.log(this.operand2);
+                // this.currentOperation = this.operand2;
+                console.log("currentoperation !!!!", this.currentOperation);
+
+                let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
+                console.log("ultimoCaracter", lastCharacter);
+                console.log("this.currentOperatio", this.currentOperation,)
+
+                if (!isNaN(lastCharacter)) {
+                        console.log("Es un numero");
+                        this.currentOperation = this.operand2;
+                        // this.operand2 = 0;
+
+                } else {
+                        console.log("NO es un numero")
+                        console.log(this.operand2);
+                        this.currentOperation += this.operand2;
+
+                }
+
+                this.updateScreen();
+
+
+               
+                
+
 
         };
 
         operation(operator) {
 
                 let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
-                // console.log("ultimoCaracter", lastCharacter);
-                if (!isNaN(lastCharacter )) {
-                // if (!isNaN(lastCharacter || lastCharacter == ".")) {
-                        //! console.log("Es un numero");
+                console.log("ultimoCaracter", lastCharacter);
+                if (!isNaN(lastCharacter)) {
+                        console.log("Es un numero");
+
                         this.operator = operator;
                         this.currentOperation = this.currentOperation + this.operator;
-                        
+
                 } else {
-                        //! console.log("NO es un numero")
+                        console.log("NO es un numero")
                         this.currentOperation = this.currentOperation.slice(0, -1);
                         this.operator = operator;
                         this.currentOperation = this.currentOperation + this.operator;
                 };
+
                 
-                
-                        this.operand2 = 0;
 
                         // console.log("this.operator", this.operator);
                         // console.log("operator", operator)
@@ -106,10 +116,7 @@ class Calculator {
 export default Calculator;
 
 
-
-
-
-/*function realizarSolicitud( expresion, apiUrl) {
+function realizarSolicitud(expresion, apiUrl) {
         console.log("Llamada a realizarSolicitud con expresion:", expresion, "y apiUrl:", apiUrl);
         fetch(apiUrl, {
                 method: "POST",
@@ -135,4 +142,3 @@ export default Calculator;
                         console.error("Error:", error);
                 });
 };
- */
