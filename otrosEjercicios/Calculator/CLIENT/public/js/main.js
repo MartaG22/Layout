@@ -141,13 +141,16 @@ operationButtons.forEach(button => {
 });
 
 equalButton.addEventListener("click", () => {
+        let operation = calculator.equal();
+        console.log(operation)
+        // console.log(this.currentOperation)
         // let expresion = calculator.calculate();
         // console.log("EXPRESION:", expresion)
         let expresion = 2 + 2;
         console.log(apiUrl); // Añade este console.log para verificar la URL
         // realizarSolicitud(expresion, apiUrl)
         // realizarSolicitud(expresion, "http://localhost:3030/calculate");
-        realizarSolicitud(expresion, `${apiUrl}/calculate`);
+        realizarSolicitud(operation, `${apiUrl}/calculate`);
 })
 
 percentageButton.addEventListener("click", () => {

@@ -37,13 +37,15 @@ class Calculator {
 
                 console.log("typeof operand2:", typeof(this.operand2));
                 console.log("number:", number);
-                
-                if (number === "." && this.operand2.toString().includes(".")) return;
+                console.log("this.operand2 AL INICI DE APPENDNUMBER", this.operand2)
+                // if (number === "." && this.operand2.toString().includes(".")) return;
                 
                 if (number === "." && this.operand2 == "0") {
                         // this.operand2 = this.operand2 + number;
+                
+                        console.log("11111111111")
                         this.operand2 += number;
-                        this.currentOperation += this.operand2;
+                        this.currentOperation += number;
                         // console.log("DENTRO DEL IFFFFFFFFFFFFFFFF")
 
                         console.log("number", number);
@@ -52,14 +54,19 @@ class Calculator {
                         
                 // } else if (number == "." && this.operand2 !== "0") {
                 } else if (number === "." && this.operand2 !== "0" && !this.operand2.toString().includes(".")) {
+                        console.log("22222222222")
+
                         // this.operand2 = this.operand2 + number;
                         console.log("EN EL PRIMER ELSE IF, NUMBER . Y NO O", this.operand2)
-                        console.log("this.currentOperation",  this.currentOperation);
-                        // this.currentOperation += number;
+                        console.log("this.currentOperation <nfes",  this.currentOperation);
+                        this.currentOperation += number;
+                        // console.log("this.currentOperation despues",  this.currentOperation);
                         // console.log("this.currentOperation DESPUES DE IGUALAR CURRE...",  this.currentOperation);
-                        return;
+                        // return;
 
                 } else if (number !== "." && this.operand2 !== "0") {
+                        console.log("33333333333")
+
                         this.operand2 = number;
                         this.currentOperation += this.operand2;   
                         console.log("number", number);
@@ -101,6 +108,10 @@ class Calculator {
 
         };
 
+        equal() {
+                console.log(this.currentOperation)
+                return this.currentOperation;
+        }
 };
 
 export default Calculator;
