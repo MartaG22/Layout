@@ -124,6 +124,7 @@ clearButton.addEventListener("click", () => {
 numberButtons.forEach(button => {
         button.addEventListener("click", () => {
                 console.log("Button:", button);
+                // console.log("Before appendNumber:", this.operand2);
                 calculator.appendNumber(button.innerHTML);
         });
 });
