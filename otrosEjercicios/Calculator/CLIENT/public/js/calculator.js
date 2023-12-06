@@ -84,7 +84,8 @@ class Calculator {
                         console.log("después de igaualar a numbber IF2", this.operand2)
                         this.currentOperation += this.operand2;
                                 
-                } else if ((!isNaN(number) && this.operand2 !== "0")) {
+                // } else if ((!isNaN(number) && this.operand2 !== "0")) {
+                } else if (number !== "." && number !== "0" && this.operand2 !== "0") {
                         console.log("number:", number);
                         console.log ("this,ioer2 entro del tercer IF", this.operand2);
 
@@ -98,7 +99,12 @@ class Calculator {
                         this.operand2 += number;
                         this.currentOperation += number;
                         this.pointEntered = true;
-                }
+                // } else if (){
+                } else {
+                        console.log("HOLAAAAAAAAA")
+                        this.operand2 += number;
+                        this.currentOperation += number;
+                };
 
 
 
@@ -113,17 +119,25 @@ class Calculator {
                 //         this.pointEntered = true;  // Se ha ingresado un punto
                 // };
 
-// TODO Cuando introduzco 0 y luego "." ==> me pone "00."
-// TODO Manejar el añadir la segunda cifra después del signo, que no concatene. Ahora borra la pantalla
-// TODO ver como manejar si el primer botón pulsado es algun no admitido, ejem (+, -, /, *)
-
-
-
+// TODO [x] Cuando introduzco 0 y luego "." ==> me pone "00."
+// TODO [x] Manejar el añadir la segunda cifra después del signo, que no concatene. Ahora borra la pantalla
+// TODO [] ver como manejar si el primer botón pulsado es algun no admitido, ejem (+, -, /, *)
 
 
                 this.updateScreen();
 
         };
+
+
+        eraseNumber() {
+                // console.log(this.operand2)
+                if (this.operand2 === 0) return;
+                this.operand2 = this.operand2.slice(0, -1);
+                this.currentOperation = this.currentOperation.slice(0, -1);
+                if (this.operand2.length === 0) this.operand2 = 0;
+                this.updateScreen();
+        };
+
 
         operation(operator) {
 
@@ -155,6 +169,9 @@ class Calculator {
 
         equal() {
                 console.log(this.currentOperation)
+                this.operand2Element.innerHTML = this.currentOperation;
+                this.operand1Element.innerHTML = `${this.currentOperation} =`;
+
                 return this.currentOperation;
         }
 };
