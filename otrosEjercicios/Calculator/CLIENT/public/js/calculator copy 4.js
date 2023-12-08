@@ -33,7 +33,7 @@ class Calculator {
                         this.operand2 = 0;
                 } else {
                         // this.operand2Element.innerHTML = this.operand2;
-                        console.log("this.currentOperation en UPDATESCREEN", this.currentOperation);
+                        console.log("this.currentOperation", this.currentOperation);
                         this.operand2Element.innerHTML = this.currentOperation;
                         // this.operand2 = 0;
                 };
@@ -134,48 +134,6 @@ class Calculator {
 
 
         eraseNumber() {
-                if (this.currentOperation.length === 0) {
-                    // Si la cadena está vacía, no hay nada que borrar.
-                    return;
-                }
-            
-                // Elimina el último carácter de la cadena
-                let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
-                this.currentOperation = this.currentOperation.slice(0, -1);
-            
-                if (lastCharacter === "+" || lastCharacter === "-" || lastCharacter === "*" || lastCharacter === "/") {
-                    // Si el último carácter era un operador, encuentra el inicio del último número.
-                    let lastNumberStart = Math.max(
-                        this.currentOperation.lastIndexOf("+"),
-                        this.currentOperation.lastIndexOf("-"),
-                        this.currentOperation.lastIndexOf("*"),
-                        this.currentOperation.lastIndexOf("/")
-                    ) + 1;
-            
-                    // Actualiza operand2 con el último número
-                    this.operand2 = this.currentOperation.slice(lastNumberStart);
-                } else {
-                    // Si el último carácter no era un operador, simplemente actualiza operand2 con la cadena actual.
-                    this.operand2 = this.currentOperation;
-                    console.log(this.operand2);
-                    this.pointEntered = this.operand2.includes(".") ? true : false;
-                //     if (this.operand2.includes(".")){
-                //         console.log("tine punto");
-                //         this.pointEntered = true;
-                //     } else {
-                //         this.pointEntered = false;
-
-                //     }
-                }
-            
-                console.log("this.operand2", this.operand2);
-                console.log("this.currentOperation", this.currentOperation);
-                this.updateScreen();
-            }
-
-
-
-    /*     eraseNumber() {
                 let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
                 // Encuentra la posición del último operador:
                 let lastOperatorIndex = Math.max(
@@ -190,47 +148,58 @@ class Calculator {
                 console.log("this.currentOperation", this.currentOperation);
                 console.log("lastCharacter", lastCharacter);
                 console.log(typeof(lastCharacter));
-                // console.log("lastOperatorIndex", lastOperatorIndex)
+                console.log("lastOperatorIndex", lastOperatorIndex)
                 // console.log()
 
-                // if (this.operand2 === 0 && this.currentOperation == "") {
-                if (this.currentOperation.length === 0) {
-                        console.log("primer if")
-                        return;
-                };
-
-                if (lastCharacter === "+" || lastCharacter === "-" || lastCharacter === "*" || lastCharacter === "/") {
-                        console.log("AFEWFAWFAF")
+                // if (this.operand2 === 0 && this.currentOperation == "0") return;
+                if (this.operand2 === 0 && this.currentOperation == "") {
+                        console.log("ha entrado al IF ");
+                        console.log("this.operand2", this.operand2);
                         console.log("this.currentOperation", this.currentOperation);
 
-                        // Si el último carácter es un operador, elimínalo.
-                        this.currentOperation = this.currentOperation.slice(0, -1);
-                        // this.operand2 = this.currentOperation.slice(lastOperatorIndex + 1);
-                        // console.log("this.currentOperation", this.currentOperation);
-                        // console.log("this.operand2", this.operand2);
-
-
-                } else {
-                        // Si el último carácter no es un operador, encuentra el inicio del último número.      
-                        let lastNumberStart = Math.max(
-                                this.currentOperation.lastIndexOf("+", lastOperatorIndex),
-                                this.currentOperation.lastIndexOf("-", lastOperatorIndex),
-                                this.currentOperation.lastIndexOf("*", lastOperatorIndex),
-                                this.currentOperation.lastIndexOf("/", lastOperatorIndex)
-                            ) + 1;
-                    
-                            // Elimina el último número y actualiza operand2
-                            this.currentOperation = this.currentOperation.slice(0, lastNumberStart);
-                            this.operand2 = this.currentOperation.slice(lastNumberStart);
-                            console.log("this.operand2", this.operand2);
-
-                            console.log("this.currentOperation", this.currentOperation);
-            
+                        return;
                         
-                }
+                // } if (lastOperatorIndex === -1) {
+                        //         // No se encontró ningún operador, eliminar todo
+                        //         this.operand2 = 0;
+                        //         this.currentOperation = "";
+                        
+                } else if (lastCharacter === "+" || lastCharacter === "-" || lastCharacter === "*" || lastCharacter === "/") {
+                        console.log("AFEWFAWFAF")
+                        this.currentOperation = this.currentOperation.slice(0, -1);
+                        
+                } else if (!isNaN(lastCharacter) || lastCharacter == ".") {
+                        console.log("ha entrado al IF de si es un número ");
+                        // TODO nO FUNQIONA bien quitar un número, porque también quita  el signo de operacion siguiente
+                        console.log("this.operand2 en el IF de si es número", this.operand2);
+                        // Obtener la cifra después del último operador
+
+                        this.operand2 = this.currentOperation.slice(lastOperatorIndex + 1);
+                        this.operand2 = this.operand2.slice(0, -1);
+                        this.currentOperation = this.currentOperation.slice(0, lastOperatorIndex);
+    
+                        // this.operand2 = this.operand2.slice(0, -1);
+                        // this.currentOperation = this.currentOperation.slice(0, -1);
+                };
+
+                // if (lastCharacter == "+") {
+                // } else {
+
+                console.log("this.operand2 DESPUÉS DE TODOS LOS IF", this.operand2);
+                console.log("this.operand1", this.operand1);
+                console.log("this.operand2", this.operand2);
+
+                console.log("this.currentOperation", this.currentOperation);
+
+                //         // this.operand2 = this.operand2.slice(0, -1);
+                //         this.currentOperation = this.currentOperation.slice(0, -1);
+                // };
+                if (this.operand2.length === 0) this.operand2 = 0;
+        
+                // lastCharacter = "";
                 this.updateScreen();
         };
- */
+
 
         operation(operator) {
 
