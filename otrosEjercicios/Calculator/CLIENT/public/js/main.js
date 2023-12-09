@@ -141,17 +141,23 @@ operationButtons.forEach(button => {
         });
 });
 
-equalButton.addEventListener("click", () => {
+equalButton.addEventListener("click", async() => {
         let operation = calculator.equal();
         console.log(operation)
         // console.log(this.currentOperation)
         // let expresion = calculator.calculate();
         // console.log("EXPRESION:", expresion)
-        let expresion = 2 + 2;
+        // let expresion = 2 + 2;
         console.log(apiUrl); // Añade este console.log para verificar la URL
         // realizarSolicitud(expresion, apiUrl)
         // realizarSolicitud(expresion, "http://localhost:3030/calculate");
-        realizarSolicitud(operation, `${apiUrl}/calculate`);
+        try {
+                await realizarSolicitud(operation, `${apiUrl}/calculate`);
+
+        } catch (error) {
+                        // Maneja el error si es necesario
+                console.error("Error al realizar la solicitud:", error);
+        };
 })
 
 percentageButton.addEventListener("click", () => {
@@ -161,37 +167,62 @@ percentageButton.addEventListener("click", () => {
 
 
 
-// Función para realizar una solicitud fetch al backend
+//! Función para realizar una solicitud fetch al backend
+
 // function realizarSolicitud(expresion, apiUrl, callback) {
-function realizarSolicitud(expresion, apiUrl) {
-        console.log("Llamada a realizarSolicitud con expresion:", expresion, "y apiUrl:", apiUrl);
-        fetch(apiUrl, {
+//? ESTA FUNCIÓN ESTÁ HECHA CON PROMESAS!!!
+// function realizarSolicitud(expresion, apiUrl) {
+//         console.log("Llamada a realizarSolicitud con expresion:", expresion, "y apiUrl:", apiUrl);
+//         fetch(apiUrl, {
+//                 method: "POST",
+//                 headers: { "Content-Type": "application/json" },
+//                 body: JSON.stringify({ expresion }),
+//         })
+//                 //     .then((respuesta) => respuesta.json())
+//                 .then((respuesta) => {
+//                         console.log("respuesta", respuesta)
+//                         if (!respuesta.ok) {
+//                                 throw new Error(`Error en la solicitud: ${respuesta.status}`);
+//                         }
+//                         return respuesta.json();
+//                 })
+//                 .then((datos) => {
+//                         console.log("dentro del fetch")
+//                         console.log(datos);
+//                         // Llama al callback con los datos recibidos
+//                         // callback(datos);
+//                         // elementoResultado.textContent = datos.resultado;
+//                 })
+//                 .catch((error) => {
+//                         console.error("Error:", error);
+//                 });
+// };
+
+
+//? ESTA FUNCIÓN ESTÁ HECHA CON FUNCIÓN ASÍNCRONA!!!
+
+async function realizarSolicitud(expresion, apiUrl) {
+        try {
+            console.log("Llamada a realizarSolicitud con expresion:", expresion, "y apiUrl:", apiUrl);
+            const respuesta = await fetch(apiUrl, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ expresion }),
-        })
-                //     .then((respuesta) => respuesta.json())
-                .then((respuesta) => {
-                        console.log("respuesta", respuesta)
-                        if (!respuesta.ok) {
-                                throw new Error(`Error en la solicitud: ${respuesta.status}`);
-                        }
-                        return respuesta.json();
-                })
-                .then((datos) => {
-                        console.log("dentro del fetch")
-                        console.log(datos);
-                        // Llama al callback con los datos recibidos
-                        // callback(datos);
-                        // elementoResultado.textContent = datos.resultado;
-                })
-                .catch((error) => {
-                        console.error("Error:", error);
-                });
-};
-
-
-
+            });
+    
+            if (!respuesta.ok) {
+                throw new Error(`Error en la solicitud: ${respuesta.status}`);
+            }
+    
+            const datos = await respuesta.json();
+            console.log("dentro del fetch");
+            console.log(datos);
+            // Puedes realizar acciones adicionales con los datos recibidos
+    
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
 
 
 
