@@ -43,6 +43,7 @@ class Calculator {
         appendNumber(number) {
 
                 console.log("number:", number);
+                console.log("type of number:", typeof(number));
                 console.log("this.operand2 AL INICI DE APPENDNUMBER", this.operand2);
                 console.log("this.pointEntered", this.pointEntered);
 
@@ -262,10 +263,26 @@ class Calculator {
                 this.updateScreen();
         };
 
-        equal() {
-                console.log(this.currentOperation)
-                this.operand2Element.innerHTML = this.currentOperation;
-                this.operand1Element.innerHTML = `${this.currentOperation} =`;
+        equal(result) {
+                try {
+
+                        if (result) {
+                                console.log("result en equal", result);
+                                const endResult = result.toString();
+                                
+                                this.operand2Element.innerHTML = endResult;
+                                
+                        } else {
+                                
+                                console.log(this.currentOperation)
+                                this.operand2Element.innerHTML = this.currentOperation;
+                                this.operand1Element.innerHTML = `${this.currentOperation} =`;
+                                
+                        };
+                } catch (error) {
+                        console.error("Error:", error);
+
+                }
 
                 return this.currentOperation;
         }

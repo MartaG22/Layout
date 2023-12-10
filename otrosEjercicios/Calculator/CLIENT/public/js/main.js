@@ -152,8 +152,8 @@ equalButton.addEventListener("click", async() => {
         // realizarSolicitud(expresion, apiUrl)
         // realizarSolicitud(expresion, "http://localhost:3030/calculate");
         try {
-                await realizarSolicitud(operation, `${apiUrl}/calculate`);
-
+                let result = await makeRequest(operation, `${apiUrl}/calculate`);
+                calculator.equal(result);
         } catch (error) {
                         // Maneja el error si es necesario
                 console.error("Error al realizar la solicitud:", error);
@@ -201,13 +201,13 @@ percentageButton.addEventListener("click", () => {
 
 //? ESTA FUNCIÓN ESTÁ HECHA CON FUNCIÓN ASÍNCRONA!!!
 
-async function realizarSolicitud(expresion, apiUrl) {
+async function makeRequest(expression, apiUrl) {
         try {
-            console.log("Llamada a realizarSolicitud con expresion:", expresion, "y apiUrl:", apiUrl);
+            console.log("Llamada a makeRequest con expresion:", expression, "y apiUrl:", apiUrl);
             const respuesta = await fetch(apiUrl, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ expresion }),
+                body: JSON.stringify({ expression }),
             });
     
             if (!respuesta.ok) {
@@ -217,6 +217,9 @@ async function realizarSolicitud(expresion, apiUrl) {
             const datos = await respuesta.json();
             console.log("dentro del fetch");
             console.log(datos);
+            if(datos) {
+                return datos;
+            }
             // Puedes realizar acciones adicionales con los datos recibidos
     
         } catch (error) {
