@@ -141,7 +141,7 @@ operationButtons.forEach(button => {
         });
 });
 
-equalButton.addEventListener("click", async() => {
+equalButton.addEventListener("click", async () => {
         let operation = calculator.equal();
         console.log(operation)
         // console.log(this.currentOperation)
@@ -155,7 +155,7 @@ equalButton.addEventListener("click", async() => {
                 let result = await makeRequest(operation, `${apiUrl}/calculate`);
                 calculator.equal(result);
         } catch (error) {
-                        // Maneja el error si es necesario
+                // Maneja el error si es necesario
                 console.error("Error al realizar la solicitud:", error);
         };
 })
@@ -203,29 +203,37 @@ percentageButton.addEventListener("click", () => {
 
 async function makeRequest(expression, apiUrl) {
         try {
-            console.log("Llamada a makeRequest con expresion:", expression, "y apiUrl:", apiUrl);
-            const respuesta = await fetch(apiUrl, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ expression }),
-            });
-    
-            if (!respuesta.ok) {
-                throw new Error(`Error en la solicitud: ${respuesta.status}`);
-            }
-    
-            const datos = await respuesta.json();
-            console.log("dentro del fetch");
-            console.log(datos);
-            if(datos) {
-                return datos;
-            }
-            // Puedes realizar acciones adicionales con los datos recibidos
-    
+                console.log("Llamada a makeRequest con expresion:", expression, "y apiUrl:", apiUrl);
+                const respuesta = await fetch(apiUrl, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ expression }),
+                });
+
+                if (!respuesta.ok) {
+                        throw new Error(`Error en la solicitud: ${respuesta.status}`);
+                }
+
+                const datos = await respuesta.json();
+                console.log("dentro del fetch");
+                console.log(datos);
+                console.log("type datos:", typeof (datos));
+
+
+                // Convertir datos a cadena JSON
+                const datosJSONString = JSON.stringify(datos.result);
+                console.log(datosJSONString);
+                console.log("type datosJSONString:", typeof (datosJSONString));
+
+                if (datosJSONString) {
+                        return datosJSONString;
+                }
+                // Puedes realizar acciones adicionales con los datos recibidos
+
         } catch (error) {
-            console.error("Error:", error);
+                console.error("Error:", error);
         }
-    }
+};
 
 
 

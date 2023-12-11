@@ -268,8 +268,11 @@ class Calculator {
 
                         if (result) {
                                 console.log("result en equal", result);
-                                const endResult = result.toString();
+                                console.log("Typeof result en equal", typeof(result));
                                 
+                                const endResult = result.toString();
+                                console.log("endResult en equal", endResult);
+
                                 this.operand2Element.innerHTML = endResult;
                                 
                         } else {
