@@ -113,6 +113,7 @@ const percentageButton = document.getElementById("percentage");
 const equalButton = document.getElementById("equal");
 const apiUrl = 'http://localhost:3030';
 
+// console.log("operand2Element en MAIN***********", operand2Element)
 
 const calculator = new Calculator(operand1Element, operand2Element);
 

@@ -5,6 +5,7 @@ class Calculator {
                 this.operand2Element = operand2Element;
                 this.currentOperation = "";
                 this.pointEntered = false;  // Variable para rastrear si ya se ha ingresado un punto
+                this.isEqualPressed = false;
 
                 this.clear();
         };
@@ -15,27 +16,45 @@ class Calculator {
                 this.operator = "";
                 this.currentOperation = "";
                 this.pointEntered = false;  // Variable para rastrear si ya se ha ingresado un punto
+                this.isEqualPressed = false;
+
+
                 // console.log("CLEAR  operand1:", this.operand1,"operand2:", this.operand2, "currentOP:", this.currentOperation)
                 this.updateScreen();
         };
 
         updateScreen() {
-                // if (this.operand2 !== 0) {
-                //         console.log("operand2:", this.operand2, "currentOP:", this.currentOperation);
-                //         this.operand2Element.innerHTML = this.operand2;
+                // const operand2ElementScreen = document.querySelector("[data-screen-result]");
+                // console.log('operand2ElementScreen', operand2ElementScreen)
 
-                // };
-                // console.log("UPDATESCREEN  operand1:", this.operand1,"operand2:", this.operand2, "currentOP:", this.currentOperation);
+                // Obtén el elemento por su id
+                const operandScreenElement = (document.getElementById('operands').textContent);
+                const resultElement = (document.getElementById('result').textContent);
+                // let vuelta = false;
+
+
+                // Accede al contenido (texto) del elemento
+                // const contenido = resultElement.textContent;
+
+                console.log("CONTENIDO", resultElement); // Esto imprimirá "6+3-"
+
                 if (this.currentOperation == "") {
                         // console.log("this.operand2", this.operand2);
+                        console.log(this.isEqualPressed)
                         this.operand2Element.innerHTML = this.operand2;
-                        this.operand1Element.innerHTML = 0
+                        this.operand1Element.innerHTML = 0;
                         this.operand2 = 0;
                 } else {
                         // this.operand2Element.innerHTML = this.operand2;
+                        console.log(this.isEqualPressed)
                         console.log("this.currentOperation en UPDATESCREEN", this.currentOperation);
+                        if (this.isEqualPressed && operandScreenElement !== "0") {
+                                console.log("--------------------- AQUIIIIIIIIIIIIIIIIIIIIIII ----------------------");
+                                this.operand1Element.innerHTML = this.currentOperation;
+                        };
+
+
                         this.operand2Element.innerHTML = this.currentOperation;
-                        // this.operand2 = 0;
                 };
                 // this.operand2 = 0;
         };
@@ -43,7 +62,7 @@ class Calculator {
         appendNumber(number) {
 
                 console.log("number:", number);
-                console.log("type of number:", typeof(number));
+                console.log("type of number:", typeof (number));
                 console.log("this.operand2 AL INICI DE APPENDNUMBER", this.operand2);
                 console.log("this.pointEntered", this.pointEntered);
 
@@ -165,7 +184,7 @@ class Calculator {
                 console.log("this.operand2", this.operand2);
                 console.log("this.currentOperation", this.currentOperation);
                 this.updateScreen();
-        }
+        };
 
 
 
@@ -230,29 +249,39 @@ class Calculator {
 
                 let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
                 // console.log("ultimoCaracter", lastCharacter);
-                if (this.currentOperation == "" && (operator === "*" || operator == "÷")) {
-                        console.log("this.curremtOP vacía");
-                        this.operator = operator;
-                        this.operand2 = 0;
-                        this.currentOperation = this.operand2 + this.operator;
-                } else {
+                // if (this.isEqualPressed){
 
+                // }
+                // if (this.isEqualPressed) {
+                //         console.log("EN EL IFF DENTRO DE OPERATION, PARA NO CAMBIAR EL OPERAND_______________");
+                //         console.log(this.operator)
+                //         this.currentOperation = this.currentOperation + this.operator;
 
-                        if (!isNaN(lastCharacter)) {
-                                // if (!isNaN(lastCharacter || lastCharacter == ".")) {
-                                //! console.log("Es un numero");
+                // } else {
+
+                        if (this.currentOperation == "" && (operator === "*" || operator == "÷")) {
+                                console.log("this.curremtOP vacía");
                                 this.operator = operator;
-                                this.currentOperation = this.currentOperation + this.operator;
-
+                                this.operand2 = 0;
+                                this.currentOperation = this.operand2 + this.operator;
                         } else {
-                                //! console.log("NO es un numero")
-                                this.currentOperation = this.currentOperation.slice(0, -1);
-                                this.operator = operator;
-                                this.currentOperation = this.currentOperation + this.operator;
+
+                                if (!isNaN(lastCharacter)) {
+                                        // if (!isNaN(lastCharacter || lastCharacter == ".")) {
+                                        //! console.log("Es un numero");
+                                        this.operator = operator;
+                                        this.currentOperation = this.currentOperation + this.operator;
+
+                                } else {
+                                        //! console.log("NO es un numero")
+                                        this.currentOperation = this.currentOperation.slice(0, -1);
+                                        this.operator = operator;
+                                        this.currentOperation = this.currentOperation + this.operator;
+
+                                };
 
                         };
-
-                };
+                // }
 
                 this.operand2 = 0;
                 this.pointEntered = false;
@@ -264,31 +293,50 @@ class Calculator {
         };
 
         equal(result) {
+                let vuelta = false;
+                const resultElement = (document.getElementById('result').textContent);
+                console.log("resultElement", resultElement)
+
                 try {
 
                         if (result) {
-                                console.log("result en equal", result);
-                                console.log("Typeof result en equal", typeof(result));
-                                
-                                const endResult = result.toString();
-                                console.log("endResult en equal", endResult);
+                                if (resultElement !== "0") {
 
-                                this.operand2Element.innerHTML = endResult;
-                                
+                                        console.log("result en equal", result);
+                                        console.log("Typeof result en equal", typeof (result));
+
+                                        const endResult = result.toString();
+                                        console.log("endResult en equal", endResult);
+
+                                        this.operand2Element.innerHTML = endResult;
+                                        // if (vuelta === false) {
+                                        console.log("****************PRIMERA OPERACION en EL IFFF DEL EQUAL **************")
+                                        this.operand1Element.innerHTML = `${this.currentOperation} =`;
+                                        this.currentOperation = result;
+                                        // this.operand1Element.innerHTML = this.currentOperation;
+                                        vuelta = true;
+
+                                        // }
+                                        // this.currentOperation = result;
+                                        // } else {
+                                        //         console.log("****************MAS DE UNA ----------- OPERACION en EL IFFF DEL EQUAL **************")
+
+                                }
+
                         } else {
-                                
-                                console.log(this.currentOperation)
-                                this.operand2Element.innerHTML = this.currentOperation;
+
+                                console.log("EN EL ELSE DE EQUAL", this.currentOperation)
                                 this.operand1Element.innerHTML = `${this.currentOperation} =`;
-                                
+                                this.operand2Element.innerHTML = this.currentOperation;
                         };
                 } catch (error) {
                         console.error("Error:", error);
 
-                }
+                };
 
+                this.isEqualPressed = true;
                 return this.currentOperation;
-        }
+        };
 };
 
 export default Calculator;
