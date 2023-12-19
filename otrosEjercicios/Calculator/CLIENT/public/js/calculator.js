@@ -24,79 +24,77 @@ class Calculator {
         };
 
         updateScreen() {
-                // const operand2ElementScreen = document.querySelector("[data-screen-result]");
-                // console.log('operand2ElementScreen', operand2ElementScreen)
+                try {
+                        // const operand2ElementScreen = document.querySelector("[data-screen-result]");
+                        // console.log('operand2ElementScreen', operand2ElementScreen)
+                        let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
 
-                // Obtén el elemento por su id
-                const operandScreenElement = (document.getElementById('operands').textContent);
-                const resultElement = (document.getElementById('result').textContent);
-                // let vuelta = false;
+                        // Obtén el elemento por su id
+                        const operandScreenElement = (document.getElementById('operands').textContent);
+                        const resultElement = (document.getElementById('result').textContent);
+                        // let vuelta = false;
 
 
-                // Accede al contenido (texto) del elemento
-                // const contenido = resultElement.textContent;
+                        // Accede al contenido (texto) del elemento
+                        // const contenido = resultElement.textContent;
 
-                console.log("CONTENIDO", resultElement); // Esto imprimirá "6+3-"
+                        console.log("CONTENIDO", resultElement); // Esto imprimirá "6+3-"
 
-                if (this.currentOperation == "") {
-                        // console.log("this.operand2", this.operand2);
-                        console.log(this.isEqualPressed)
-                        this.operand2Element.innerHTML = this.operand2;
-                        this.operand1Element.innerHTML = 0;
-                        this.operand2 = 0;
-                } else {
-                        // this.operand2Element.innerHTML = this.operand2;
-                        console.log(this.isEqualPressed)
-                        console.log("this.currentOperation en UPDATESCREEN", this.currentOperation);
-                        if (this.isEqualPressed && operandScreenElement !== "0") {
-                                console.log("--------------------- AQUIIIIIIIIIIIIIIIIIIIIIII ----------------------");
-                                this.operand1Element.innerHTML = this.currentOperation;
+                        if (this.currentOperation == "") {
+                                // console.log("this.operand2", this.operand2);
+                                console.log(this.isEqualPressed)
+                                this.operand2Element.innerHTML = this.operand2;
+                                this.operand1Element.innerHTML = 0;
+                                this.operand2 = 0;
+                        } else {
+                                // this.operand2Element.innerHTML = this.operand2;
+                                console.log(this.isEqualPressed)
+                                console.log("this.currentOperation en UPDATESCREEN", this.currentOperation);
+
+                                if (this.isEqualPressed && isNaN(lastCharacter)) {      //Manejar cuando ya tengo un resultado de una operación y se contnua con otra operacion sobre el resultado
+
+                                        let lastResult = this.currentOperation.slice(0, -1);
+                                        this.operand1Element.innerHTML = lastResult;
+                                        this.operand2Element.innerHTML = this.currentOperation;
+
+                                } else {
+                                        this.operand2Element.innerHTML = this.currentOperation;
+
+                                }
                         };
-
-
-                        this.operand2Element.innerHTML = this.currentOperation;
-                };
-                // this.operand2 = 0;
+                        // this.operand2 = 0;
+                } catch (error) {
+                        console.error("Ha ocurrido un error:", error);
+                }
         };
 
         appendNumber(number) {
 
-                console.log("number:", number);
-                console.log("type of number:", typeof (number));
-                console.log("this.operand2 AL INICI DE APPENDNUMBER", this.operand2);
-                console.log("this.pointEntered", this.pointEntered);
+                // console.log("number:", number);
+                // console.log("type of number:", typeof (number));
+                // console.log("this.operand2 AL INICI DE APPENDNUMBER", this.operand2);
+                // console.log("this.pointEntered", this.pointEntered);
 
 
-                // if (number === "." && !this.pointEntered) {
-                //         // this.pointEntered = true
-                //         console.log("Hola")
-                //         console.log("this.pointEntered dentro IF", this.pointEntered);
-                //         return;
 
-                // };
 
                 if (number === "." && this.operand2 == "0") {
-                        console.log("11111111111")
-                        console.log("DENTRO DEL IFFFFFFFFFFFFFFFF")
-                        console.log("number:", number);
-                        console.log("this.currentOperation", this.currentOperation);
+                        // console.log("11111111111")
+                        // console.log("DENTRO DEL IFFFFFFFFFFFFFFFF")
+                        // console.log("number:", number);
+                        // console.log("this.currentOperation", this.currentOperation);
+
                         // Agrega un "0" antes del punto
                         this.operand2 = `0${number}`;
                         this.currentOperation += this.operand2;
                         this.pointEntered = true;  // Se ha ingresado un punto
 
 
-                        console.log("number", number);
-                        console.log("this.operand2 EN EL IF", this.operand2);
-                        console.log("this.currentOperation", this.currentOperation);
-                        console.log("this.pointEntered", this.pointEntered)
-                        // } else if (number === "."  && this.operand2 == "0"){
-                        //         console.log("hola funciona")
-                        //         console.log("this.operand2 cuando number es 0 y this.operand2 = 0", this.operand2);
+                        // console.log("number", number);
+                        // console.log("this.operand2 EN EL IF", this.operand2);
+                        // console.log("this.currentOperation", this.currentOperation);
+                        // console.log("this.pointEntered", this.pointEntered)
 
-                        // } else if (number == "0" && this.operand2 == "0") {
-                        //         console.log("numer 0 y this.operadn2 = 0")
-                        //         console.log("number:", number);
 
                 } else if (number !== "." && number !== "0" && this.operand2 == "0") {
 
@@ -124,7 +122,7 @@ class Calculator {
                         this.pointEntered = true;
                         // } else if (){
                 } else if (number !== ".") {
-                        console.log("HOLAAAAAAAAA")
+                        // console.log("HOLAAAAAAAAA")
                         this.operand2 += number;
                         this.currentOperation += number;
                 };
@@ -259,28 +257,30 @@ class Calculator {
 
                 // } else {
 
-                        if (this.currentOperation == "" && (operator === "*" || operator == "÷")) {
-                                console.log("this.curremtOP vacía");
+
+
+                if (this.currentOperation == "" && (operator === "*" || operator == "÷")) {
+                        console.log("this.curremtOP vacía");
+                        this.operator = operator;
+                        this.operand2 = 0;
+                        this.currentOperation = this.operand2 + this.operator;
+                } else {
+
+                        if (!isNaN(lastCharacter)) {
+                                // if (!isNaN(lastCharacter || lastCharacter == ".")) {
+                                //! console.log("Es un numero");
                                 this.operator = operator;
-                                this.operand2 = 0;
-                                this.currentOperation = this.operand2 + this.operator;
+                                this.currentOperation = this.currentOperation + this.operator;
+
                         } else {
-
-                                if (!isNaN(lastCharacter)) {
-                                        // if (!isNaN(lastCharacter || lastCharacter == ".")) {
-                                        //! console.log("Es un numero");
-                                        this.operator = operator;
-                                        this.currentOperation = this.currentOperation + this.operator;
-
-                                } else {
-                                        //! console.log("NO es un numero")
-                                        this.currentOperation = this.currentOperation.slice(0, -1);
-                                        this.operator = operator;
-                                        this.currentOperation = this.currentOperation + this.operator;
-
-                                };
+                                //! console.log("NO es un numero")
+                                this.currentOperation = this.currentOperation.slice(0, -1);
+                                this.operator = operator;
+                                this.currentOperation = this.currentOperation + this.operator;
 
                         };
+
+                };
                 // }
 
                 this.operand2 = 0;
@@ -293,35 +293,29 @@ class Calculator {
         };
 
         equal(result) {
-                let vuelta = false;
+                // let vuelta = false;
                 const resultElement = (document.getElementById('result').textContent);
                 console.log("resultElement", resultElement)
+                console.log("this.currentOperation en EQUAL", this.currentOperation);
+
 
                 try {
 
                         if (result) {
-                                if (resultElement !== "0") {
+                                // if (resultElement !== "0") {
+                                // if ()
+                                console.log("result en equal", result);
+                                console.log("Typeof result en equal", typeof (result));
 
-                                        console.log("result en equal", result);
-                                        console.log("Typeof result en equal", typeof (result));
+                                const endResult = result.toString();
+                                console.log("endResult en equal", endResult);
 
-                                        const endResult = result.toString();
-                                        console.log("endResult en equal", endResult);
+                                // let newCurrentOperation = result;
+                                // console.log("newCurrentOperation en equal", newCurrentOperation);
 
-                                        this.operand2Element.innerHTML = endResult;
-                                        // if (vuelta === false) {
-                                        console.log("****************PRIMERA OPERACION en EL IFFF DEL EQUAL **************")
-                                        this.operand1Element.innerHTML = `${this.currentOperation} =`;
-                                        this.currentOperation = result;
-                                        // this.operand1Element.innerHTML = this.currentOperation;
-                                        vuelta = true;
-
-                                        // }
-                                        // this.currentOperation = result;
-                                        // } else {
-                                        //         console.log("****************MAS DE UNA ----------- OPERACION en EL IFFF DEL EQUAL **************")
-
-                                }
+                                this.operand2Element.innerHTML = endResult;
+                                this.operand1Element.innerHTML = `${this.currentOperation} =`;
+                                this.currentOperation = result;
 
                         } else {
 
