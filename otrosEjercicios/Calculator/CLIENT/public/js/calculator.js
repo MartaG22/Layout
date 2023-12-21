@@ -6,6 +6,7 @@ class Calculator {
                 this.currentOperation = "";
                 this.pointEntered = false;  // Variable para rastrear si ya se ha ingresado un punto
                 this.isEqualPressed = false;
+                this.update = false;
 
                 this.clear();
         };
@@ -17,6 +18,8 @@ class Calculator {
                 this.currentOperation = "";
                 this.pointEntered = false;  // Variable para rastrear si ya se ha ingresado un punto
                 this.isEqualPressed = false;
+                this.update = false;
+
 
 
                 // console.log("CLEAR  operand1:", this.operand1,"operand2:", this.operand2, "currentOP:", this.currentOperation)
@@ -51,16 +54,31 @@ class Calculator {
                                 console.log(this.isEqualPressed)
                                 console.log("this.currentOperation en UPDATESCREEN", this.currentOperation);
 
-                                if (this.isEqualPressed && isNaN(lastCharacter)) {      //Manejar cuando ya tengo un resultado de una operación y se contnua con otra operacion sobre el resultado
+                                let lastResult = this.currentOperation.slice(0, -1);
 
-                                        let lastResult = this.currentOperation.slice(0, -1);
-                                        this.operand1Element.innerHTML = lastResult;
+                                // if (this.isEqualPressed) 
+                                // if (this.isEqualPressed && isNaN(lastCharacter && this.update)) {      //Manejar cuando ya tengo un resultado de una operación y se contnua con otra operacion sobre el resultado dado
+                                if (this.isEqualPressed && isNaN(lastCharacter)) {      //Manejar cuando ya tengo un resultado de una operación y se contnua con otra operacion sobre el resultado dado
+                                        console.log("EN EL IF DENTRO DEL ELSE")
+
+                                        this.operand1Element.innerHTML = this.operand1;
                                         this.operand2Element.innerHTML = this.currentOperation;
+                                        this.update = true;
 
+                                // } else if (this.isEqualPressed && !isNaN(lastCharacter && this.update)) {
+                                //         console.log("EN EL else IF DENTRO DEL ELSE ---------- lastCharacter es un número")
+                                //         // this.operand1Element.innerHTML = lastResult;
+                                //         this.operand2Element.innerHTML = this.currentOperation;
+
+                                
+                                // } else if (!this.isEqualPressed) {
+                                //         console.log("EN EL ELSE IF ---- DENTRO DEL ELSE")
+                                //         // console.log("EN EL ELSE")
+                                //         this.operand2Element.innerHTML = this.currentOperation;
+                                        
                                 } else {
                                         this.operand2Element.innerHTML = this.currentOperation;
-
-                                }
+                                };
                         };
                         // this.operand2 = 0;
                 } catch (error) {
@@ -247,9 +265,8 @@ class Calculator {
 
                 let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
                 // console.log("ultimoCaracter", lastCharacter);
-                // if (this.isEqualPressed){
 
-                // }
+
                 // if (this.isEqualPressed) {
                 //         console.log("EN EL IFF DENTRO DE OPERATION, PARA NO CAMBIAR EL OPERAND_______________");
                 //         console.log(this.operator)
@@ -316,6 +333,7 @@ class Calculator {
                                 this.operand2Element.innerHTML = endResult;
                                 this.operand1Element.innerHTML = `${this.currentOperation} =`;
                                 this.currentOperation = result;
+                                this.operand1 = result;
 
                         } else {
 
