@@ -18,7 +18,7 @@ class Calculator {
                 this.currentOperation = "";
                 this.pointEntered = false;  // Variable para rastrear si ya se ha ingresado un punto
                 this.isEqualPressed = false;
-                // this.update = false;
+                this.update = false;
 
 
 
@@ -26,11 +26,11 @@ class Calculator {
                 this.updateScreen();
         };
 
-
         updateScreen() {
                 try {
                         // const operand2ElementScreen = document.querySelector("[data-screen-result]");
                         // console.log('operand2ElementScreen', operand2ElementScreen)
+                        // OBTENER EL ÚLTIMO CARACTER DE LA CADENA
                         let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
 
                         // Obtén el elemento por su id
@@ -56,48 +56,66 @@ class Calculator {
                                 console.log("this.currentOperation en UPDATESCREEN", this.currentOperation);
 
                                 // let lastResult = this.currentOperation.slice(0, -1);
-
+                                // console.log("lastResult", lastResult);
                                 // if (this.isEqualPressed) 
                                 // if (this.isEqualPressed && isNaN(lastCharacter && this.update)) {      //Manejar cuando ya tengo un resultado de una operación y se contnua con otra operacion sobre el resultado dado
-                                // if (this.isEqualPressed && isNaN(lastCharacter)) {      //Manejar cuando ya tengo un resultado de una operación y se contnua con otra operacion sobre el resultado dado
-                                if (this.isEqualPressed && isNaN(lastCharacter)) {      //Manejar cuando ya tengo un resultado de una operación y se contnua con otra operacion sobre el resultado dado
-                                        console.log("--------------<<<<<<<<-***********->>>>>>>>>>>-------------------")
-                                        console.log("EN EL IF DENTRO DEL ELSE")
-                                        console.log("CREO QUE NO ENTRA ENE ESTE IF")
-                                        this.operand1Element.innerHTML = this.operand1;
-                                        this.operand2Element.innerHTML = this.currentOperation;
-                                        this.isEqualPressed = false;
-                                        this.update = true;
-
 
                                         
-                                } else if (this.isEqualPressed && !isNaN(lastCharacter)) {
-                                        // this.operand1Element.innerHTML = this.operand1;
-                                        this.operand1Element.innerHTML = this.currentOperation;
-                                        this.operand2Element.innerHTML = this.operand2;
-                                        this.isEqualPressed = false;
-                                        this.update = true;
-                                        this.currentOperation = this.operand2;
-
-                                } else if (!isNaN(lastCharacter) && this.update) {
-                                        console.log("--------------<<<<<<<<-12345678900987654321->>>>>>>>>>>-------------------")
+                                if (this.isEqualPressed && isNaN(lastCharacter)) {      //Manejar cuando ya tengo un resultado de una operación y se contnua con otra operacion sobre el resultado dado
+                                        console.log("EN EL IF DENTRO DEL ELSE, CUANDO lastCharacter isNAN true")
+                                        console.log("NO ESTOY SEGURA DE SI ENTRA EN ESTE IF")
                                         this.operand1Element.innerHTML = this.operand1;
                                         this.operand2Element.innerHTML = this.currentOperation;
+                                        this.update = true;
+
+                                        // } else if (this.isEqualPressed && !isNaN(lastCharacter && this.update)) {
+                                        //         console.log("EN EL else IF DENTRO DEL ELSE ---------- lastCharacter es un número")
+                                        //         // this.operand1Element.innerHTML = lastResult;
+                                        //         this.operand2Element.innerHTML = this.currentOperation;
 
 
+                                        // } else if (!this.isEqualPressed) {
+                                        //         console.log("EN EL ELSE IF ---- DENTRO DEL ELSE")
+                                        //         // console.log("EN EL ELSE")
+                                        //         this.operand2Element.innerHTML = this.currentOperation;
+                                
+                                } else if (this.isEqualPressed && !isNaN(lastCharacter)) {
+                                        console.log("EN EL ELSE DENTRO DEL ELSE, CUANDO lastCharacter isNAN flase && this.isEqualPressed false")
+                                        this.operand1Element.innerHTML = this.currentOperation;
+                                        this.operand2Element.innerHTML = this.operand2;
+                                        this.currentOperation = this.operand2;
+                                        // this.update = true;
+                                        // this.isEqualPressed = false;
+// !   ME HE QUEDADO AQUÍ, FUNCIANA A MEIDAS - PUEDE    que entre en este if y el siguiente!!!
+                       
                                 
                                 } else {
+                                        console.log("EN EL ELSE DENTRO DEL ELSE, CUANDO lastCharacter isNAN flase && this.isEqualPressed false")
+
                                         this.operand2Element.innerHTML = this.currentOperation;
                                 };
-                        };
+                     };
+
+  
+                
+
+
+
                         // this.operand2 = 0;
                 } catch (error) {
                         console.error("Ha ocurrido un error:", error);
                 }
         };
 
-
         appendNumber(number) {
+                // console.log("number:", number);
+                // console.log("type of number:", typeof (number));
+                // console.log("this.operand2 AL INICI DE APPENDNUMBER", this.operand2);
+                // console.log("this.pointEntered", this.pointEntered);
+
+
+
+
 
                 console.log("number:", number);
                 console.log("this.update :", this.update );
@@ -110,11 +128,10 @@ class Calculator {
                 const resultElement = (document.getElementById('result').textContent);
                 console.log("CONTENIDO en APPEBDNUMBER", resultElement); // Esto imprimirá "6+3-"
 
-                try {
 
                 // if (this.update && !isNaN(this.currentOperation)) {
                 if (this.isEqualPressed && this.currentOperation == this.operand1) {
-                        console.log("**************************+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++number aqqquiiiiii:", number);
+                        console.log("number aqqquiiiiii:", number);
                         // console.log("this.update :", this.update );
                         // console.log("isNaN this.currentOperation :", isNaN(this.currentOperation) );
                         // console.log("this.operand2 en el primer IF, para seguir operando despues del resultado", this.operand2);
@@ -124,13 +141,9 @@ class Calculator {
                         this.operand2 = number;
                         this.currentOperation = resultElement;
 
-                        console.log("ESTOY EN APPENDNUMBER, this.isequalPressend true y currentopreation=operand1");
                         console.log("this.operand2 ", this.operand2);
                         console.log("this.currentOperation", this.currentOperation);
-                        this.operand2 = number;
-                        this.currentOperation = resultElement;
-                        console.log("DESPUÉS DE IGUALAR OPREAND2 - this.operand2 ", this.operand2);
-                        console.log("DESPUÉS DE IGUALAR OPREAND2 - this.currentOperation", this.currentOperation);
+
 
 
                 } else {
@@ -212,14 +225,8 @@ class Calculator {
                 // TODO [x] ver como manejar si el primer botón pulsado es algun no admitido, ejem (+, -, /, *)
 
 
-                console.log("AL FINAL DE  APPENDNUMBER - this.operand2 ", this.operand2);
-                console.log("AL FINAL DE  APPENDNUMBER - this.currentOperation", this.currentOperation);
-
                 this.updateScreen();
 
-                } catch (error) {
-                        console.error("Ha ocurrido un error:", error);
-                };
         };
 
 
