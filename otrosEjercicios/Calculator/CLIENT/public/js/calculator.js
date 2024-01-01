@@ -373,13 +373,24 @@ class Calculator {
                 this.updateScreen();
         };
 
-        
+        percentage() {
+                try  {
+                        this.operator = "%";
+                        this.currentOperation = this.currentOperation + this.operator;
+                        
+                        this.updateScreen();
+
+                } catch (error) {
+                        console.error("Error:", error);
+
+                };
+        };
+
         equal(result) {
                 // let vuelta = false;
                 const resultElement = (document.getElementById('result').textContent);
                 console.log("resultElement", resultElement)
                 console.log("this.currentOperation en EQUAL", this.currentOperation);
-
 
                 try {
 
@@ -406,13 +417,14 @@ class Calculator {
                                 this.operand1Element.innerHTML = `${this.currentOperation} =`;
                                 this.operand2Element.innerHTML = this.currentOperation;
                         };
+                        
+                        this.isEqualPressed = true;
+                        return this.currentOperation;
+
                 } catch (error) {
                         console.error("Error:", error);
 
                 };
-
-                this.isEqualPressed = true;
-                return this.currentOperation;
         };
 };
 

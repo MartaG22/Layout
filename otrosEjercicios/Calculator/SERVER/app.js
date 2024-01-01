@@ -4,7 +4,7 @@ const cors = require("cors");
 
 const app = express();
 const port = 3030;
-const routes = require("./routes/index_routes.js");   //! ????
+const routes = require("../SERVER/routes/index_routes.js");   //! ????
 const parseExpresion = require("./helpers/parseExpression.js");
 const solveSequence = require("./helpers/solveSequence.js");
 
@@ -26,12 +26,16 @@ app.post("/calculate", (req, res) => {
         console.log("expression", expression)
         console.log("type of expression", typeof (expression))
 
-        const secuenciaNumerica = expression.replace(/÷/g, "/");
+
+        const secuenciaNumerica = expression.replace(/(\d+)%(\d+)/g, function(match, p1, p2) {
+                // p1 es el primer grupo de captura (\d+), p2 es el segundo grupo de captura (\d+)
+                return "(" + p1 + " / 100) * " + p2;
+        });
 
 
         try {
                 //     result = eval(expression);
-
+                
                 const nuevaSecuencia = parseExpresion(secuenciaNumerica);
                 console.log("secuenciaNumerica", nuevaSecuencia);
                 

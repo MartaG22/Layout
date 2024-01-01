@@ -180,6 +180,7 @@ equalButton.addEventListener("click", async () => {
 })
 
 percentageButton.addEventListener("click", () => {
+        console.log("PERCENTATGE!!!!");
         calculator.percentage();
 })
 
