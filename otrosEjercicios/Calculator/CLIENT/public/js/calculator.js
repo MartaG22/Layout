@@ -132,10 +132,15 @@ class Calculator {
                         console.log("DESPUÉS DE IGUALAR OPREAND2 - this.operand2 ", this.operand2);
                         console.log("DESPUÉS DE IGUALAR OPREAND2 - this.currentOperation", this.currentOperation);
 
-
+                        if (number === ".") {
+                                console.log("AQUÍ HAY QUE SUSTITUR ALGO POR EL 0, PARA QUE SE ACTUALICE BIEN AL ELIMINAR EL ULTIMO NUMRERO")
+                                this.operand2 = `0${number}`;
+                                this.currentOperation = this.operand2;
+                                this.pointEntered = true;  // Se ha ingresado un punto
+                        };
+                        
                 } else {
-
-                        // }
+                        
 
                         if (number === "." && this.operand2 == "0") {
                                 // console.log("11111111111")
@@ -249,6 +254,12 @@ class Calculator {
                         this.operand2 = this.currentOperation;
                         console.log(this.operand2);
                         this.pointEntered = this.operand2.includes(".") ? true : false;
+                        console.log("this.operand2 en ERASENUMBER", this.operand2);
+                        if (this.operand2 == "") {
+                                console.log("AQUI HAY QUE MANDAR QUE ESCRIBA UN 0")
+                                this.operand2 = 0;
+                        }
+
                 };
 
                 console.log("this.operand2", this.operand2);
@@ -330,7 +341,7 @@ class Calculator {
 
 
 
-                if (this.currentOperation == "" && (operator === "*" || operator == "÷")) {
+                if (this.currentOperation == "" && (operator === "*" || operator == "/")) {
                         console.log("this.curremtOP vacía");
                         this.operator = operator;
                         this.operand2 = 0;
@@ -348,7 +359,6 @@ class Calculator {
                                 this.currentOperation = this.currentOperation.slice(0, -1);
                                 this.operator = operator;
                                 this.currentOperation = this.currentOperation + this.operator;
-
                         };
 
                 };

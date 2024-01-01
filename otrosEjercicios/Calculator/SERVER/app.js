@@ -4,7 +4,7 @@ const cors = require("cors");
 
 const app = express();
 const port = 3030;
-const routes = require("../SERVER/routes/index_routes.js");   //! ????
+const routes = require("./routes/index_routes.js");   //! ????
 const parseExpresion = require("./helpers/parseExpression.js");
 const solveSequence = require("./helpers/solveSequence.js");
 
@@ -26,16 +26,19 @@ app.post("/calculate", (req, res) => {
         console.log("expression", expression)
         console.log("type of expression", typeof (expression))
 
+        const secuenciaNumerica = expression.replace(/÷/g, "/");
+
 
         try {
                 //     result = eval(expression);
 
-                const secuenciaNumerica = parseExpresion(expression);
-                console.log("secuenciaNumerica", secuenciaNumerica);
+                const nuevaSecuencia = parseExpresion(secuenciaNumerica);
+                console.log("secuenciaNumerica", nuevaSecuencia);
+                
 
 
                 try {
-                        const endResult = solveSequence(secuenciaNumerica);
+                        const endResult = solveSequence(nuevaSecuencia);
                         console.log("Resultado final:", endResult);
                         console.log("typeof Resultado final:", typeof(endResult));
 
