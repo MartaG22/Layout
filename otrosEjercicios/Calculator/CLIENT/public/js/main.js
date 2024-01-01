@@ -111,6 +111,8 @@ const eraseNumber = document.getElementById("erase");
 const operationButtons = document.querySelectorAll("[data-operation]");
 const percentageButton = document.getElementById("percentage");
 const equalButton = document.getElementById("equal");
+const piButton = document.getElementById("pi");
+const eButton = document.getElementById("numberE");
 const apiUrl = 'http://localhost:3030';
 
 // console.log("operand2Element en MAIN***********", operand2Element)
@@ -131,7 +133,7 @@ numberButtons.forEach(button => {
 });
 
 eraseNumber.addEventListener("click", () => {
-        console.log("eraseNumber.addEvent");
+        // console.log("eraseNumber.addEvent");
         calculator.eraseNumber();
 });
 
@@ -141,6 +143,22 @@ operationButtons.forEach(button => {
                 calculator.operation(button.innerHTML);
         });
 });
+
+
+piButton.addEventListener("click", () => {
+        console.log("piBUTTON");
+        const pi = 3.1415926536;
+        calculator.appendNumber(pi);
+
+});
+
+eButton.addEventListener("click", () => {
+        console.log("e  BUTTON");
+        const numberE = 2.71828182846;
+        calculator.appendNumber(numberE);
+
+});
+
 
 equalButton.addEventListener("click", async () => {
         let operation = calculator.equal();

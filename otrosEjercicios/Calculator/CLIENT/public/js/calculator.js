@@ -35,14 +35,14 @@ class Calculator {
 
                         // Obtén el elemento por su id
                         // const operandScreenElement = (document.getElementById('operands').textContent);
-                        const resultElement = (document.getElementById('result').textContent);
+                        // const resultElement = (document.getElementById('result').textContent);
                         // let vuelta = false;
 
 
                         // Accede al contenido (texto) del elemento
                         // const contenido = resultElement.textContent;
 
-                        console.log("CONTENIDO", resultElement); // Esto imprimirá "6+3-"
+                        // console.log("CONTENIDO", resultElement); // Esto imprimirá "6+3-"
 
                         if (this.currentOperation == "") {
                                 // console.log("this.operand2", this.operand2);
@@ -373,6 +373,7 @@ class Calculator {
                 this.updateScreen();
         };
 
+        
         equal(result) {
                 // let vuelta = false;
                 const resultElement = (document.getElementById('result').textContent);
