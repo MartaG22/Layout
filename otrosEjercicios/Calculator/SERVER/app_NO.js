@@ -27,7 +27,7 @@ app.post("/calculate", (req, res) => {
         console.log("type of expression", typeof (expression))
 
 
-        const secuenciaNumerica = expression.replace(/÷/g, "/").replace(/(\d+)%(\d+)/g, function(match, p1, p2) {
+        const secuenciaNumerica = expression.replace(/(\d+)%(\d+)/g, function(match, p1, p2) {
                 // p1 es el primer grupo de captura (\d+), p2 es el segundo grupo de captura (\d+)
                 return "(" + p1 + " / 100) * " + p2;
         });

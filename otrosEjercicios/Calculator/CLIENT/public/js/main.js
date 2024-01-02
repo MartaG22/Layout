@@ -146,18 +146,27 @@ operationButtons.forEach(button => {
 
 
 piButton.addEventListener("click", () => {
-        console.log("piBUTTON");
+        // console.log("piBUTTON");
         const pi = 3.1415926536;
         calculator.appendNumber(pi);
 
 });
 
 eButton.addEventListener("click", () => {
-        console.log("e  BUTTON");
+        // console.log("e  BUTTON");
         const numberE = 2.71828182846;
         calculator.appendNumber(numberE);
 
 });
+
+initialParenthesis.addEventListener("click", () => {
+        // console.log("PARENTESIS")
+        calculator.addParenthesis();
+});
+
+endParenthesis.addEventListener("click", () => {
+        calculator.endParenthesis();
+})
 
 
 equalButton.addEventListener("click", async () => {

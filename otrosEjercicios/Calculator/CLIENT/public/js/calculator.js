@@ -7,6 +7,7 @@ class Calculator {
                 this.pointEntered = false;  // Variable para rastrear si ya se ha ingresado un punto
                 this.isEqualPressed = false;
                 this.update = false;
+                this.parenthesis = false;
 
                 this.clear();
         };
@@ -18,6 +19,8 @@ class Calculator {
                 this.currentOperation = "";
                 this.pointEntered = false;  // Variable para rastrear si ya se ha ingresado un punto
                 this.isEqualPressed = false;
+                this.parenthesis = false;
+
                 // this.update = false;
 
 
@@ -70,7 +73,7 @@ class Calculator {
                                         this.update = true;
 
 
-                                        
+
                                 } else if (this.isEqualPressed && !isNaN(lastCharacter)) {
                                         // this.operand1Element.innerHTML = this.operand1;
                                         this.operand1Element.innerHTML = this.currentOperation;
@@ -85,7 +88,7 @@ class Calculator {
                                         this.operand2Element.innerHTML = this.currentOperation;
 
 
-                                
+
                                 } else {
                                         this.operand2Element.innerHTML = this.currentOperation;
                                 };
@@ -100,8 +103,8 @@ class Calculator {
         appendNumber(number) {
 
                 console.log("number:", number);
-                console.log("this.update :", this.update );
-                console.log("isNaN this.currentOperation :", isNaN(this.currentOperation) );
+                console.log("this.update :", this.update);
+                console.log("isNaN this.currentOperation :", isNaN(this.currentOperation));
                 console.log("this.operand2 en el primer IF, para seguir operando despues del resultado", this.operand2);
                 // console.log("this.operand1 ", this.operand1);
                 console.log("this.operand1 ", this.operand1);
@@ -112,115 +115,125 @@ class Calculator {
 
                 try {
 
-                // if (this.update && !isNaN(this.currentOperation)) {
-                if (this.isEqualPressed && this.currentOperation == this.operand1) {
-                        console.log("**************************+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++number aqqquiiiiii:", number);
-                        // console.log("this.update :", this.update );
-                        // console.log("isNaN this.currentOperation :", isNaN(this.currentOperation) );
-                        // console.log("this.operand2 en el primer IF, para seguir operando despues del resultado", this.operand2);
-                        // // console.log("this.operand1 ", this.operand1);
-                        // console.log("this.operand1 ", this.operand1);
-                        // console.log("this.currentOperation", this.currentOperation);
-                        this.operand2 = number;
-                        this.currentOperation = resultElement;
-
-                        console.log("ESTOY EN APPENDNUMBER, this.isequalPressend true y currentopreation=operand1");
-                        console.log("this.operand2 ", this.operand2);
-                        console.log("this.currentOperation", this.currentOperation);
-                        this.operand2 = number;
-                        this.currentOperation = resultElement;
-                        console.log("DESPUÉS DE IGUALAR OPREAND2 - this.operand2 ", this.operand2);
-                        console.log("DESPUÉS DE IGUALAR OPREAND2 - this.currentOperation", this.currentOperation);
-
-                        if (number === ".") {
-                                console.log("AQUÍ HAY QUE SUSTITUR ALGO POR EL 0, PARA QUE SE ACTUALICE BIEN AL ELIMINAR EL ULTIMO NUMRERO")
-                                this.operand2 = `0${number}`;
-                                this.currentOperation = this.operand2;
-                                this.pointEntered = true;  // Se ha ingresado un punto
-                        };
-                        
-                } else {
-                        
-
-                        if (number === "." && this.operand2 == "0") {
-                                // console.log("11111111111")
-                                // console.log("DENTRO DEL IFFFFFFFFFFFFFFFF")
-                                // console.log("number:", number);
+                        // if (this.update && !isNaN(this.currentOperation)) {
+                        if (this.isEqualPressed && this.currentOperation == this.operand1) {
+                                console.log("**************************+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++number aqqquiiiiii:", number);
+                                // console.log("this.update :", this.update );
+                                // console.log("isNaN this.currentOperation :", isNaN(this.currentOperation) );
+                                // console.log("this.operand2 en el primer IF, para seguir operando despues del resultado", this.operand2);
+                                // // console.log("this.operand1 ", this.operand1);
+                                // console.log("this.operand1 ", this.operand1);
                                 // console.log("this.currentOperation", this.currentOperation);
-
-                                // Agrega un "0" antes del punto
-                                this.operand2 = `0${number}`;
-                                this.currentOperation += this.operand2;
-                                this.pointEntered = true;  // Se ha ingresado un punto
-
-
-                                // console.log("number", number);
-                                // console.log("this.operand2 EN EL IF", this.operand2);
-                                // console.log("this.currentOperation", this.currentOperation);
-                                // console.log("this.pointEntered", this.pointEntered)
-
-
-                        } else if (number !== "." && number !== "0" && this.operand2 == "0") {
-
-                                console.log("number:", number);
-                                console.log("------thi.oper2 dentro del segundo iF", this.operand2);
                                 this.operand2 = number;
-                                // this.operand2 = `0${number}`;
-                                console.log("después de igaualar a numbber IF2", this.operand2)
-                                this.currentOperation += this.operand2;
+                                this.currentOperation = resultElement;
 
-                                // } else if ((!isNaN(number) && this.operand2 !== "0")) {
-                        } else if (number !== "." && number !== "0" && this.operand2 !== "0") {
-                                console.log("<<<<<<<<<<<<<<<<<<>>>>>>>>>>>  ESTE IF  <<<<<<<<<>>>>>>>>>>>>>>>>>>>>>")
-                                console.log("number:", number);
-                                console.log("this,ioer2 entro del tercer IF", this.operand2);
+                                console.log("ESTOY EN APPENDNUMBER, this.isequalPressend true y currentopreation=operand1");
+                                console.log("this.operand2 ", this.operand2);
+                                console.log("this.currentOperation", this.currentOperation);
+                                this.operand2 = number;
+                                this.currentOperation = resultElement;
+                                console.log("DESPUÉS DE IGUALAR OPREAND2 - this.operand2 ", this.operand2);
+                                console.log("DESPUÉS DE IGUALAR OPREAND2 - this.currentOperation", this.currentOperation);
 
-                                this.operand2 += number;
-                                console.log("despues igualar IF3", this.operand2)
-                                this.currentOperation += number;
+                                if (number === ".") {
+                                        console.log("AQUÍ HAY QUE SUSTITUR ALGO POR EL 0, PARA QUE SE ACTUALICE BIEN AL ELIMINAR EL ULTIMO NUMRERO")
+                                        this.operand2 = `0${number}`;
+                                        this.currentOperation = this.operand2;
+                                        this.pointEntered = true;  // Se ha ingresado un punto
+                                };
 
-                        } else if (number == "." && this.operand2 !== "0" && !this.pointEntered) {
-                                console.log("number:", number);
-                                console.log("this,ioer2 entro del cuarto IF", this.operand2);
-                                this.operand2 += number;
-                                this.currentOperation += number;
-                                this.pointEntered = true;
-                                // } else if (){
+                        } else {
 
-                                // } else if () {
+                                if (this.parenthesis) {
+                                        const withoutEndParenthesis = resultElement.slice(0, -1);
+                                        console.log("withoutParenthesis", withoutEndParenthesis);
+                                        this.currentOperation = withoutEndParenthesis;
+                                };
 
-                                // }
 
-                        } else if (number !== ".") {
-                                console.log("HOLAAAAAAAAA en el último ELSE IF DE APPENDNUMBER!!!!!!!!!!!!!!!")
-                                //!  cREO QUE NO ENTRA EN ESTA CONDICIÓN, SE QUEDA EN LAS ANTERIORES!
-                                this.operand2 += number;
-                                this.currentOperation += number;
+                                if (number === "." && this.operand2 == "0") {
+                                        // console.log("11111111111")
+                                        // console.log("DENTRO DEL IFFFFFFFFFFFFFFFF")
+                                        // console.log("number:", number);
+                                        // console.log("this.currentOperation", this.currentOperation);
+
+                                        // Agrega un "0" antes del punto
+                                        this.operand2 = `0${number}`;
+                                        this.currentOperation += this.operand2;
+                                        this.pointEntered = true;  // Se ha ingresado un punto
+
+
+                                        // console.log("number", number);
+                                        // console.log("this.operand2 EN EL IF", this.operand2);
+                                        // console.log("this.currentOperation", this.currentOperation);
+                                        // console.log("this.pointEntered", this.pointEntered)
+
+
+                                } else if (number !== "." && number !== "0" && this.operand2 == "0") {
+
+                                        console.log("number:", number);
+                                        console.log("------thi.oper2 dentro del segundo iF", this.operand2);
+                                        this.operand2 = number;
+                                        // this.operand2 = `0${number}`;
+                                        console.log("después de igaualar a numbber IF2", this.operand2)
+                                        this.currentOperation += this.operand2;
+
+                                        // } else if ((!isNaN(number) && this.operand2 !== "0")) {
+                                } else if (number !== "." && number !== "0" && this.operand2 !== "0") {
+                                        console.log("<<<<<<<<<<<<<<<<<<>>>>>>>>>>>  ESTE IF  <<<<<<<<<>>>>>>>>>>>>>>>>>>>>>")
+                                        console.log("number:", number);
+                                        console.log("this,ioer2 entro del tercer IF", this.operand2);
+
+                                        this.operand2 += number;
+                                        console.log("despues igualar IF3", this.operand2)
+                                        this.currentOperation += number;
+
+                                } else if (number == "." && this.operand2 !== "0" && !this.pointEntered) {
+                                        console.log("number:", number);
+                                        console.log("this,ioer2 entro del cuarto IF", this.operand2);
+                                        this.operand2 += number;
+                                        this.currentOperation += number;
+                                        this.pointEntered = true;
+                                        // } else if (){
+
+                                        // } else if () {
+
+                                        // }
+
+                                } else if (number !== ".") {
+                                        console.log("HOLAAAAAAAAA en el último ELSE IF DE APPENDNUMBER!!!!!!!!!!!!!!!")
+                                        //!  cREO QUE NO ENTRA EN ESTA CONDICIÓN, SE QUEDA EN LAS ANTERIORES!
+                                        this.operand2 += number;
+                                        this.currentOperation += number;
+                                };
+
+                                if (this.parenthesis) {
+                                        this.currentOperation += ")";
+                                }
+                                // };
                         };
 
-                }
+                        // };
 
-                // };
+                        // //! HAY QUE MANEJAR LA OPCIÓN DE INTRODUCIR CERO Y QUE PONGA EL PUNTO
+                        // if (number === "." && this.operand2 == "0") {
+                        //         console.log(" ******** IF 1")
+                        //         // Agrega un "0" antes del punto
+                        //         this.operand2 = `0${number}`;
+                        //         this.currentOperation += this.operand2;
+                        //         this.pointEntered = true;  // Se ha ingresado un punto
+                        // };
 
-                // //! HAY QUE MANEJAR LA OPCIÓN DE INTRODUCIR CERO Y QUE PONGA EL PUNTO
-                // if (number === "." && this.operand2 == "0") {
-                //         console.log(" ******** IF 1")
-                //         // Agrega un "0" antes del punto
-                //         this.operand2 = `0${number}`;
-                //         this.currentOperation += this.operand2;
-                //         this.pointEntered = true;  // Se ha ingresado un punto
-                // };
-
-                // TODO [x] Cuando introduzco 0 y luego "." ==> me pone "00."
-                // TODO [x] Manejar el añadir la segunda cifra después del signo, que no concatene. Ahora borra la pantalla
-                // TODO [x] PONE MÁS DE UN PUNTO EN EL MISMO NÚMERO
-                // TODO [x] ver como manejar si el primer botón pulsado es algun no admitido, ejem (+, -, /, *)
+                        // TODO [x] Cuando introduzco 0 y luego "." ==> me pone "00."
+                        // TODO [x] Manejar el añadir la segunda cifra después del signo, que no concatene. Ahora borra la pantalla
+                        // TODO [x] PONE MÁS DE UN PUNTO EN EL MISMO NÚMERO
+                        // TODO [x] ver como manejar si el primer botón pulsado es algun no admitido, ejem (+, -, /, *)
 
 
-                console.log("AL FINAL DE  APPENDNUMBER - this.operand2 ", this.operand2);
-                console.log("AL FINAL DE  APPENDNUMBER - this.currentOperation", this.currentOperation);
+                        console.log("AL FINAL DE  APPENDNUMBER - this.operand2 ", this.operand2);
+                        console.log("AL FINAL DE  APPENDNUMBER - this.currentOperation", this.currentOperation);
 
-                this.updateScreen();
+                        this.updateScreen();
 
                 } catch (error) {
                         console.error("Ha ocurrido un error:", error);
@@ -327,7 +340,7 @@ class Calculator {
      */
 
         operation(operator) {
-
+                const resultElement = (document.getElementById('result').textContent);
                 let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
                 // console.log("ultimoCaracter", lastCharacter);
 
@@ -341,28 +354,43 @@ class Calculator {
 
 
 
-                if (this.currentOperation == "" && (operator === "*" || operator == "/")) {
+                if (this.currentOperation == "" && (operator == "*" || operator == "/")) {
                         console.log("this.curremtOP vacía");
                         this.operator = operator;
                         this.operand2 = 0;
                         this.currentOperation = this.operand2 + this.operator;
                 } else {
 
+                        if (this.parenthesis) {
+                                const withoutEndParenthesis = resultElement.slice(0, -1);
+                                console.log("withoutParenthesis", withoutEndParenthesis);
+                                this.currentOperation = withoutEndParenthesis;
+                                console.log("this.currentOperation después de quitarparentesis", this.currentOperation);
+                                
+                        };
+                        
                         if (!isNaN(lastCharacter)) {
                                 // if (!isNaN(lastCharacter || lastCharacter == ".")) {
-                                //! console.log("Es un numero");
-                                this.operator = operator;
-                                this.currentOperation = this.currentOperation + this.operator;
-
-                        } else {
-                                //! console.log("NO es un numero")
-                                this.currentOperation = this.currentOperation.slice(0, -1);
-                                this.operator = operator;
-                                this.currentOperation = this.currentOperation + this.operator;
+                                        //! console.log("Es un numero");
+                                        this.operator = operator;
+                                        this.currentOperation += this.operator;
+                                        console.log("this.currentOperation cuando lastcaracter es un numero", this.currentOperation);
+                                        
+                                } else {
+                                        //! console.log("NO es un numero")
+                                        //! SI ACTIVO ESTA LÍNEA ME BORRA DATOS DE LA PAMTALLA Y NO CALCULA BIEN
+                                        // this.currentOperation = this.currentOperation.slice(0, -1);
+                                        this.operator = operator;
+                                        this.currentOperation += this.operator;
+                                        console.log("this.currentOperation cuando lastcaracter NOO es un numero", this.currentOperation);
                         };
 
                 };
                 // }
+
+                if (this.parenthesis) {
+                        this.currentOperation += ")";
+                }
 
                 this.operand2 = 0;
                 this.pointEntered = false;
@@ -374,10 +402,10 @@ class Calculator {
         };
 
         percentage() {
-                try  {
+                try {
                         this.operator = "%";
                         this.currentOperation = this.currentOperation + this.operator;
-                        
+
                         this.updateScreen();
 
                 } catch (error) {
@@ -385,6 +413,20 @@ class Calculator {
 
                 };
         };
+
+
+        addParenthesis() {
+                try {
+                        this.operand2 = "()";
+                        this.currentOperation += this.operand2;
+                        this.parenthesis = true;
+                        this.updateScreen();
+
+                } catch (error) {
+                        console.error("Error:", error);
+                };
+        };
+
 
         equal(result) {
                 // let vuelta = false;
@@ -417,7 +459,7 @@ class Calculator {
                                 this.operand1Element.innerHTML = `${this.currentOperation} =`;
                                 this.operand2Element.innerHTML = this.currentOperation;
                         };
-                        
+
                         this.isEqualPressed = true;
                         return this.currentOperation;
 
