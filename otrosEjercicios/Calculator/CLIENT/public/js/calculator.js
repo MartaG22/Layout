@@ -427,6 +427,17 @@ class Calculator {
                 };
         };
 
+        endParenthesis() {
+                try {
+                        // this.operand2 = "()";
+                        // this.currentOperation += this.operand2;
+                        this.parenthesis = false;
+                        this.updateScreen();
+
+                } catch (error) {
+                        console.error("Error:", error);
+                };
+        };
 
         equal(result) {
                 // let vuelta = false;

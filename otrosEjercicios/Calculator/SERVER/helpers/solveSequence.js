@@ -1,6 +1,7 @@
 const math = require('mathjs');
 
 function solveSequence(sequence) {
+        console.log("sequence:", sequence)
         try {
                 const result = math.evaluate(sequence.join(' '));
                 console.log("result", result)
