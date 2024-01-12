@@ -17,7 +17,7 @@ class Calculator {
                 this.operand2 = 0;
                 this.operator = "";
                 this.currentOperation = "";
-                this.pointEntered = false;  // Variable para rastrear si ya se ha ingresado un punto
+                this.pointEntered = false;
                 this.isEqualPressed = false;
                 this.parenthesis = false;
 
@@ -63,10 +63,11 @@ class Calculator {
                                 // if (this.isEqualPressed) 
                                 // if (this.isEqualPressed && isNaN(lastCharacter && this.update)) {      //Manejar cuando ya tengo un resultado de una operación y se contnua con otra operacion sobre el resultado dado
                                 // if (this.isEqualPressed && isNaN(lastCharacter)) {      //Manejar cuando ya tengo un resultado de una operación y se contnua con otra operacion sobre el resultado dado
+
                                 if (this.isEqualPressed && isNaN(lastCharacter)) {      //Manejar cuando ya tengo un resultado de una operación y se contnua con otra operacion sobre el resultado dado
-                                        console.log("--------------<<<<<<<<-***********->>>>>>>>>>>-------------------")
-                                        console.log("EN EL IF DENTRO DEL ELSE")
-                                        console.log("CREO QUE NO ENTRA ENE ESTE IF")
+                                        // console.log("--------------<<<<<<<<-***********->>>>>>>>>>>-------------------")
+                                        // console.log("EN EL IF DENTRO DEL ELSE")
+                                        // console.log("CREO QUE NO ENTRA ENE ESTE IF")
                                         this.operand1Element.innerHTML = this.operand1;
                                         this.operand2Element.innerHTML = this.currentOperation;
                                         this.isEqualPressed = false;
@@ -83,7 +84,7 @@ class Calculator {
                                         this.currentOperation = this.operand2;
 
                                 } else if (!isNaN(lastCharacter) && this.update) {
-                                        console.log("--------------<<<<<<<<-12345678900987654321->>>>>>>>>>>-------------------")
+                                        // console.log("--------------<<<<<<<<-12345678900987654321->>>>>>>>>>>-------------------")
                                         this.operand1Element.innerHTML = this.operand1;
                                         this.operand2Element.innerHTML = this.currentOperation;
 
@@ -144,10 +145,16 @@ class Calculator {
 
                         } else {
 
+                                if (number == "0" && this.currentOperation == "0") return;
+
                                 if (this.parenthesis) {
+                                        //! NO SÉ QUE TENGO QUE HACER AQUÍ PARA VER SI HAY MÁS DE UN PARÉNTESIS
+                                        //!  podría ser hacer la diferencia entre el paréntesis abierto y el cerrado, y ese seria la cantidad que tengo que quitar aquí
                                         const withoutEndParenthesis = resultElement.slice(0, -1);
                                         console.log("withoutParenthesis", withoutEndParenthesis);
                                         this.currentOperation = withoutEndParenthesis;
+                                        console.log("NUEVO EN APPENDNUMBER  this.currentOperation", this.currentOperation)
+
                                 };
 
 
