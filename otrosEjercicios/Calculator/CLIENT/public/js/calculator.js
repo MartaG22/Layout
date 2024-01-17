@@ -104,20 +104,27 @@ class Calculator {
         appendNumber(number) {
 
                 console.log("number:", number);
+                console.log("typeof NUMBER", typeof (number))
                 console.log("this.update :", this.update);
                 console.log("isNaN this.currentOperation :", isNaN(this.currentOperation));
-                console.log("this.operand2 en el primer IF, para seguir operando despues del resultado", this.operand2);
+                console.log("this.operand2", this.operand2);
                 // console.log("this.operand1 ", this.operand1);
                 console.log("this.operand1 ", this.operand1);
                 console.log("this.currentOperation", this.currentOperation);
 
                 const resultElement = (document.getElementById('result').textContent);
-                console.log("CONTENIDO en APPEBDNUMBER", resultElement); // Esto imprimirá "6+3-"
+                console.log("CONTENIDO en APPEBDNUMBER", resultElement);
+
+                let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
+                let penultimateCharacter = this.currentOperation.charAt(this.currentOperation.length - 2);
+                console.log("lastCharacter", lastCharacter);
 
                 try {
 
                         // if (this.update && !isNaN(this.currentOperation)) {
                         if (this.isEqualPressed && this.currentOperation == this.operand1) {
+                                //? CUANDO TENEMOS RESULTADO DESPUÉS DE PULSAR "=" E INTRODUCIMOS OTRO NÚMERO
+
                                 console.log("**************************+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++number aqqquiiiiii:", number);
                                 // console.log("this.update :", this.update );
                                 // console.log("isNaN this.currentOperation :", isNaN(this.currentOperation) );
@@ -131,44 +138,92 @@ class Calculator {
                                 console.log("ESTOY EN APPENDNUMBER, this.isequalPressend true y currentopreation=operand1");
                                 console.log("this.operand2 ", this.operand2);
                                 console.log("this.currentOperation", this.currentOperation);
-                                this.operand2 = number;
-                                this.currentOperation = resultElement;
+                                console.log("this.pointEntered", this.pointEntered);
+                                // this.operand2 = number;
+                                // this.currentOperation = resultElement;
                                 console.log("DESPUÉS DE IGUALAR OPREAND2 - this.operand2 ", this.operand2);
                                 console.log("DESPUÉS DE IGUALAR OPREAND2 - this.currentOperation", this.currentOperation);
 
-                                if (number === ".") {
-                                        console.log("AQUÍ HAY QUE SUSTITUR ALGO POR EL 0, PARA QUE SE ACTUALICE BIEN AL ELIMINAR EL ULTIMO NUMRERO")
+                                if (number === "." && !this.pointEntered) {
+                                        console.log("this.pointEntered después de dar igual, en el IF", this.pointEntered)
+                                        //? SI SE INTRODUCE ".", SE ACTUALIZA COMO "0."
+                                        console.log(' SI SE INTRODUCE ".", SE ACTUALIZA COMO "0."')
+                                        // console.log("AQUÍ HAY QUE SUSTITUR ALGO POR EL 0, PARA QUE SE ACTUALICE BIEN AL ELIMINAR EL ULTIMO NUMRERO")
+
+                                        // console.log("---------------------this.pointEntered-------------: ", this.pointEntered);
+
                                         this.operand2 = `0${number}`;
                                         this.currentOperation = this.operand2;
                                         this.pointEntered = true;  // Se ha ingresado un punto
+                                        console.log("this.pointEntered después al final del  IF", this.pointEntered)
                                 };
 
                         } else {
 
                                 if (number == "0" && this.currentOperation == "0") return;
 
-                                if (this.parenthesis) {
-                                        //! NO SÉ QUE TENGO QUE HACER AQUÍ PARA VER SI HAY MÁS DE UN PARÉNTESIS
-                                        //!  podría ser hacer la diferencia entre el paréntesis abierto y el cerrado, y ese seria la cantidad que tengo que quitar aquí
-                                        const withoutEndParenthesis = resultElement.slice(0, -1);
-                                        console.log("withoutParenthesis", withoutEndParenthesis);
-                                        this.currentOperation = withoutEndParenthesis;
-                                        console.log("NUEVO EN APPENDNUMBER  this.currentOperation", this.currentOperation)
+                                //! HAY QUE MANEJAR ESTA OPCIÓN, PORQUE CREO QUE ES LA QUE CONTROLA QUE NO SE PUEDA PONER "0000" DESPUÉS DE SIGNO DE OPERACIÓN
 
-                                };
+
+                                //! no hace nada esta opción
+                                // let operadores = ["+", "-", "*", "/"];
+                                // if (number == "0" && (this.currentOperation == "0" || this.operand2 == "0")) {
+                                //         if(operadores.includes(lastCharacter)){
+                                //                 console.log("AAAQQQUUUII---------------____________------------- RECONOCE QUE EL ÚLTIMO LASTCHARACTER ES UN OPERAODR")
+                                //                 return;
+                                //         }
+                                // }
+
+
+
+
+                                // if (number == "0" && this.operand2 == "0" && lastCharacter == "0") {
+                                //         console.log("CUANDO NUMBER = 0   Y   THIS.OPERAND2 = 0");
+                                //         this.operand2 = 0;
+                                //         // this.currentOperation += this.operand2;
+                                //         console.log("EN APPENDNUMBER PARA QUITAR EL '0000' INICIAL this.operand2", this.operand2, "this. currentoperation", this.currentOperation)
+
+                                //         // return;
+                                // };
+
+
+                                // if (this.parenthesis) {
+                                //         //! NO SÉ QUE TENGO QUE HACER AQUÍ PARA VER SI HAY MÁS DE UN PARÉNTESIS
+                                //         //!  podría ser hacer la diferencia entre el paréntesis abierto y el cerrado, y ese seria la cantidad que tengo que quitar aquí
+                                //         const withoutEndParenthesis = resultElement.slice(0, -1);
+                                //         console.log("withoutParenthesis", withoutEndParenthesis);
+                                //         this.currentOperation = withoutEndParenthesis;
+                                //         console.log("NUEVO EN APPENDNUMBER  this.currentOperation", this.currentOperation)
+
+                                // };
 
 
                                 if (number === "." && this.operand2 == "0") {
+                                        console.log("this.pointEntered después en otro IF", this.pointEntered)
+                                        if (this.pointEntered) return;
+                                        //? CUANDO HAY "0" Y SE INTRODUCE UN PUNTO, PARA PONER "0."
                                         // console.log("11111111111")
-                                        // console.log("DENTRO DEL IFFFFFFFFFFFFFFFF")
+                                        // console.log("DENTRO DEL IFFFFFFFFFFFFFFFF_ cuando se introduce un punto")
                                         // console.log("number:", number);
                                         // console.log("this.currentOperation", this.currentOperation);
 
                                         // Agrega un "0" antes del punto
-                                        this.operand2 = `0${number}`;
-                                        this.currentOperation += this.operand2;
-                                        this.pointEntered = true;  // Se ha ingresado un punto
+                                        console.log("AQUÍ PARA VER SI ES AQUÍ ------------------ PARA QUITAR EL SEGUNDO 0");
+                                        console.log("lastCharacter en APPENDNUMBER en el segundo IF_____", lastCharacter);
+                                        console.log("al principio del primer IF ------EN APPENDNUMBER PARA QUITAR EL '00.' DELANTE DEL punto QUE SE INTRODUZA this.operand2", this.operand2, "this. currentoperation:", this.currentOperation)
 
+                                        if (lastCharacter == "0") {
+                                                // console.log("this.operand2", this.operand2);
+                                                // console.log("AQQQUIIIIIIII")
+                                                this.operand2 += number;
+                                                this.currentOperation += number;
+
+                                        } else {
+                                                this.operand2 = `0${number}`;
+                                                this.currentOperation += this.operand2;
+                                        };
+
+                                        this.pointEntered = true;  // Se ha ingresado un punto
 
                                         // console.log("number", number);
                                         // console.log("this.operand2 EN EL IF", this.operand2);
@@ -176,43 +231,137 @@ class Calculator {
                                         // console.log("this.pointEntered", this.pointEntered)
 
 
-                                } else if (number !== "." && number !== "0" && this.operand2 == "0") {
-
-                                        console.log("number:", number);
-                                        console.log("------thi.oper2 dentro del segundo iF", this.operand2);
-                                        this.operand2 = number;
-                                        // this.operand2 = `0${number}`;
-                                        console.log("después de igaualar a numbber IF2", this.operand2)
-                                        this.currentOperation += this.operand2;
-
-                                        // } else if ((!isNaN(number) && this.operand2 !== "0")) {
-                                } else if (number !== "." && number !== "0" && this.operand2 !== "0") {
-                                        console.log("<<<<<<<<<<<<<<<<<<>>>>>>>>>>>  ESTE IF  <<<<<<<<<>>>>>>>>>>>>>>>>>>>>>")
-                                        console.log("number:", number);
-                                        console.log("this,ioer2 entro del tercer IF", this.operand2);
-
-                                        this.operand2 += number;
-                                        console.log("despues igualar IF3", this.operand2)
-                                        this.currentOperation += number;
-
                                 } else if (number == "." && this.operand2 !== "0" && !this.pointEntered) {
+
+                                        //  AQUÍ AÑADE PUNTO "." , ESTA OPCIÓN YA ESTÁ MANEJADA AL PRINCIPIO. TENGE QUE REVISAR.  <<>>> ES OTRA VARIANTE
+                                        console.log("this.pointEntered:", this.pointEntered);
                                         console.log("number:", number);
                                         console.log("this,ioer2 entro del cuarto IF", this.operand2);
                                         this.operand2 += number;
                                         this.currentOperation += number;
                                         this.pointEntered = true;
-                                        // } else if (){
 
-                                        // } else if () {
 
-                                        // }
+                                        // } else if (number !== "0" && Number !== "." && this.operand2 == "0" && lastCharacter == "0") {
+                                        //         console.log("HAY QUE QUITAR EL 0 DE THIS.OPERAND2 PARA QUE PILLE EL VALOR DEL NUMERO INTRODUCIDO")
+                                        //         console.log("EN APPENDNUMBER PARA QUITAR EL '0' INICIAL DELANTE DEL NUMERO QUE SE INTRODUZA this.operand2", this.operand2, "this. currentoperation", this.currentOperation)
+                                        //         this.operand2 = number;
+                                        //         this.currentOperation = this.currentOperation.slice(0, -1);
 
-                                } else if (number !== ".") {
-                                        console.log("HOLAAAAAAAAA en el último ELSE IF DE APPENDNUMBER!!!!!!!!!!!!!!!")
-                                        //!  cREO QUE NO ENTRA EN ESTA CONDICIÓN, SE QUEDA EN LAS ANTERIORES!
+                                        //         this.currentOperation += this.operand2;
+                                        //         console.log("al final ------EN APPENDNUMBER PARA QUITAR EL '0' INICIAL DELANTE DEL NUMERO QUE SE INTRODUZA this.operand2", this.operand2, "this. currentoperation", this.currentOperation)
+
+
+                                } else if (number !== "." && number !== "0" && this.operand2 == "0") {
+                                        console.log("en opción NUMBER NO .   </   NUMBER NO 0   </   OPERAND2 = 0", this.operand2);
+                                        console.log("this.operand1;", this.operand1)
+
+                                        if (lastCharacter == "0") {
+                                                //? CUANDO AL INTRODUCIR UN OPERADOR, PRIMERO INTRODUCIMOS EL "O" Y LUEGO OTRO NÚMERO, SUSTITUYE EL "O" POR EL NÚMERO
+
+                                                // console.log("ES AQUUUUIIIII-------------------------")
+                                                console.log("*****-----*****-----******-------- NO SÉ SI ES AQUÍ, PARA QUE ME DEJE PONER MÁS 0000000000000000")
+                                                console.log("ES AQUÍ DONDE TENGO QUE QUITAR EL 0 PARA PONER EL NUEMRO QUE TOCA")
+                                                this.currentOperation = this.currentOperation.slice(0, -1);
+                                                this.operand2 = number;
+                                                this.currentOperation += this.operand2;
+                                                console.log("al final ------EN APPENDNUMBER PARA QUITAR EL '0' INICIAL DELANTE DEL NUMERO QUE SE INTRODUZA this.operand2", this.operand2, "this. currentoperation", this.currentOperation)
+
+                                        } else {
+                                                // console.log("ES AQUUUUIIIII-------------------------")
+                                                console.log("number:", number);
+                                                console.log("------thi.oper2 dentro del segundo iF", this.operand2);
+                                                this.operand2 = number;
+                                                // this.operand2 = `0${number}`;
+                                                console.log("después de igaualar a numbber IF2", this.operand2)
+                                                this.currentOperation += this.operand2;
+                                        };
+                                        // } else if ((!isNaN(number) && this.operand2 !== "0")) {
+
+                                } else if (number !== "." && number !== "0" && this.operand2 !== "0") {
+                                        //? CUANDO ya TENEMOS UN VALOR EN OPERAND2 Y AÑADIMOS MÁS CIFRAS AL OPERADOR.
+                                        // console.log("ES AQUUUUIIIII-------------------------")
+                                        // console.log("AQUÍ HAY QUE HACER PARA QUE PONGA EL 0 SI YA HAY OTRO NÚMERO INTRODUCIDO");
                                         this.operand2 += number;
                                         this.currentOperation += number;
-                                };
+
+
+                                        // } else if (number == "0" && operand2 == "0") {
+
+
+
+                                } else if (number === "0" && this.operand2 !== "0") {
+                                        let operators = ["+", "-", "*", "/"];
+
+
+                                        //?  SI EL PENÚLTIMO CARACTER INTRODUCIDO ES UN SIGNO DE OPERACIÓN Y EL ÚLTIMO ES "0", HACE RETURN. SÓLO PERMITE PONER UN "0".
+                                        if (lastCharacter == "0" && operators.includes(penultimateCharacter)) return;
+
+                                        //?  AQUÍ ES PARA QUE PONGA EL 0 SI YA HAY NÚMERO EN EL OPERAND2
+
+                                        console.log("number:", number, "typerof:", typeof (number))
+                                        console.log("ES AQUUUUIIIII PARA LO DEL 0-------------------------")
+                                        console.log("AQUÍ ES PARA QUE PONGA EL 0 SI YA HAY NÚMERO EN EL OPERAND2");
+                                        console.log("en un IF DE  APPENDNUMBER - this.operand2 ", this.operand2);
+                                        console.log("typeof", typeof (this.operand2))
+                                        console.log("en un IF DE  APPENDNUMBER - this.currentOperation", this.currentOperation);
+
+
+                                        // var cadena = numero.toString();
+                                        this.operand2 = this.operand2.toString();
+                                        if (number === this.operand2) {
+                                                console.log("typeof", typeof (this.operand2))
+                                                this.operand2 = number;
+                                                this.currentOperation += number;
+
+                                        } else {
+
+
+                                                //! si se ponen "0" después del signo de operación, sí coge "0000"
+                                                //! AQUÍ SI SE PONE += AÑADE EL "O" AL PRINCIPIO. 
+                                                //! SI SE PONE ASÍ "= NUMBER", LUEGO NO DEJA PONER MÁS "0"
+                                                this.operand2 += number;
+                                                this.currentOperation += number;
+                                                console.log("en un IF DE  APPENDNUMBER - this.operand2 ", this.operand2);
+                                                console.log("en un IF DE  APPENDNUMBER - this.currentOperation", this.currentOperation);
+
+                                        }
+                                        
+                                } else if (number == "0" && this.operand2 == "0" && lastCharacter !== "0") {
+                                        console.log("******AQUÍ HAY QUE si hay un 0 y se pulse 0, no ponga '000000'****")
+                                        this.operand2 = number;
+                                        this.currentOperation += this.operand2;
+                                        // } else if (number !== "0" && this.operand2 !== "0") {
+                                        //         console.log("AQUÍ HAY QUE HACER PARA QUE PONGA EL O SI YA HAY OTRO NÚMERO INTRODUCIDO")
+                                        // }
+                                }
+
+                                // TODO  [ ]  ARREGLAR: si cuando se pulsa un signo de operación y se sigue añadiendo otra cifra, coge sin problemas "0000"
+                                // TODO  [ ]  CUANDO SE PULSA EL "0" Y A CONTINUCACIÓN SE PULSA OTROS NÚMEROS, AÑADE EL "0" AL PRINCIPIO, EJEM  03443
+                                // TODO  [x]  Arreglar que al introducir 0.343, añade al principio otro cero, quedando "00.343"
+                                // TODO  [x]  Arreglar que si se introducde un número acabdo en 0 ejem. 300 y después se quiere poner 5, para poner 3005, quita el último 0 y deja "305"
+                                // No sé donde va esto
+                                // TODO  [x]  Si tengo un número acabado en "0", ejem. "60" y pulso el punto ".", me añade otro "0" delante del ".", quedando "600."
+                                // TODO  [x]  Arreglar que Si después de un signo de operación añado 000, los coge y lo añade sin problema
+
+                                // } else if (number !== "." && this.operand2 == "0") {
+                                //         console.log("******AQUÍ HAY QUE QUITAR EL 0 PARA QUE PONGA EL NÚMERO INTRODUCIDO****")
+                                //         console.log("EN APPENDNUMBER PARA QUITAR EL '0' INICIAL this.operand2", this.operand2, "this. currentoperation", this.currentOperation)
+                                //         this.operand2 = number;
+                                //         this.currentOperation += this.operand2;
+                                //         console.log("EN APPENDNUMBER PARA QUITAR EL '0' INICIAL this.operand2 -- AL FINAL DE LA FUNCIÓN", this.operand2, "this. currentoperation", this.currentOperation)
+
+
+
+
+                                //? ESTO NO LO TENGO QUE PONER, PORQUE SI PULSO "0" Y LUEGO CUALQUIER NÚMERO, AÑADE EL "0" DELANTE
+                                // } else if (number !== ".") {
+                                //         console.log("HOLAAAAAAAAA en el último ELSE IF DE APPENDNUMBER!!!!!!!!!!!!!!!")
+                                //         //!  cREO QUE NO ENTRA EN ESTA CONDICIÓN, SE QUEDA EN LAS ANTERIORES!
+                                // this.operand2 = number;
+                                // this.currentOperation += number;
+                                // };
+
 
                                 if (this.parenthesis) {
                                         this.currentOperation += ")";
@@ -220,33 +369,34 @@ class Calculator {
                                 // };
                         };
 
-                        // };
 
-                        // //! HAY QUE MANEJAR LA OPCIÓN DE INTRODUCIR CERO Y QUE PONGA EL PUNTO
-                        // if (number === "." && this.operand2 == "0") {
-                        //         console.log(" ******** IF 1")
-                        //         // Agrega un "0" antes del punto
-                        //         this.operand2 = `0${number}`;
-                        //         this.currentOperation += this.operand2;
-                        //         this.pointEntered = true;  // Se ha ingresado un punto
-                        // };
 
-                        // TODO [x] Cuando introduzco 0 y luego "." ==> me pone "00."
-                        // TODO [x] Manejar el añadir la segunda cifra después del signo, que no concatene. Ahora borra la pantalla
-                        // TODO [x] PONE MÁS DE UN PUNTO EN EL MISMO NÚMERO
-                        // TODO [x] ver como manejar si el primer botón pulsado es algun no admitido, ejem (+, -, /, *)
 
+                        //* OPENRAND 2 SI SE PONE 000000 LO PILLA COMO NORMAL. AQUÍ HAY QUE CAMBIAR ALGO ********************
 
                         console.log("AL FINAL DE  APPENDNUMBER - this.operand2 ", this.operand2);
                         console.log("AL FINAL DE  APPENDNUMBER - this.currentOperation", this.currentOperation);
 
                         this.updateScreen();
 
+
                 } catch (error) {
                         console.error("Ha ocurrido un error:", error);
                 };
         };
 
+
+        // TODO [ ] Arreglar que admita un paréntesis dentro de otro.
+        // TODO [ ] Cuando se han introducido paréntesis, y se borran caracteres, hace cosas raras.
+        // TODO [ ] Cuando el último carácter es de cierre de parentesis ")" y se inicia otro paréntesis "(", concatena el resultado de los dos parentesis.
+
+
+        // TODO [x] En algún momento deja poner otro punto
+        // TODO [x] Admite poner más de un "0" de inicio. Arreglarlo.
+        // TODO [x] Cuando introduzco 0 y luego "." ==> me pone "00."
+        // TODO [x] Manejar el añadir la segunda cifra después del signo, que no concatene. Ahora borra la pantalla
+        // TODO [x] PONE MÁS DE UN PUNTO EN EL MISMO NÚMERO
+        // TODO [x] ver como manejar si el primer botón pulsado es algun no admitido, ejem (+, -, /, *)
 
         eraseNumber() {
                 if (this.currentOperation.length === 0) {
@@ -289,75 +439,12 @@ class Calculator {
 
 
 
-        /*     eraseNumber() {
-                    let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
-                    // Encuentra la posición del último operador:
-                    let lastOperatorIndex = Math.max(
-                            this.currentOperation.lastIndexOf("+"),
-                            this.currentOperation.lastIndexOf("-"),
-                            this.currentOperation.lastIndexOf("*"),
-                            this.currentOperation.lastIndexOf("/")
-                    );
-    
-                    console.log("this.operand2", this.operand2);
-                    console.log("this.operand1", this.operand1);
-                    console.log("this.currentOperation", this.currentOperation);
-                    console.log("lastCharacter", lastCharacter);
-                    console.log(typeof(lastCharacter));
-                    // console.log("lastOperatorIndex", lastOperatorIndex)
-                    // console.log()
-    
-                    // if (this.operand2 === 0 && this.currentOperation == "") {
-                    if (this.currentOperation.length === 0) {
-                            console.log("primer if")
-                            return;
-                    };
-    
-                    if (lastCharacter === "+" || lastCharacter === "-" || lastCharacter === "*" || lastCharacter === "/") {
-                            console.log("AFEWFAWFAF")
-                            console.log("this.currentOperation", this.currentOperation);
-    
-                            // Si el último carácter es un operador, elimínalo.
-                            this.currentOperation = this.currentOperation.slice(0, -1);
-                            // this.operand2 = this.currentOperation.slice(lastOperatorIndex + 1);
-                            // console.log("this.currentOperation", this.currentOperation);
-                            // console.log("this.operand2", this.operand2);
-    
-    
-                    } else {
-                            // Si el último carácter no es un operador, encuentra el inicio del último número.      
-                            let lastNumberStart = Math.max(
-                                    this.currentOperation.lastIndexOf("+", lastOperatorIndex),
-                                    this.currentOperation.lastIndexOf("-", lastOperatorIndex),
-                                    this.currentOperation.lastIndexOf("*", lastOperatorIndex),
-                                    this.currentOperation.lastIndexOf("/", lastOperatorIndex)
-                                ) + 1;
-                        
-                                // Elimina el último número y actualiza operand2
-                                this.currentOperation = this.currentOperation.slice(0, lastNumberStart);
-                                this.operand2 = this.currentOperation.slice(lastNumberStart);
-                                console.log("this.operand2", this.operand2);
-    
-                                console.log("this.currentOperation", this.currentOperation);
-                
-                            
-                    }
-                    this.updateScreen();
-            };
-     */
 
         operation(operator) {
                 const resultElement = (document.getElementById('result').textContent);
                 let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
                 // console.log("ultimoCaracter", lastCharacter);
 
-
-                // if (this.isEqualPressed) {
-                //         console.log("EN EL IFF DENTRO DE OPERATION, PARA NO CAMBIAR EL OPERAND_______________");
-                //         console.log(this.operator)
-                //         this.currentOperation = this.currentOperation + this.operator;
-
-                // } else {
 
 
 
@@ -373,23 +460,23 @@ class Calculator {
                                 console.log("withoutParenthesis", withoutEndParenthesis);
                                 this.currentOperation = withoutEndParenthesis;
                                 console.log("this.currentOperation después de quitarparentesis", this.currentOperation);
-                                
+
                         };
-                        
+
                         if (!isNaN(lastCharacter)) {
                                 // if (!isNaN(lastCharacter || lastCharacter == ".")) {
-                                        //! console.log("Es un numero");
-                                        this.operator = operator;
-                                        this.currentOperation += this.operator;
-                                        console.log("this.currentOperation cuando lastcaracter es un numero", this.currentOperation);
-                                        
-                                } else {
-                                        //! console.log("NO es un numero")
-                                        //! SI ACTIVO ESTA LÍNEA ME BORRA DATOS DE LA PAMTALLA Y NO CALCULA BIEN
-                                        // this.currentOperation = this.currentOperation.slice(0, -1);
-                                        this.operator = operator;
-                                        this.currentOperation += this.operator;
-                                        console.log("this.currentOperation cuando lastcaracter NOO es un numero", this.currentOperation);
+                                //! console.log("Es un numero");
+                                this.operator = operator;
+                                this.currentOperation += this.operator;
+                                console.log("this.currentOperation cuando lastcaracter es un numero", this.currentOperation);
+
+                        } else {
+                                //! console.log("NO es un numero")
+                                //! SI ACTIVO ESTA LÍNEA ME BORRA DATOS DE LA PAMTALLA Y NO CALCULA BIEN
+                                // this.currentOperation = this.currentOperation.slice(0, -1);
+                                this.operator = operator;
+                                this.currentOperation += this.operator;
+                                console.log("this.currentOperation cuando lastcaracter NOO es un numero", this.currentOperation);
                         };
 
                 };
