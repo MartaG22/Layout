@@ -181,6 +181,10 @@ equalButton.addEventListener("click", async () => {
         // realizarSolicitud(expresion, "http://localhost:3030/calculate");
         try {
                 let result = await makeRequest(operation, `${apiUrl}/calculate`);
+                console.log("result en EQUALBUTTON EN MAIN", result)
+                if (result === undefined)  result = "0";
+                
+
                 calculator.equal(result);
         } catch (error) {
                 // Maneja el error si es necesario
