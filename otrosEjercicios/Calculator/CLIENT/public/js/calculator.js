@@ -8,6 +8,8 @@ class Calculator {
                 this.isEqualPressed = false;
                 this.update = false;
                 this.parenthesis = false;
+                this.openParenthesis = 0;
+                this.closeParenthesis = 0;
 
                 this.clear();
         };
@@ -20,6 +22,9 @@ class Calculator {
                 this.pointEntered = false;
                 this.isEqualPressed = false;
                 this.parenthesis = false;
+                this.openParenthesis = 0;
+                this.closeParenthesis = 0;
+
 
                 // this.update = false;
 
@@ -162,12 +167,6 @@ class Calculator {
 
                                 if (number == "0" && this.currentOperation == "0") return;
 
-                                //! HAY QUE MANEJAR ESTA OPCIÓN, PORQUE CREO QUE ES LA QUE CONTROLA QUE NO SE PUEDA PONER "0000" DESPUÉS DE SIGNO DE OPERACIÓN
-
-
-                              
-
-
 
                                 // if (number == "0" && this.operand2 == "0" && lastCharacter == "0") {
                                 //         console.log("CUANDO NUMBER = 0   Y   THIS.OPERAND2 = 0");
@@ -252,7 +251,7 @@ class Calculator {
                                 } else if (number !== "." && number !== "0" && this.operand2 == "0") {
                                         console.log("en opción NUMBER NO .   </   NUMBER NO 0   </   OPERAND2 = 0", this.operand2);
                                         console.log("this.operand1;", this.operand1)
-                                        
+
                                         //! ESTA OPCIÓN, NO TENGO CLARO QUE SEA NECESARIO PARTIR EN DOS CONDICIONES
                                         if (lastCharacter == "0") {
                                                 //? CUANDO AL INTRODUCIR UN OPERADOR, PRIMERO INTRODUCIMOS EL "O" Y LUEGO OTRO NÚMERO, SUSTITUYE EL "O" POR EL NÚMERO
@@ -289,7 +288,7 @@ class Calculator {
 
 
                                 } else if (number === "0" && this.operand2 !== "0") {
-                                        
+
                                         //?  SI EL PENÚLTIMO CARACTER INTRODUCIDO ES UN SIGNO DE OPERACIÓN Y EL ÚLTIMO ES "0", HACE RETURN. SÓLO PERMITE PONER UN "0".
                                         let operators = ["+", "-", "*", "/"];
                                         if (lastCharacter == "0" && operators.includes(penultimateCharacter)) return;
@@ -377,8 +376,8 @@ class Calculator {
         // TODO [ ] Arreglar que admita un paréntesis dentro de otro.
         // TODO [ ] Cuando se han introducido paréntesis, y se borran caracteres, hace cosas raras.
         // TODO [ ] Cuando el último carácter es de cierre de parentesis ")" y se inicia otro paréntesis "(", concatena el resultado de los dos parentesis.
-        
-        
+
+
         // TODO [x] Cuando no se ha iniciado a operar y se pulsa "=", se cambia todo. 
         // TODO [x] En algún momento deja poner otro punto
         // TODO [x] Admite poner más de un "0" de inicio. Arreglarlo.
@@ -434,15 +433,44 @@ class Calculator {
                 let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
                 // console.log("ultimoCaracter", lastCharacter);
 
-
-
-
+                let operators = ["+", "-", "*", "÷"];
+                // if (lastCharacter == "0" && operators.includes(penultimateCharacter)) return;
+                console.log("operator al inicio de OPERATOR", operator)
+                // if (operator == "÷") operator = "/";
                 if (this.currentOperation == "" && (operator == "*" || operator == "/")) {
-                        console.log("this.curremtOP vacía");
-                        this.operator = operator;
-                        this.operand2 = 0;
-                        this.currentOperation = this.operand2 + this.operator;
-                } else {
+                                console.log("this.curremtOP vacía");
+                                this.operator = operator;
+                                this.operand2 = 0;
+                                this.currentOperation = this.operand2;
+                                // } else {
+                                //         return;
+                        // };
+                };
+
+                if (operators.includes(lastCharacter)) {
+                        console.log("lastCharacter en OPERATION EN EL PRIMER IF:", lastCharacter);
+                        if (lastCharacter == operator) {
+                                console.log("AAAAQQQQQUUUUIIIIII consigo pillar el operador REPETIDOOOOO");
+                                return;
+                        } else {
+                                console.log("EN EL ELSE DE OPERATION this.currentOperation", this.currentOperation);
+                                console.log("lastCharacter", lastCharacter);
+                                console.log("operator", operator);
+                                this.operator = operator;
+                                // this.operand2 = 0;
+                                this.currentOperation = this.currentOperation.slice(0, -1) + this.operator;
+                                // this.currentOperation = this.currentOperation + this.operator;
+                                console.log("EN EL ELSE DE OPERATION DESPUÉS DE CAMBIAR SIGNOS this.currentOperation", this.currentOperation);
+                                console.log("lastCharacter", lastCharacter);
+                                console.log("operator", operator);
+
+                        }
+                                // console.log
+                        // } else {
+                                // }
+                        // if (this.currentOperation == "" && (operator == "*" || operator == "/")) {
+                        // !  no entiendo bien por qué he puesto lo de CURRENTOPERATION. AHORA NO HACE NADA
+                 } else {
 
                         if (this.parenthesis) {
                                 const withoutEndParenthesis = resultElement.slice(0, -1);
@@ -503,24 +531,34 @@ class Calculator {
                         this.operand2 = "()";
                         this.currentOperation += this.operand2;
                         this.parenthesis = true;
+                        this.openParenthesis++;
+
                         this.updateScreen();
+
 
                 } catch (error) {
                         console.error("Error:", error);
                 };
         };
+
 
         endParenthesis() {
                 try {
                         // this.operand2 = "()";
                         // this.currentOperation += this.operand2;
-                        this.parenthesis = false;
+                        this.closeParenthesis++;
+
+                        if (this.openParenthesis === this.closeParenthesis) {
+                                this.parenthesis = false;
+                        };
+
                         this.updateScreen();
 
                 } catch (error) {
                         console.error("Error:", error);
                 };
         };
+
 
         equal(result) {
                 // let vuelta = false;
@@ -532,7 +570,7 @@ class Calculator {
 
 
                 try {
-                        
+
                         // if (this.currentOperation = "") return;
 
                         // if (resultElement == "0") return;
@@ -559,9 +597,13 @@ class Calculator {
                                 this.operand1Element.innerHTML = `${this.currentOperation} =`;
                                 this.currentOperation = result;
                                 this.operand1 = result;
-                        
+                                this.parenthesis = false;
+                                this.openParenthesis = 0;
+                                this.closeParenthesis = 0;
+                                // console.log("this.openParenthesi y  this.closeParenthesis",this.openParenthesis, this.closeParenthesis)
 
-                        
+
+
                         } else if (result && this.currentOperation !== "") {
                                 // console.log("rresult", result)
                                 // console.log("ESTA ES LA SEGUNDA OPCIÓN-----esta opción no sé que hace")
