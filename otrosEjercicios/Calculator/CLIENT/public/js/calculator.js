@@ -372,10 +372,10 @@ class Calculator {
         };
 
 
-        // TODO [ ] Cuando entre un parentesis de cierre y otro de inicio, no hay signo, hay que poner que es "*"
         // TODO [ ] Arreglar que admita un paréntesis dentro de otro.
         // TODO [ ] Cuando se han introducido paréntesis, y se borran caracteres, hace cosas raras.
-        // TODO [ ] Cuando el último carácter es de cierre de parentesis ")" y se inicia otro paréntesis "(", concatena el resultado de los dos parentesis.
+        // TODO [X] Cuando entre un parentesis de cierre y otro de inicio, no hay signo, hay que poner que es "*"
+        // TODO [X] Cuando el último carácter es de cierre de parentesis ")" y se inicia otro paréntesis "(", concatena el resultado de los dos parentesis.
 
 
         // TODO [x] Cuando no se ha iniciado a operar y se pulsa "=", se cambia todo. 

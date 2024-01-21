@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 
 // !  PASAR ESTAs FUNCIÓNes A HELPERS 
 function addMultiplicationSequence(expression) {
-    
+        // ? FUNCIÓN PARA AGREGAR EL SÍMBOLO "*" CUANDO SE OBVIA ANTES O ENTRE PARÉNTESIS
         // Iterar a través de la secuencia
         let newCipher = "";
         for (let i = 0; i < expression.length; i++) {
@@ -130,13 +130,11 @@ app.post("/calculate", (req, res) => {
                         });
 
 
-// ! crep que es aquí donde hay que poner la comprobación del parentesis y si antes va número
                 // Verificar si hay paréntesis en la secuencia
                 let nuevaSecuencia;
                 if (numericalSequence.includes("(")) {
                         let numericalSequenceWithParenthesis = calculateExpressionWithParenthesis(numericalSequence);
                         console.log("Secuencia después de calcular paréntesis:", numericalSequenceWithParenthesis);
-                        //! AQUÍ CONCATENA EL RESULTADO DEL PARÉNTESIS CON LOS NÚMEROS ANTERIORES, QUITANDO LOS SIGNOS DE OPERACIÓN
                         console.log("typeof", typeof(numericalSequenceWithParenthesis))
                         nuevaSecuencia = parseExpresion(numericalSequenceWithParenthesis);
                         console.log("secuenciaNumerica", nuevaSecuencia);
