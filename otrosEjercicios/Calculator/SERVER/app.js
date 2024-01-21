@@ -21,23 +21,85 @@ app.use(
 
 app.use(bodyParser.json());
 
+
+
+// !  PASAR ESTAs FUNCIÓNes A HELPERS 
+function addMultiplicationSequence(expression) {
+    
+        // Iterar a través de la secuencia
+        let newCipher = "";
+        for (let i = 0; i < expression.length; i++) {
+            // Agregar cada carácter a la nueva secuencia
+            newCipher += expression[i];
+    
+            // Verificar si el carácter actual es un número y el siguiente es "("
+            if (!isNaN(expression[i]) && expression[i + 1] === '(') {
+                // Agregar "*" entre el número y "("
+                newCipher += '*';
+            };
+
+            if (expression[i] === ')' && expression[i + 1] === '(') {
+                newCipher += '*';
+            }
+        };
+        return newCipher;
+};
+
+
+function calculateParenthesis(expressionWithoutParenthesis) {
+        console.log("expresionSinParenhtesis en FUNCION calculateParenthesis", expressionWithoutParenthesis);
+        const newSequence = parseExpresion(expressionWithoutParenthesis);
+        const solveNewSequence = solveSequence(newSequence);
+        console.log(
+                "solveNewSequence en CALCULATEpARENTEISS:",
+                solveNewSequence
+        );
+        return solveNewSequence;
+        // console.log("partialResult:", partialResult)
+};
+
+
+
+function calculateExpressionWithParenthesis(sequence) {
+        // console.log("sequence en calculateExpressionWithParenthesis", sequence)
+        while (sequence.includes("(")) {
+                sequence = sequence.replace(/\([^()]+\)/g, (match) => {
+                        const expressionWithoutParenthesis = match.slice(1, -1);
+                        console.log(
+                                "expresión sin paréntesis --- expressionWithoutParenthesis:",
+                                expressionWithoutParenthesis
+                        );
+
+                        // Verifica si expressionWithoutParenthesis es válida antes de llamar a calculateParenthesis
+                        if (expressionWithoutParenthesis.trim() !== "") {
+                                const resultParentesis = calculateParenthesis(
+                                        expressionWithoutParenthesis
+                                );
+                                console.log("resultParentesis:", resultParentesis);
+                                return resultParentesis !== undefined
+                                        ? resultParentesis
+                                        : match; // Devuelve el resultado de calculateParenthesis o la cadena original si es undefined
+                        } else {
+                                console.error("Expresión dentro de paréntesis inválida.");
+                                return match; // Devuelve la cadena original si la expresión dentro de paréntesis es inválida
+                        };
+                });
+        };
+        return sequence;
+};
+
+
+
 app.post("/calculate", (req, res) => {
         console.log("recibido en app back", req.body);
         const expression = req.body.expression;
         console.log("expression", expression);
         console.log("type of expression", typeof expression);
 
-        function calculateParenthesis(expressionWithoutParenthesis) {
-                console.log("expresionSinParenhtesis en FUNCION calculateParenthesis", expressionWithoutParenthesis);
-                const newSequence = parseExpresion(expressionWithoutParenthesis);
-                const solveNewSequence = solveSequence(newSequence);
-                console.log(
-                        "solveNewSequence en CALCULATEpARENTEISS:",
-                        solveNewSequence
-                );
-                return solveNewSequence;
-                // console.log("partialResult:", partialResult)
-        }
+        let checkedSequence = addMultiplicationSequence(expression);
+        console.log("checkSequence", checkedSequence)
+
+        
 
         // function calculateExpressionWithParenthesis(sequence) {
         //         while (sequence.includes('(')) {
@@ -52,32 +114,7 @@ app.post("/calculate", (req, res) => {
         //         return sequence;
         // };
 
-        function calculateExpressionWithParenthesis(sequence) {
-                while (sequence.includes("(")) {
-                        sequence = sequence.replace(/\([^()]+\)/g, (match) => {
-                                const expressionWithoutParenthesis = match.slice(1, -1);
-                                console.log(
-                                        "expresión sin paréntesis --- expressionWithoutParenthesis:",
-                                        expressionWithoutParenthesis
-                                );
 
-                                // Verifica si expressionWithoutParenthesis es válida antes de llamar a calculateParenthesis
-                                if (expressionWithoutParenthesis.trim() !== "") {
-                                        const resultParentesis = calculateParenthesis(
-                                                expressionWithoutParenthesis
-                                        );
-                                        console.log("resultParentesis:", resultParentesis);
-                                        return resultParentesis !== undefined
-                                                ? resultParentesis
-                                                : match; // Devuelve el resultado de calculateParenthesis o la cadena original si es undefined
-                                } else {
-                                        console.error("Expresión dentro de paréntesis inválida.");
-                                        return match; // Devuelve la cadena original si la expresión dentro de paréntesis es inválida
-                                }
-                        });
-                }
-                return sequence;
-        };
 
 
 
@@ -85,7 +122,7 @@ app.post("/calculate", (req, res) => {
                 //     result = eval(expression);
 
                 // secuenciaNumerica
-                const numericalSequence = expression
+                const numericalSequence = checkedSequence
                         .replace(/÷/g, "/")
                         .replace(/(\d+)%(\d+)/g, function (match, p1, p2) {
                                 // p1 es el primer grupo de captura (\d+), p2 es el segundo grupo de captura (\d+)
@@ -93,11 +130,14 @@ app.post("/calculate", (req, res) => {
                         });
 
 
+// ! crep que es aquí donde hay que poner la comprobación del parentesis y si antes va número
                 // Verificar si hay paréntesis en la secuencia
                 let nuevaSecuencia;
                 if (numericalSequence.includes("(")) {
                         let numericalSequenceWithParenthesis = calculateExpressionWithParenthesis(numericalSequence);
                         console.log("Secuencia después de calcular paréntesis:", numericalSequenceWithParenthesis);
+                        //! AQUÍ CONCATENA EL RESULTADO DEL PARÉNTESIS CON LOS NÚMEROS ANTERIORES, QUITANDO LOS SIGNOS DE OPERACIÓN
+                        console.log("typeof", typeof(numericalSequenceWithParenthesis))
                         nuevaSecuencia = parseExpresion(numericalSequenceWithParenthesis);
                         console.log("secuenciaNumerica", nuevaSecuencia);
                 } else {

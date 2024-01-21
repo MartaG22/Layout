@@ -122,7 +122,7 @@ class Calculator {
 
                 let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
                 let penultimateCharacter = this.currentOperation.charAt(this.currentOperation.length - 2);
-                console.log("lastCharacter", lastCharacter);
+                console.log("lastCharacter en appendNumber", lastCharacter);
 
                 try {
 
@@ -447,6 +447,11 @@ class Calculator {
                         // };
                 };
 
+                // console.log("aquuuuiiiiii   lastCharacter",lastCharacter)
+                // if (isNaN(lastCharacter)) {
+                //         console.log("aquuuuiiiiii   lastCharacter",lastCharacter)
+                // };
+
                 if (operators.includes(lastCharacter)) {
                         console.log("lastCharacter en OPERATION EN EL PRIMER IF:", lastCharacter);
                         if (lastCharacter == operator) {
@@ -527,8 +532,19 @@ class Calculator {
 
 
         addParenthesis() {
+                // let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
+                // console.log("aquuuuiiiiii  en ADDPARENTHESIS lastCharacter",lastCharacter);
+
                 try {
-                        this.operand2 = "()";
+                        
+                        // if (!isNaN(lastCharacter)) {
+                        //         console.log("aquuuuiiiiii  DENTRO DEL IF EN ADDPARENTHESIS lastCharacter",lastCharacter)
+                        //         this.operand2 = "*()";
+
+                        // } else {
+                                this.operand2 = "()";
+                        // }
+
                         this.currentOperation += this.operand2;
                         this.parenthesis = true;
                         this.openParenthesis++;
