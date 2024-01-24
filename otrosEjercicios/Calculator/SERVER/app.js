@@ -40,7 +40,11 @@ function addMultiplicationSequence(expression) {
 
             if (expression[i] === ')' && expression[i + 1] === '(') {
                 newCipher += '*';
-            }
+            };
+
+            if (expression[i] === ')' && !isNaN(expression[i + 1]) ){
+                newCipher += "*";
+            };
         };
         return newCipher;
 };
