@@ -123,6 +123,8 @@ class Calculator {
                 let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
                 let penultimateCharacter = this.currentOperation.charAt(this.currentOperation.length - 2);
                 console.log("lastCharacter en appendNumber", lastCharacter);
+                let numberOpenParenthesis = this.openParenthesis - this.closeParenthesis;
+
 
                 try {
 
@@ -181,7 +183,7 @@ class Calculator {
                                 if (this.parenthesis) {
                                         //! NO SÉ QUE TENGO QUE HACER AQUÍ PARA VER SI HAY MÁS DE UN PARÉNTESIS
                                         //!  podría ser hacer la diferencia entre el paréntesis abierto y el cerrado, y ese seria la cantidad que tengo que quitar aquí
-                                        const withoutEndParenthesis = resultElement.slice(0, -1);
+                                        const withoutEndParenthesis = resultElement.slice(0, -numberOpenParenthesis);
                                         console.log("withoutParenthesis", withoutEndParenthesis);
                                         this.currentOperation = withoutEndParenthesis;
                                         console.log("NUEVO EN APPENDNUMBER  this.currentOperation", this.currentOperation)
@@ -350,9 +352,13 @@ class Calculator {
 
 
                                 if (this.parenthesis) {
-                                        this.currentOperation += ")";
-                                }
-                                // };
+                                        for (let i = 0; i < numberOpenParenthesis; i++) {
+        
+                                                console.log("aqui para cerrar parentesis")
+                                                this.currentOperation += ")";
+                                        }
+                                };
+                                        // };
                         };
 
 
@@ -396,6 +402,10 @@ class Calculator {
                 let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
                 this.currentOperation = this.currentOperation.slice(0, -1);
 
+                // if (lastCharacter === ")") {
+                //         this.currentOperation = this.currentOperation.slice(0, -2);
+
+                // }
                 if (lastCharacter === "+" || lastCharacter === "-" || lastCharacter === "*" || lastCharacter === "÷") {
                         // Si el último carácter era un operador, encuentra el inicio del último número.
                         let lastNumberStart = Math.max(
@@ -436,14 +446,16 @@ class Calculator {
                 let operators = ["+", "-", "*", "÷"];
                 // if (lastCharacter == "0" && operators.includes(penultimateCharacter)) return;
                 console.log("operator al inicio de OPERATOR", operator)
+                let numberOpenParenthesis = this.openParenthesis - this.closeParenthesis;
+
                 // if (operator == "÷") operator = "/";
                 if (this.currentOperation == "" && (operator == "*" || operator == "/")) {
-                                console.log("this.curremtOP vacía");
-                                this.operator = operator;
-                                this.operand2 = 0;
-                                this.currentOperation = this.operand2;
-                                // } else {
-                                //         return;
+                        console.log("this.curremtOP vacía");
+                        this.operator = operator;
+                        this.operand2 = 0;
+                        this.currentOperation = this.operand2;
+                        // } else {
+                        //         return;
                         // };
                 };
 
@@ -470,15 +482,15 @@ class Calculator {
                                 console.log("operator", operator);
 
                         }
-                                // console.log
+                        // console.log
                         // } else {
-                                // }
+                        // }
                         // if (this.currentOperation == "" && (operator == "*" || operator == "/")) {
                         // !  no entiendo bien por qué he puesto lo de CURRENTOPERATION. AHORA NO HACE NADA
-                 } else {
+                } else {
 
                         if (this.parenthesis) {
-                                const withoutEndParenthesis = resultElement.slice(0, -1);
+                                const withoutEndParenthesis = resultElement.slice(0, -numberOpenParenthesis);
                                 console.log("withoutParenthesis", withoutEndParenthesis);
                                 this.currentOperation = withoutEndParenthesis;
                                 console.log("this.currentOperation después de quitarparentesis", this.currentOperation);
@@ -505,8 +517,13 @@ class Calculator {
                 // }
 
                 if (this.parenthesis) {
-                        this.currentOperation += ")";
-                }
+                        for (let i=0; i<this.openParenthesis; i++ ) {
+
+                                this.currentOperation += ")";
+                        }
+
+                        // this.currentOperation += ")";
+                };
 
                 this.operand2 = 0;
                 this.pointEntered = false;
@@ -516,6 +533,7 @@ class Calculator {
                 // this.currentOperation = this.currentOperation + this.operator;
                 this.updateScreen();
         };
+
 
         percentage() {
                 try {
@@ -532,22 +550,42 @@ class Calculator {
 
 
         addParenthesis() {
-                // let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
-                // console.log("aquuuuiiiiii  en ADDPARENTHESIS lastCharacter",lastCharacter);
+                let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
+                console.log("aquuuuiiiiii  en ADDPARENTHESIS lastCharacter", lastCharacter);
+                console.log(" NO isNAN lastCharacter:", !isNaN(lastCharacter));
+                console.log("this.parentesis:", this.parenthesis)
+                let numberOpenParenthesis = this.openParenthesis - this.closeParenthesis;
+                console.log("numberOpenParenthesis", numberOpenParenthesis)
 
                 try {
-                        
+
+                        if (lastCharacter === ")" && this.parenthesis) {
+                                console.log("creo que aquíiíiíiíiíiíi-----------");
+                                this.currentOperation = this.currentOperation.slice(0, -numberOpenParenthesis);
+                        };
+
                         // if (!isNaN(lastCharacter)) {
-                        //         console.log("aquuuuiiiiii  DENTRO DEL IF EN ADDPARENTHESIS lastCharacter",lastCharacter)
+                        //         // ? ENTRA AQUÍ CUANOD ES UN NÚMERO, PARA PONER EL SÍMBOLO "*" ANTES DEL PARÉNTESIS
+                        //         console.log("aquuuuiiiiii  DENTRO DEL IF EN ADDPARENTHESIS lastCharacter",lastCharacter);
                         //         this.operand2 = "*()";
 
                         // } else {
-                                this.operand2 = "()";
+                        //         this.operand2 = "()";
                         // }
 
+
+                        this.operand2 = "()";
                         this.currentOperation += this.operand2;
                         this.parenthesis = true;
                         this.openParenthesis++;
+
+                        if (this.parenthesis) {
+                                for (let i = 0; i < numberOpenParenthesis; i++) {
+
+                                        console.log("aqui para cerrar parentesis")
+                                        this.currentOperation += ")";
+                                }
+                        };
 
                         this.updateScreen();
 
