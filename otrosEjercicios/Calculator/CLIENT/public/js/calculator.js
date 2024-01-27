@@ -378,7 +378,7 @@ class Calculator {
         };
 
 
-        // TODO [ ] Arreglar que admita un paréntesis dentro de otro.
+        // TODO [ x] Arreglar que admita un paréntesis dentro de otro.
         // TODO [ ] Cuando se han introducido paréntesis, y se borran caracteres, hace cosas raras.
         // TODO [X] Cuando entre un parentesis de cierre y otro de inicio, no hay signo, hay que poner que es "*"
         // TODO [X] Cuando el último carácter es de cierre de parentesis ")" y se inicia otro paréntesis "(", concatena el resultado de los dos parentesis.
@@ -396,11 +396,64 @@ class Calculator {
                 if (this.currentOperation.length === 0) {
                         // Si la cadena está vacía, no hay nada que borrar.
                         return;
-                }
+                };
 
                 // Elimina el último carácter de la cadena
+                // console.log("this.currentOperation antes de lastCharacter en eraseNumber", this.currentOperation)
                 let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
+                console.log("this.currentOperation después de lastCharacter en eraseNumber", this.currentOperation)
+                let sequence = this.currentOperation;
+                let numberOpenParenthesis = this.openParenthesis - this.closeParenthesis;
+                // console.log("numberOpenParenthesis", numberOpenParenthesis);
+
+                if (this.parenthesis) {
+                        // if ()
+                        console.log("AL BORRAR ENTRA EN PARENTEIS")
+                        console.log("sequence", sequence)
+                        this.currentOperation = sequence.slice(0, - numberOpenParenthesis);
+                        console.log("this.currentOperation en el if de this.parentesis", this.currentOperation)
+                        // for (let i = 0; i < numberOpenParenthesis; i++) {
+                        //         // console.log("aqui para cerrar parentesis")
+                        //         this.currentOperation += ")";
+                        // }
+                };
+
+                // console.log("AQUÍ ENTRA CUANDO NO HAY PARENTESIS")
+                lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
+                console.log("lastCharacter entre el if de si hay parenteis y el if de '(':", lastCharacter)
+                console.log("lastCharacter después de quitar los paréntesis del final:", lastCharacter)
                 this.currentOperation = this.currentOperation.slice(0, -1);
+                console.log("this.currentOperation antes del if de quitar '(' y después de quitar el último caracter:", this.currentOperation)
+                if (lastCharacter == "(") {
+                        console.log("ANTES ------ this.openParenthesis:", this.openParenthesis, "this.closeP.:", this.closeParenthesis, "resta", numberOpenParenthesis);
+                        this.openParenthesis--;
+                        this.closeParenthesis > 0 ? this.closeParenthesis-- : this.closeParenthesis = 0;
+                        numberOpenParenthesis = this.openParenthesis - this.closeParenthesis;
+                        console.log("numberOpenParenthesis", numberOpenParenthesis);
+                        console.log("DESPUES ---- this.openParenthesis:", this.openParenthesis, "this.closeP.:", this.closeParenthesis, "resta", numberOpenParenthesis);
+                        
+                        if (!this.currentOperation.includes("(")) {
+                                        this.parenthesis = false;
+                        };
+
+                };
+                
+                if (this.parenthesis) {
+                        numberOpenParenthesis = this.openParenthesis - this.closeParenthesis;
+                        console.log("numberOpenParenthesis después de borrar para ponerlos parentesis de cierre si hace flata", numberOpenParenthesis)
+
+                        for (let i = 0; i < numberOpenParenthesis; i++) {
+                                // console.log("aqui para cerrar parentesis")
+                                this.currentOperation += ")";
+                        };
+                };
+
+
+
+
+                // Elimina el último carácter de la cadena
+                // let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
+                // this.currentOperation = this.currentOperation.slice(0, -1);
 
                 // if (lastCharacter === ")") {
                 //         this.currentOperation = this.currentOperation.slice(0, -2);
@@ -560,19 +613,9 @@ class Calculator {
                 try {
 
                         if (lastCharacter === ")" && this.parenthesis) {
-                                console.log("creo que aquíiíiíiíiíiíi-----------");
+                                // console.log("creo que aquíiíiíiíiíiíi-----------");
                                 this.currentOperation = this.currentOperation.slice(0, -numberOpenParenthesis);
                         };
-
-                        // if (!isNaN(lastCharacter)) {
-                        //         // ? ENTRA AQUÍ CUANOD ES UN NÚMERO, PARA PONER EL SÍMBOLO "*" ANTES DEL PARÉNTESIS
-                        //         console.log("aquuuuiiiiii  DENTRO DEL IF EN ADDPARENTHESIS lastCharacter",lastCharacter);
-                        //         this.operand2 = "*()";
-
-                        // } else {
-                        //         this.operand2 = "()";
-                        // }
-
 
                         this.operand2 = "()";
                         this.currentOperation += this.operand2;
@@ -581,8 +624,7 @@ class Calculator {
 
                         if (this.parenthesis) {
                                 for (let i = 0; i < numberOpenParenthesis; i++) {
-
-                                        console.log("aqui para cerrar parentesis")
+                                        // console.log("aqui para cerrar parentesis")
                                         this.currentOperation += ")";
                                 }
                         };
@@ -606,7 +648,7 @@ class Calculator {
                                 this.parenthesis = false;
                         };
 
-                        this.updateScreen();
+                        // this.updateScreen();
 
                 } catch (error) {
                         console.error("Error:", error);
