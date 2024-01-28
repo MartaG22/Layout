@@ -378,8 +378,8 @@ class Calculator {
         };
 
 
-        // TODO [ x] Arreglar que admita un paréntesis dentro de otro.
-        // TODO [ ] Cuando se han introducido paréntesis, y se borran caracteres, hace cosas raras.
+        // TODO [x] Arreglar que admita un paréntesis dentro de otro.
+        // TODO [x] Cuando se han introducido paréntesis, y se borran caracteres, hace cosas raras.
         // TODO [X] Cuando entre un parentesis de cierre y otro de inicio, no hay signo, hay que poner que es "*"
         // TODO [X] Cuando el último carácter es de cierre de parentesis ")" y se inicia otro paréntesis "(", concatena el resultado de los dos parentesis.
 
@@ -493,13 +493,29 @@ class Calculator {
 
         operation(operator) {
                 const resultElement = (document.getElementById('result').textContent);
-                let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
+                let numberOpenParenthesis = this.openParenthesis - this.closeParenthesis;
+                let lastCharacter;
+
+                if (this.parenthesis) {
+                        // ! CREO QUE ES AQUÍ DONDE SE TIENE QUE HACER PARA QUE NO PILLE MÁS DE UN SIGNO DE OPERACIÓN, CUANDO HAY PARENTESIS
+                        console.log("numberOpenParenthesis en el IF de OPERATION, para ver si hay parentesis y manejar que no coja más de un signo",numberOpenParenthesis);
+                        // let diferencia = this.currentOperation.length - numberOpenParenthesis;
+                        // console.log("this.currentOperation", this.currentOperation, "  <>  this.currentOperation.length", this.currentOperation.length, "  <>   numberOpenParenthesis:", numberOpenParenthesis )
+                        // console.log("diferencia entre long. de currentoperation y numberOpenP.:", diferencia);
+                        lastCharacter = this.currentOperation.charAt(this.currentOperation.length - numberOpenParenthesis -1);
+                        // console.log(this.currentOperation.charAt(this.currentOperation.length - numberOpenParenthesis - 1));
+                        // console.log("lastCharacter en el IF", lastCharacter)
+                } else {
+                        // console.log("entra en el ELSE")
+                        lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
+                };
+
                 // console.log("ultimoCaracter", lastCharacter);
 
                 let operators = ["+", "-", "*", "÷"];
                 // if (lastCharacter == "0" && operators.includes(penultimateCharacter)) return;
-                console.log("operator al inicio de OPERATOR", operator)
-                let numberOpenParenthesis = this.openParenthesis - this.closeParenthesis;
+                // console.log("operator al inicio de OPERATOR", operator)
+                // let numberOpenParenthesis = this.openParenthesis - this.closeParenthesis;
 
                 // if (operator == "÷") operator = "/";
                 if (this.currentOperation == "" && (operator == "*" || operator == "/")) {
@@ -535,11 +551,7 @@ class Calculator {
                                 console.log("operator", operator);
 
                         }
-                        // console.log
-                        // } else {
-                        // }
-                        // if (this.currentOperation == "" && (operator == "*" || operator == "/")) {
-                        // !  no entiendo bien por qué he puesto lo de CURRENTOPERATION. AHORA NO HACE NADA
+
                 } else {
 
                         if (this.parenthesis) {
