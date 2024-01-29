@@ -728,6 +728,23 @@ class Calculator {
 
                 };
         };
+
+
+        addMemory () {
+                        // const sequence = ()
+                        // const resultElement = (document.getElementById('result').textContent);
+                        const sequence = (document.getElementById('operands').textContent);
+                        
+                        // console.log("resultElement en ADDMEMORY en CALCULATOR", resultElement)
+                        console.log("sequence en ADDMEMORY en CALCULATOR: ", sequence);
+                        console.log("this.currentOperation en ADDMEMORY en CALCULATOR: ", this.currentOperation);
+                        return {
+                                sequence: sequence,
+                                currentOperation: this.currentOperation
+                        };
+        };
+
+
 };
 
 export default Calculator;

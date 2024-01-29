@@ -171,7 +171,7 @@ endParenthesis.addEventListener("click", () => {
 
 equalButton.addEventListener("click", async () => {
         let operation = calculator.equal();
-        console.log(operation)
+        console.log("***operation en equalButton.addEventListener en MAIN", operation)
         // console.log(this.currentOperation)
         // let expresion = calculator.calculate();
         // console.log("EXPRESION:", expresion)
@@ -190,14 +190,40 @@ equalButton.addEventListener("click", async () => {
                 // Maneja el error si es necesario
                 console.error("Error al realizar la solicitud:", error);
         };
-})
+});
 
 percentageButton.addEventListener("click", () => {
-        console.log("PERCENTATGE!!!!");
+        // console.log("PERCENTATGE!!!!");
         calculator.percentage();
 })
 
 
+
+addMemory.addEventListener("click", async() => {
+        console.log("ADD MEMORY");
+        // calculator.addMemory();
+        try {
+                let addData = calculator.addMemory();
+                console.log("aVer en addmemory.addeventListener en MAIN", addData);
+                let result = await makeRequest(addData, `${apiUrl}/addMemory`);
+                console.log("RESPUESTA result EN ADDDATA EN ADDMEMORY EN MAIN ", result)
+        } catch (error) {
+                // Maneja el error si es necesario
+                console.error("Error al realizar la solicitud:", error);
+        };
+});
+
+substractMemory.addEventListener("click", () => {
+        console.log("SUBSTRACT MEMORY");
+});
+
+rescueMemory.addEventListener("click", () => {
+        console.log("RESCAT  MEMORY");
+});
+
+resetMemory.addEventListener("click", () => {
+        console.log("RESET  MEMORY");
+});
 
 
 //! Función para realizar una solicitud fetch al backend
