@@ -25,20 +25,12 @@ class Calculator {
                 this.openParenthesis = 0;
                 this.closeParenthesis = 0;
 
-
-                // this.update = false;
-
-
-
-                // console.log("CLEAR  operand1:", this.operand1,"operand2:", this.operand2, "currentOP:", this.currentOperation)
                 this.updateScreen();
         };
 
 
         updateScreen() {
                 try {
-                        // const operand2ElementScreen = document.querySelector("[data-screen-result]");
-                        // console.log('operand2ElementScreen', operand2ElementScreen)
                         let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
 
                         // Obtén el elemento por su id
@@ -117,6 +109,8 @@ class Calculator {
                 console.log("this.operand1 ", this.operand1);
                 console.log("this.currentOperation", this.currentOperation);
 
+                // Obtén el elemento por su id
+                // Accede al contenido (texto) del elemento
                 const resultElement = (document.getElementById('result').textContent);
                 console.log("CONTENIDO en APPEBDNUMBER", resultElement);
 
@@ -128,7 +122,6 @@ class Calculator {
 
                 try {
 
-                        // if (this.update && !isNaN(this.currentOperation)) {
                         if (this.isEqualPressed && this.currentOperation == this.operand1) {
                                 //? CUANDO TENEMOS RESULTADO DESPUÉS DE PULSAR "=" E INTRODUCIMOS OTRO NÚMERO
 
@@ -146,10 +139,9 @@ class Calculator {
                                 console.log("this.operand2 ", this.operand2);
                                 console.log("this.currentOperation", this.currentOperation);
                                 console.log("this.pointEntered", this.pointEntered);
-                                // this.operand2 = number;
-                                // this.currentOperation = resultElement;
-                                console.log("DESPUÉS DE IGUALAR OPREAND2 - this.operand2 ", this.operand2);
-                                console.log("DESPUÉS DE IGUALAR OPREAND2 - this.currentOperation", this.currentOperation);
+
+                                // console.log("DESPUÉS DE IGUALAR OPREAND2 - this.operand2 ", this.operand2);
+                                // console.log("DESPUÉS DE IGUALAR OPREAND2 - this.currentOperation", this.currentOperation);
 
                                 if (number === "." && !this.pointEntered) {
                                         console.log("this.pointEntered después de dar igual, en el IF", this.pointEntered)
@@ -169,25 +161,11 @@ class Calculator {
 
                                 if (number == "0" && this.currentOperation == "0") return;
 
-
-                                // if (number == "0" && this.operand2 == "0" && lastCharacter == "0") {
-                                //         console.log("CUANDO NUMBER = 0   Y   THIS.OPERAND2 = 0");
-                                //         this.operand2 = 0;
-                                //         // this.currentOperation += this.operand2;
-                                //         console.log("EN APPENDNUMBER PARA QUITAR EL '0000' INICIAL this.operand2", this.operand2, "this. currentoperation", this.currentOperation)
-
-                                //         // return;
-                                // };
-
-
                                 if (this.parenthesis) {
-                                        //! NO SÉ QUE TENGO QUE HACER AQUÍ PARA VER SI HAY MÁS DE UN PARÉNTESIS
-                                        //!  podría ser hacer la diferencia entre el paréntesis abierto y el cerrado, y ese seria la cantidad que tengo que quitar aquí
                                         const withoutEndParenthesis = resultElement.slice(0, -numberOpenParenthesis);
                                         console.log("withoutParenthesis", withoutEndParenthesis);
                                         this.currentOperation = withoutEndParenthesis;
                                         console.log("NUEVO EN APPENDNUMBER  this.currentOperation", this.currentOperation)
-
                                 };
 
 
@@ -221,34 +199,16 @@ class Calculator {
 
                                         this.pointEntered = true;  //? Se ha ingresado un punto
 
-                                        // console.log("number", number);
-                                        // console.log("this.operand2 EN EL IF", this.operand2);
-                                        // console.log("this.currentOperation", this.currentOperation);
-                                        // console.log("this.pointEntered", this.pointEntered)
-
-
                                 } else if (number == "." && this.operand2 !== "0" && !this.pointEntered) {
 
                                         //? CUANDO SE INTRODUCE UN "." Y YA TENEMOS ALGUNA CIFRA INTRODUCIDA Y NO HAY PUNTO ANTERIORMENTE, AÑADE EL PUNTO.
 
-                                        //  AQUÍ AÑADE PUNTO "." , ESTA OPCIÓN YA ESTÁ MANEJADA AL PRINCIPIO. TENGE QUE REVISAR.  <<>>> ES OTRA VARIANTE
                                         console.log("this.pointEntered:", this.pointEntered);
                                         console.log("number:", number);
                                         console.log("this,ioer2 entro del cuarto IF", this.operand2);
                                         this.operand2 += number;
                                         this.currentOperation += number;
                                         this.pointEntered = true;
-
-
-                                        // } else if (number !== "0" && Number !== "." && this.operand2 == "0" && lastCharacter == "0") {
-                                        //         console.log("HAY QUE QUITAR EL 0 DE THIS.OPERAND2 PARA QUE PILLE EL VALOR DEL NUMERO INTRODUCIDO")
-                                        //         console.log("EN APPENDNUMBER PARA QUITAR EL '0' INICIAL DELANTE DEL NUMERO QUE SE INTRODUZA this.operand2", this.operand2, "this. currentoperation", this.currentOperation)
-                                        //         this.operand2 = number;
-                                        //         this.currentOperation = this.currentOperation.slice(0, -1);
-
-                                        //         this.currentOperation += this.operand2;
-                                        //         console.log("al final ------EN APPENDNUMBER PARA QUITAR EL '0' INICIAL DELANTE DEL NUMERO QUE SE INTRODUZA this.operand2", this.operand2, "this. currentoperation", this.currentOperation)
-
 
                                 } else if (number !== "." && number !== "0" && this.operand2 == "0") {
                                         console.log("en opción NUMBER NO .   </   NUMBER NO 0   </   OPERAND2 = 0", this.operand2);
@@ -279,15 +239,8 @@ class Calculator {
 
                                 } else if (number !== "." && number !== "0" && this.operand2 !== "0") {
                                         //? CUANDO ya TENEMOS UN VALOR EN OPERAND2 Y AÑADIMOS MÁS CIFRAS AL OPERADOR, DIFERENTES DE "." Y DE "0"
-                                        // console.log("ES AQUUUUIIIII-------------------------")
-                                        // console.log("AQUÍ HAY QUE HACER PARA QUE PONGA EL 0 SI YA HAY OTRO NÚMERO INTRODUCIDO");
                                         this.operand2 += number;
                                         this.currentOperation += number;
-
-
-                                        // } else if (number == "0" && operand2 == "0") {
-
-
 
                                 } else if (number === "0" && this.operand2 !== "0") {
 
@@ -315,16 +268,11 @@ class Calculator {
 
                                         } else {
 
-
-                                                //! si se ponen "0" después del signo de operación, sí coge "0000"
-                                                //! AQUÍ SI SE PONE += AÑADE EL "O" AL PRINCIPIO. 
-                                                //! SI SE PONE ASÍ "= NUMBER", LUEGO NO DEJA PONER MÁS "0"
                                                 this.operand2 += number;
                                                 this.currentOperation += number;
                                                 console.log("en un IF DE  APPENDNUMBER - this.operand2 ", this.operand2);
                                                 console.log("en un IF DE  APPENDNUMBER - this.currentOperation", this.currentOperation);
-
-                                        }
+                                        };
 
                                 } else if (number == "0" && this.operand2 == "0" && lastCharacter !== "0") {
                                         console.log("******AQUÍ HAY QUE si hay un 0 y se pulse 0, no ponga '000000'****")
@@ -356,9 +304,8 @@ class Calculator {
         
                                                 console.log("aqui para cerrar parentesis")
                                                 this.currentOperation += ")";
-                                        }
+                                        };
                                 };
-                                        // };
                         };
 
 
@@ -528,10 +475,6 @@ class Calculator {
                         // };
                 };
 
-                // console.log("aquuuuiiiiii   lastCharacter",lastCharacter)
-                // if (isNaN(lastCharacter)) {
-                //         console.log("aquuuuiiiiii   lastCharacter",lastCharacter)
-                // };
 
                 if (operators.includes(lastCharacter)) {
                         console.log("lastCharacter en OPERATION EN EL PRIMER IF:", lastCharacter);
@@ -585,9 +528,7 @@ class Calculator {
                         for (let i=0; i<this.openParenthesis; i++ ) {
 
                                 this.currentOperation += ")";
-                        }
-
-                        // this.currentOperation += ")";
+                        };
                 };
 
                 this.operand2 = 0;
@@ -606,10 +547,8 @@ class Calculator {
                         this.currentOperation = this.currentOperation + this.operator;
 
                         this.updateScreen();
-
                 } catch (error) {
                         console.error("Error:", error);
-
                 };
         };
 
@@ -710,8 +649,6 @@ class Calculator {
                                 this.closeParenthesis = 0;
                                 // console.log("this.openParenthesi y  this.closeParenthesis",this.openParenthesis, this.closeParenthesis)
 
-
-
                         } else if (result && this.currentOperation !== "") {
                                 // console.log("rresult", result)
                                 // console.log("ESTA ES LA SEGUNDA OPCIÓN-----esta opción no sé que hace")
@@ -731,11 +668,8 @@ class Calculator {
 
 
         addMemory () {
-                        // const sequence = ()
-                        // const resultElement = (document.getElementById('result').textContent);
                         const sequence = (document.getElementById('operands').textContent);
-                        
-                        // console.log("resultElement en ADDMEMORY en CALCULATOR", resultElement)
+
                         console.log("sequence en ADDMEMORY en CALCULATOR: ", sequence);
                         console.log("this.currentOperation en ADDMEMORY en CALCULATOR: ", this.currentOperation);
                         return {
