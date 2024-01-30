@@ -21,9 +21,10 @@ app.use(
                 methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
                 credentials: true,
                 optionsSuccessStatus: 204,
+                allowedHeaders: ['Content-Type', 'Otra-Cabecera-Custom'],
         })
 );
-
+// app.use(cors({ origin: '*' }));
 app.use(bodyParser.json());
 
 
@@ -178,30 +179,31 @@ app.post("/calculate", (req, res) => {
 
 app.post("/addMemory", async (req, res) => {
         console.log("recibido en app back en addMemory", req.body);
-        const sequence = req.body.expression.sequence;
-        const result = req.body.expression.currentOperation;
+        // const sequence = req.body.expression.sequence;
+        // const result = req.body.expression.currentOperation;
         // console.log("sequence:", sequence);
         // console.log("result:", result);
 
         try {
+                const readData = await readFile(dataFile);
+                memoryData = JSON.parse(readData);
+                console.log("memoryData", memoryData)
+
                 if (req.body) {
                         let newData = {
-                                // memory: number,
-                                resultOperation: result,
-                                operationsSequence: req.body.expression.sequence,
+                                resultOperation: memoryData.resultOperation + parseFloat(req.body.currentOperation),
+                                operationsSequence: req.body.sequence,
                         };
-
                         writeFile(dataFile, newData);
+                };
 
-                }
-                // const readData = await readFile(dataFile);
-                // memoryData = JSON.parse(readData);
-                // console.log("memoryData", memoryData)
-
+                res.status(200).json({ success: true, message: "Operación realizada con éxito" });
+                return;
 
         } catch (error) {
                 console.error("Error al evaluar la expresión:", error);
                 res.status(500).json({
+                        success: false,
                         error: "Error al evaluar la expresión",
                         details: error.message,
                 });

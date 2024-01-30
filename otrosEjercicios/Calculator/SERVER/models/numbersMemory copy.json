@@ -4,5 +4,11 @@
             "num2": 0,
             "operationsSequence": "",
             "currentOperation": ""
+      },
+      {
+      
+              "resultOperation": 0,
+              "operationsSequence": 0
       }
 ]
+
