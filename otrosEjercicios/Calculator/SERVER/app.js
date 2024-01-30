@@ -8,6 +8,11 @@ const routes = require("../SERVER/routes/index_routes.js"); //! ????
 const parseExpresion = require("./helpers/parseExpression.js");
 const solveSequence = require("./helpers/solveSequence.js");
 
+const readFile = require("./helpers/readFile.js");
+const writeFile = require("./helpers/writeFile.js");
+const dataFile = "./models/numbersMemory.json";
+
+
 // app.use(cors());
 app.use(
         cors({
@@ -169,6 +174,40 @@ app.post("/calculate", (req, res) => {
                 });
         }
 });
+
+
+app.post("/addMemory", async (req, res) => {
+        console.log("recibido en app back en addMemory", req.body);
+        const sequence = req.body.expression.sequence;
+        const result = req.body.expression.currentOperation;
+        // console.log("sequence:", sequence);
+        // console.log("result:", result);
+
+        try {
+                if (req.body) {
+                        let newData = {
+                                // memory: number,
+                                resultOperation: result,
+                                operationsSequence: req.body.expression.sequence,
+                        };
+
+                        writeFile(dataFile, newData);
+
+                }
+                // const readData = await readFile(dataFile);
+                // memoryData = JSON.parse(readData);
+                // console.log("memoryData", memoryData)
+
+
+        } catch (error) {
+                console.error("Error al evaluar la expresión:", error);
+                res.status(500).json({
+                        error: "Error al evaluar la expresión",
+                        details: error.message,
+                });
+        };
+});
+
 
 app.listen(port, () => {
         console.log(`Servidor escuchando en http://localhost:${port}`);
