@@ -667,18 +667,30 @@ class Calculator {
         };
 
 
-        addMemory () {
-                        const sequence = (document.getElementById('operands').textContent);
+        addMemory() {
+                const sequence = (document.getElementById('operands').textContent);
 
-                        console.log("sequence en ADDMEMORY en CALCULATOR: ", sequence);
-                        console.log("this.currentOperation en ADDMEMORY en CALCULATOR: ", this.currentOperation);
-                        return {
-                                sequence: sequence,
-                                currentOperation: this.currentOperation
-                        };
+                console.log("sequence en ADDMEMORY en CALCULATOR: ", sequence);
+                console.log("this.currentOperation en ADDMEMORY en CALCULATOR: ", this.currentOperation);
+                return {
+                        sequence: sequence,
+                        currentOperation: this.currentOperation
+                };
         };
 
 
+        // substractMemory() {
+        //         const sequence = (document.getElementById('operands').textContent);
+        //         return {
+        //                 sequence: sequence,
+        //                 currentOperation: -this.currentOperation
+        //         };
+        // };
+
+
+        // resetMemory() {
+
+        // }
 };
 
 export default Calculator;

@@ -210,6 +210,36 @@ app.post("/addMemory", async (req, res) => {
         };
 });
 
+app.post("/resetMemory", async (req, res) => {
+        console.log("recibido en app back en addMemory", req.body);
+        try {
+                const readData = await readFile(dataFile);
+                memoryData = JSON.parse(readData);
+                console.log("memoryData", memoryData)
+
+                if (req.body) {
+                        let newData = {
+                                resultOperation: parseFloat(req.body.currentOperation),
+                                operationsSequence: req.body.sequence,
+                        };
+                        writeFile(dataFile, newData);
+                };
+
+                res.status(200).json({ success: true, message: "Operación realizada con éxito" });
+                return;
+
+        } catch (error) {
+                console.error("Error al evaluar la expresión:", error);
+                res.status(500).json({
+                        success: false,
+                        error: "Error al resetear los datos en Memory",
+                        details: error.message,
+                });
+        };
+
+});
+
+
 
 app.listen(port, () => {
         console.log(`Servidor escuchando en http://localhost:${port}`);

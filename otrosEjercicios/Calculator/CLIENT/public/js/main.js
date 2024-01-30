@@ -152,8 +152,7 @@ percentageButton.addEventListener("click", () => {
 
 
 addMemory.addEventListener("click", async () => {
-        console.log("ADD MEMORY");
-        // calculator.addMemory();
+
         try {
                 let addData = calculator.addMemory();
                 console.log("aVer en addmemory.addeventListener en MAIN", addData);
@@ -171,15 +170,42 @@ addMemory.addEventListener("click", async () => {
                         throw new Error(`Error en la solicitud: ${respuesta.status}`);
                 };
                 
-
-                // Realiza cualquier acción adicional si es necesario
-
         } catch (error) {
-                // Maneja el error en el frontend
                 console.error("Error en el frontend al hacer la solicitud:", error.message);
-                // Puedes mostrar un mensaje de error al usuario o realizar otras acciones según sea necesario
         }
 });
+
+
+substractMemory.addEventListener("click", async () => {
+        // console.log("SUBSTRACT MEMORY");
+        try {
+                let addData = calculator.substractMemory();
+                console.log("aVer en addmemory.addeventListener en MAIN", addData);
+                let result = await addDataMakeRequest(addData, `${apiUrl}/addMemory`);
+                console.log("RESPUESTA result EN ----substractMemory---- EN ADDMEMORY EN MAIN ", result)
+        } catch (error) {
+                // Maneja el error si es necesario
+                console.error("Error al realizar la solicitud:", error);
+        };
+});
+
+rescueMemory.addEventListener("click", () => {
+        console.log("RESCAT  MEMORY");
+});
+
+resetMemory.addEventListener("click", async () => {
+        try {
+                const resetData = {
+                        sequence: 0,
+                        currentOperation: 0
+                };
+                let result = await addDataMakeRequest(resetData, `${apiUrl}/resetMemory`);
+                console.log("result en resetMemory", result)
+
+        } catch (error) {
+                // Maneja el error si es necesario
+                console.error("Error al realizar la solicitud:", error);
+        };});
 
 
 //! Función para realizar una solicitud fetch al backend
