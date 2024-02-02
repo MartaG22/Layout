@@ -671,7 +671,15 @@ class Calculator {
                 const sequence = (document.getElementById('operands').textContent);
 
                 console.log("sequence en ADDMEMORY en CALCULATOR: ", sequence);
+                console.log("typeOF", typeof(sequence));
                 console.log("this.currentOperation en ADDMEMORY en CALCULATOR: ", this.currentOperation);
+
+
+                if (sequence == "0") {
+                        this.currentOperation = 0;
+                };
+
+                console.log(">>>>sequence", sequence, "this.currentOperation", this.currentOperation)
                 return {
                         sequence: sequence,
                         currentOperation: this.currentOperation
@@ -691,6 +699,19 @@ class Calculator {
         // resetMemory() {
 
         // }
+
+        rescueDataMemory(data) {
+                console.log("DATA en rescueDataMemory", data);
+                console.log("typeOf", typeof(data))
+                // console.log("data", data);
+                // console.log("data.resultOperation", data.resultOperation);
+                this.operand2 = data;
+                let endResult = data;
+                this.currentOperation += data;
+                this.updateScreen();
+
+                // console.log(this.operand2);
+        }
 };
 
 export default Calculator;

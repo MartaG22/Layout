@@ -210,6 +210,83 @@ app.post("/addMemory", async (req, res) => {
         };
 });
 
+
+
+// app.get("/rescueMemory", async (req, res) => {
+//         // console.log("recibido en app back en addMemory", req.body);
+//         // const sequence = req.body.expression.sequence;
+//         // const result = req.body.expression.currentOperation;
+//         // console.log("sequence:", sequence);
+//         // console.log("result:", result);
+
+//         try {
+//                 const readData = await readFile(dataFile);
+//                 const memoryData = JSON.parse(readData);
+//                 console.log("readData.resultOperation RECUPERANDO DATOS GRABADOS", readData);
+//                 console.log("memoryData RECUPERANDO DATOS GRABADOS", memoryData)
+//                 console.log("memoryData lo que necesito RECUPERANDO DATOS GRABADOS", memoryData.resultOperation);
+
+//                 // if (req.body) {
+//                 //         let newData = {
+//                 //                 resultOperation: memoryData.resultOperation + parseFloat(req.body.currentOperation),
+//                 //                 operationsSequence: req.body.sequence,
+//                 //         };
+//                 //         writeFile(dataFile, newData);
+//                 // };
+//                 // const dataObject = JSON.parse(dataString);
+//                 res.status(200).json({ success: true, readData, message: "Operación realizada con éxito" });
+//                 // return readData;
+
+//         } catch (error) {
+//                 console.error("Error al evaluar la expresión:", error);
+//                 res.status(500).json({
+//                         success: false,
+//                         error: "Error al evaluar la expresión",
+//                         details: error.message,
+//                 });
+//         };
+// });
+
+
+
+
+
+app.get("/rescueMemory", async (req, res) => {
+        try {
+            const readData = await readFile(dataFile);
+    
+            // Punto 1: Verifica si readData contiene lo esperado
+            console.log("readData RECUPERANDO DATOS GRABADOS", readData);
+    
+            // Punto 2: Asegúrate de que readData se esté parseando correctamente
+            const memoryData = JSON.parse(readData);
+            console.log("memoryData RECUPERANDO DATOS GRABADOS", memoryData);
+    
+            // Punto 3: Asegúrate de que memoryData.resultOperation esté presente
+            console.log("memoryData lo que necesito RECUPERANDO DATOS GRABADOS", memoryData.resultOperation);
+    
+            // Aquí puedes enviar la respuesta al cliente con success: true y la propiedad resultOperation
+            res.status(200).json({ success: true, resultOperation: memoryData.resultOperation, message: "Operación realizada con éxito" });
+    
+        } catch (error) {
+            console.error("Error al evaluar la expresión:", error);
+    
+            // Aquí envías una respuesta con success: false en caso de error
+            res.status(500).json({
+                success: false,
+                error: "Error al evaluar la expresión",
+                details: error.message,
+            });
+        }
+    });
+    
+
+
+
+
+
+
+
 app.post("/resetMemory", async (req, res) => {
         console.log("recibido en app back en addMemory", req.body);
         try {

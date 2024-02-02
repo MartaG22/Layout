@@ -122,6 +122,37 @@ async function addDataMakeRequest(data, apiUrl) {
 };
 
 
+async function rescueDataMemory(apiUrl) {
+        try {
+                const response = await fetch(apiUrl, {
+                    method: "GET", // Cambiado a GET ya que estamos rescatando información
+                    headers: { "Content-Type": "application/json" },
+                });
+        
+                if (!response.ok) {
+                    throw new Error(`Error en la solicitud: ${response.status}`);
+                }
+        
+                console.log("response en rescueMemory", response)
+                return response.json();
+
+
+
+
+        // try {
+        //         const response = await fetch(apiUrl, {
+        //                 method: "GET",
+        //                 headers: { "Content-Type": "application/json" },
+        //                 // body: JSON.stringify(data),
+        //         });
+        //         console.log("response en addDataMakeRequest", response)
+
+        } catch (error) {
+                console.log("Error en rescueMemory", error);
+                throw error;
+        };
+};
+
 equalButton.addEventListener("click", async () => {
         let operation = calculator.equal();
         console.log(operation)
@@ -189,9 +220,32 @@ substractMemory.addEventListener("click", async () => {
         };
 });
 
-rescueMemory.addEventListener("click", () => {
+
+
+rescueMemory.addEventListener("click", async () => {
         console.log("RESCAT  MEMORY");
+
+        try {
+                let result = await rescueDataMemory(`${apiUrl}/rescueMemory`);
+                console.log("RESPUESTA result EN ----rescueMemory---- EN rescueMemory EN MAIN ", result);
+                console.log("RESPUESTA resultOperation EN ----rescueMemory---- EN rescueMemory EN MAIN ", result.resultOperation);
+
+                if (result.success) {
+                        calculator.rescueDataMemory(result.resultOperation);
+
+                } else {
+                        console.error("Error en la solicitud:", response.status);
+                        // Manejar errores, si es necesario
+                }
+        } catch (error) {
+                // Maneja el error si es necesario
+                console.error("Error al realizar la solicitud:", error);
+        };
+
 });
+
+
+
 
 resetMemory.addEventListener("click", async () => {
         try {
