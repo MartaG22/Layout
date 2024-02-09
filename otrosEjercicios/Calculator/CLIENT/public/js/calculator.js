@@ -31,7 +31,11 @@ class Calculator {
 
         updateScreen() {
                 try {
-                        let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
+                        console.log("this.currentOperation en UPDATESCREEN", this.currentOperation);
+                        // console.log("this.currentOperation-length en UPDATESCREEN", this.currentOperation.length);
+                        console.log("typerof", typeof(this.currentOperation))
+                        // this.currentOperation = this.currentOperation.toString();
+                        let lastCharacter = this.currentOperation.toString().charAt(this.currentOperation.length - 1);
 
                         // Obtén el elemento por su id
                         // const operandScreenElement = (document.getElementById('operands').textContent);
@@ -107,15 +111,16 @@ class Calculator {
                 console.log("this.operand2", this.operand2);
                 // console.log("this.operand1 ", this.operand1);
                 console.log("this.operand1 ", this.operand1);
-                console.log("this.currentOperation", this.currentOperation);
+                console.log("AL PRINCIPIO DE APPENDNUMBER ---------- this.currentOperation", this.currentOperation);
 
                 // Obtén el elemento por su id
                 // Accede al contenido (texto) del elemento
                 const resultElement = (document.getElementById('result').textContent);
                 console.log("CONTENIDO en APPEBDNUMBER", resultElement);
 
-                let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
-                let penultimateCharacter = this.currentOperation.charAt(this.currentOperation.length - 2);
+                console.log("this.currentOperation.length en AppendNUMBER -----******----------", this.currentOperation.length)
+                let lastCharacter = this.currentOperation.toString().charAt(this.currentOperation.length - 1);
+                let penultimateCharacter = this.currentOperation.toString().charAt(this.currentOperation.length - 2);
                 console.log("lastCharacter en appendNumber", lastCharacter);
                 let numberOpenParenthesis = this.openParenthesis - this.closeParenthesis;
 
@@ -160,6 +165,11 @@ class Calculator {
                         } else {
 
                                 if (number == "0" && this.currentOperation == "0") return;
+                                if (!isNaN(lastCharacter)) { 
+                                        console.log("lastCharacter CUANDO LLEGA DE MEMORY!!! ---------", lastCharacter)
+                                        console.log("isNAN  lastCharacter CUANDO LLEGA DE MEMORY!!! ---------", isNaN(lastCharacter))
+                                        // return;
+                                };
 
                                 if (this.parenthesis) {
                                         const withoutEndParenthesis = resultElement.slice(0, -numberOpenParenthesis);
@@ -221,7 +231,7 @@ class Calculator {
                                                 // console.log("ES AQUUUUIIIII-------------------------")
                                                 console.log("*****-----*****-----******-------- NO SÉ SI ES AQUÍ, PARA QUE ME DEJE PONER MÁS 0000000000000000")
                                                 console.log("ES AQUÍ DONDE TENGO QUE QUITAR EL 0 PARA PONER EL NUEMRO QUE TOCA")
-                                                this.currentOperation = this.currentOperation.slice(0, -1);
+                                                this.currentOperation = this.currentOperation.toString().slice(0, -1);
                                                 this.operand2 = number;
                                                 this.currentOperation += this.operand2;
                                                 console.log("al final ------EN APPENDNUMBER PARA QUITAR EL '0' INICIAL DELANTE DEL NUMERO QUE SE INTRODUZA this.operand2", this.operand2, "this. currentoperation", this.currentOperation)
@@ -705,9 +715,70 @@ class Calculator {
                 console.log("typeOf", typeof(data))
                 // console.log("data", data);
                 // console.log("data.resultOperation", data.resultOperation);
+                let operators = ["+", "-", "*", "÷"];
+                let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
+                console.log("lastCharacter", lastCharacter)
+                console.log("this.operand2", this.operand2);
+                console.log("this.currentOperation", this.currentOperation);
+
+                // console.log("lastCharacter en appendNumber", lastCharacter);
+
+                // TODO A veces cuando la pantalla está a "0" y se quiere recuperar la memoria, da error
+
+
+                if (data == "0" && this.currentOperation == "0") {
+
+                        console.log("result.resultOperation en rescueMemory------ dentro del if:", data);
+                        return;
+                };
+
+                if (data == "0" && this.currentOperation !== "0") {
+                        console.log("result.resultOperation en rescueMemory------ dentro del if:", "data", data, this.currentOperation);
+                        this.currentOperation = data;
+                        console.log("result.resultOperation en rescueMemory------ dentro del if:", data, this.currentOperation);
+                };
+
+                if (data !== "0" && this.currentOperation == "") {
+                        console.log("entra diferemte de 0 en rescatar meoria y hay 0 en pantalla")
+                        console.log("this.currentOperation++++++***********", this.currentOperation)
+                        this.currentOperation = data;
+                        console.log("this.currentOperation++++++*********** DEPUés", this.currentOperation)
+                };
+
+                if (data !== "0" && this.currentOperation !== "" && this.currentOperation !== "0") {
+                        this.currentOperation = operators.includes(lastCharacter) ? this.currentOperation + data : data;
+
+                        // if (operators.includes(lastCharacter)) {
+                        //         this.currentOperation += data;
+                        // } else {
+                        //         this.currentOperation = data;
+                        // };
+                };
+
+
+                // if (data !== "0" && this.currentOperation !== "") {
+                // let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
+                // console.log("lastCharacter en appendNumber", lastCharacter);
+                // };
+
+                // console.log("result.resultOperation en rescueMemory------ DEPUÉEEEESSS del if:", data)
+
+
+                if (result.currentOperation == "") {
+                        console.log("   cuaDNO RSUTL.CURRENTOPERATION   ES     UNDEFINED")
+                }
+
+
+
                 this.operand2 = data;
-                let endResult = data;
-                this.currentOperation += data;
+                // let endResult = data;
+                // this.currentOperation += data;
+                console.log("this.operand2", this.operand2);
+                console.log("this.currentOperation", this.currentOperation);
+
+
+
+
                 this.updateScreen();
 
                 // console.log(this.operand2);

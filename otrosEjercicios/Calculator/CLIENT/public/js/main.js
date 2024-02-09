@@ -129,6 +129,7 @@ async function rescueDataMemory(apiUrl) {
                     headers: { "Content-Type": "application/json" },
                 });
         
+                console.log("response en rescueDataMemory", response)
                 if (!response.ok) {
                     throw new Error(`Error en la solicitud: ${response.status}`);
                 }
@@ -226,10 +227,10 @@ rescueMemory.addEventListener("click", async () => {
         console.log("RESCAT  MEMORY");
 
         try {
+                // console.log("this.currentOperation AL PRINCIPO DE RESCUEMEMORY--", this.currentOperation);
                 let result = await rescueDataMemory(`${apiUrl}/rescueMemory`);
                 console.log("RESPUESTA result EN ----rescueMemory---- EN rescueMemory EN MAIN ", result);
                 console.log("RESPUESTA resultOperation EN ----rescueMemory---- EN rescueMemory EN MAIN ", result.resultOperation);
-
                 if (result.success) {
                         calculator.rescueDataMemory(result.resultOperation);
 
