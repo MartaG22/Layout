@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,13 @@
         <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
         <title>CALCULATOR</title>
 </head>
+
 <body>
-        
+
         <div class="calculatorBox">
                 <div class="screen">
+                        <!-- <span id="mr">M</span>               -->
+
                         <div data-screen-operand id="operands">0</div>
                         <div data-screen-result id="result">0</div>
                 </div>
@@ -24,40 +28,40 @@
                         </div>
                         <div class="operationsButtons">
                                 <div class="numberButtons">
-                                        <button data-number class="numbers" id="number7" >7</button>
-                                        <button data-number class="numbers" id="number8" >8</button>
-                                        <button data-number class="numbers" id="number9" >9</button>
-                                        
-                                        <button data-number class="numbers" id="number4" >4</button>
-                                        <button data-number class="numbers" id="number5" >5</button>
-                                        <button data-number class="numbers" id="number6" >6</button>
-                                        
-                                        <button data-number class="numbers" id="number1" >1</button>
-                                        <button data-number class="numbers" id="number2" >2</button>
-                                        <button data-number class="numbers" id="number3" >3</button>
-                                        <button data-number class="numbers" id="number0" >0</button>
-                                        <button data-number class="numbers" id="point" >.</button>
+                                        <button data-number class="numbers" id="number7">7</button>
+                                        <button data-number class="numbers" id="number8">8</button>
+                                        <button data-number class="numbers" id="number9">9</button>
+
+                                        <button data-number class="numbers" id="number4">4</button>
+                                        <button data-number class="numbers" id="number5">5</button>
+                                        <button data-number class="numbers" id="number6">6</button>
+
+                                        <button data-number class="numbers" id="number1">1</button>
+                                        <button data-number class="numbers" id="number2">2</button>
+                                        <button data-number class="numbers" id="number3">3</button>
+                                        <button data-number class="numbers" id="number0">0</button>
+                                        <button data-number class="numbers" id="point">.</button>
                                 </div>
                                 <div class="signsButtons">
                                         <!-- <button class="signs" id="divide" data-operation>/</button> -->
-                                        <button class="signs" id="divide" data-operation >&#247</button>
-                                        <button class="signs" id="multiply"  data-operation >*</button>
-                                        <button class="signs" id="add" data-operation >+</button>
-                                        <button class="signs" id="substract" data-operation >-</button>
+                                        <button class="signs" id="divide" data-operation>&#247</button>
+                                        <button class="signs" id="multiply" data-operation>*</button>
+                                        <button class="signs" id="add" data-operation>+</button>
+                                        <button class="signs" id="substract" data-operation>-</button>
                                 </div>
                                 <div class="variablesButton">
                                         <button class="variables" id="pi">&#960</button>
                                         <button class="variables" id="numberE">e</button>
                                         <button class="variables" id="squareRoot">&#178&#8730</button>
                                         <button class="variables" id="exponential">x&#170</button>
-                                        
+
                                 </div>
-                                
+
                         </div>
                         <div class="otherButtons">
                                 <button class="signs" id="equal">=</button>
                                 <button class="variables" id="changeSign">+/-</button>
-                                <button id="erase" class="signs" >&#x2190</button>
+                                <button id="erase" class="signs">&#x2190</button>
                                 <button class="variables" id="percentage">%</button>
                                 <button class="variables" id="initialParenthesis">(</button>
                                 <button class="variables" id="endParenthesis">)</button>
@@ -75,4 +79,5 @@
 
 
 </body>
+
 </html>

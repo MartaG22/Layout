@@ -10,6 +10,7 @@ class Calculator {
                 this.parenthesis = false;
                 this.openParenthesis = 0;
                 this.closeParenthesis = 0;
+                this.memory = false;
 
                 this.clear();
         };
@@ -24,6 +25,8 @@ class Calculator {
                 this.parenthesis = false;
                 this.openParenthesis = 0;
                 this.closeParenthesis = 0;
+                this.memory = false;
+
 
                 this.updateScreen();
         };
@@ -459,12 +462,12 @@ class Calculator {
                         // let diferencia = this.currentOperation.length - numberOpenParenthesis;
                         // console.log("this.currentOperation", this.currentOperation, "  <>  this.currentOperation.length", this.currentOperation.length, "  <>   numberOpenParenthesis:", numberOpenParenthesis )
                         // console.log("diferencia entre long. de currentoperation y numberOpenP.:", diferencia);
-                        lastCharacter = this.currentOperation.charAt(this.currentOperation.length - numberOpenParenthesis -1);
+                        lastCharacter = this.currentOperation.toString().charAt(this.currentOperation.length - numberOpenParenthesis -1);
                         // console.log(this.currentOperation.charAt(this.currentOperation.length - numberOpenParenthesis - 1));
                         // console.log("lastCharacter en el IF", lastCharacter)
                 } else {
                         // console.log("entra en el ELSE")
-                        lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
+                        lastCharacter = this.currentOperation.toString().charAt(this.currentOperation.length - 1);
                 };
 
                 // console.log("ultimoCaracter", lastCharacter);
@@ -688,7 +691,13 @@ class Calculator {
                 if (sequence == "0") {
                         this.currentOperation = 0;
                 };
-
+                if (!this.memory) {
+                        this.memory = true;
+                        // rescueMemory.style.color = "red";
+                        // rescueMemory.text-shadow = 
+                        // rescueMemory.textShadow = "0 0 4px red";
+                        rescueMemory.style.textShadow = "2px 2px 4px rgba(255, 255, 255, 0.5)"; // Sombra iluminada
+                };
                 console.log(">>>>sequence", sequence, "this.currentOperation", this.currentOperation)
                 return {
                         sequence: sequence,
@@ -707,8 +716,8 @@ class Calculator {
 
 
         // resetMemory() {
-
-        // }
+        //         this.memory = false;
+        // };
 
         rescueDataMemory(data) {
                 console.log("DATA en rescueDataMemory", data);
@@ -716,7 +725,7 @@ class Calculator {
                 // console.log("data", data);
                 // console.log("data.resultOperation", data.resultOperation);
                 let operators = ["+", "-", "*", "÷"];
-                let lastCharacter = this.currentOperation.charAt(this.currentOperation.length - 1);
+                let lastCharacter = this.currentOperation.toString().charAt(this.currentOperation.length - 1);
                 console.log("lastCharacter", lastCharacter)
                 console.log("this.operand2", this.operand2);
                 console.log("this.currentOperation", this.currentOperation);
@@ -766,9 +775,7 @@ class Calculator {
 
                 if (result.currentOperation == "") {
                         console.log("   cuaDNO RSUTL.CURRENTOPERATION   ES     UNDEFINED")
-                }
-
-
+                };
 
                 this.operand2 = data;
                 // let endResult = data;
@@ -777,12 +784,19 @@ class Calculator {
                 console.log("this.currentOperation", this.currentOperation);
 
 
-
-
                 this.updateScreen();
 
                 // console.log(this.operand2);
+        };
+
+        resetMemory () {
+                this.memory = false;
+                rescueMemory.style.textShadow = "none"; // Sombra iluminada
+
         }
+
+
+
 };
 
 export default Calculator;

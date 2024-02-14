@@ -53,9 +53,11 @@ body {
 #operands {
         font-size: 1.5rem;
         margin-top: -1rem;
+        /* margin:0cm; */
 }
 
 #result {
+        /* color:brown; */
         font-size: 3rem;
         margin-top: 1rem;
 

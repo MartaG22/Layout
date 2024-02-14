@@ -196,6 +196,23 @@ addMemory.addEventListener("click", async () => {
                 // Verifica el estado de la respuesta
                 if (respuesta.success) {
                         console.log("La solicitud fue exitosa");
+                        if (addData.currentOperation !== ""){
+                                console.log("TENGO QUE PONER EL BOTÓN EN OCLOR");
+                                // ! aquí tengo que poner el botón de memoria en color
+                        }
+                        // Obtener el elemento span por su ID
+                        var sneakMemory = document.getElementById("sneakMemory");
+                        // Modificar el contenido del span
+                        // sneakMemory.textContent = "M";
+
+                        // O puedes añadir estilos o clases al span
+                        // sneakMemory.style.color = "red";
+                        // sneakMemory.margin-left = "1.5rem";
+                        // sneakMemory.style.top = "0";
+                        // sneakMemory.style.display = "flex"
+                        // sneakMemory.style.flexDirection = "column"
+                        // sneakMemory.style.alignItems = "start";
+
                         //! aquí hay que controlar un evento que ponga una "M" en la pantalla para indicar que hay datos en memoria.
                         //! también se puede cambiar de color la tecla de la memoria
                 } else {
@@ -255,9 +272,12 @@ resetMemory.addEventListener("click", async () => {
                         currentOperation: 0
                 };
                 let result = await addDataMakeRequest(resetData, `${apiUrl}/resetMemory`);
+                calculator.resetMemory();
                 console.log("result en resetMemory", result)
 
-        } catch (error) {
+                rescueMemory.style.color = "rgb(160, 160, 160)";
+
+                } catch (error) {
                 // Maneja el error si es necesario
                 console.error("Error al realizar la solicitud:", error);
         };});
