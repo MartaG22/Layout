@@ -1,5 +1,3 @@
-const Calculator = require("../class/calculator_class.js");
-const calculator = new Calculator;
 const dataFile = require("../models/numbersMemory.json");
 console.log(dataFile);
 
