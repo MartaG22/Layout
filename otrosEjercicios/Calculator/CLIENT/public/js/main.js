@@ -196,12 +196,12 @@ addMemory.addEventListener("click", async () => {
                 // Verifica el estado de la respuesta
                 if (respuesta.success) {
                         console.log("La solicitud fue exitosa");
-                        if (addData.currentOperation !== ""){
-                                console.log("TENGO QUE PONER EL BOTÓN EN OCLOR");
-                                // ! aquí tengo que poner el botón de memoria en color
-                        }
+                        // if (addData.currentOperation !== ""){
+                        //         console.log("TENGO QUE PONER EL BOTÓN EN OCLOR");
+                        //         // ! aquí tengo que poner el botón de memoria en color
+                        // }
                         // Obtener el elemento span por su ID
-                        var sneakMemory = document.getElementById("sneakMemory");
+                        // var sneakMemory = document.getElementById("sneakMemory");
                         // Modificar el contenido del span
                         // sneakMemory.textContent = "M";
 

@@ -696,7 +696,8 @@ class Calculator {
                         // rescueMemory.style.color = "red";
                         // rescueMemory.text-shadow = 
                         // rescueMemory.textShadow = "0 0 4px red";
-                        rescueMemory.style.textShadow = "2px 2px 4px rgba(255, 255, 255, 0.5)"; // Sombra iluminada
+                        // rescueMemory.style.textShadow = "2px 2px 4px rgba(255, 255, 255, 0.5)"; // Sombra iluminada
+                        rescueMemory.style.textShadow = "0 0 4px rgba(255, 255, 255, 255)"; // Sombra iluminada
                 };
                 console.log(">>>>sequence", sequence, "this.currentOperation", this.currentOperation)
                 return {
@@ -706,18 +707,19 @@ class Calculator {
         };
 
 
-        // substractMemory() {
-        //         const sequence = (document.getElementById('operands').textContent);
-        //         return {
-        //                 sequence: sequence,
-        //                 currentOperation: -this.currentOperation
-        //         };
-        // };
+        substractMemory() {
+                const sequence = (document.getElementById('operands').textContent);
+                if (!this.memory) {
+                        this.memory = true;
+                        rescueMemory.style.textShadow = "0 0 4px rgba(255, 255, 255, 255)"; // Sombra iluminada
+                };
 
+                return {
+                        sequence: sequence,
+                        currentOperation: -this.currentOperation
+                };
+        };
 
-        // resetMemory() {
-        //         this.memory = false;
-        // };
 
         rescueDataMemory(data) {
                 console.log("DATA en rescueDataMemory", data);
